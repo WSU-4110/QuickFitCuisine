@@ -4,8 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/quick_fit_cuisine/build" />
-      <excludeFolder url="file://$MODULE_DIR$/quick_fit_cuisine/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/quick_fit_cuisine/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/quick_fit_cuisine/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
