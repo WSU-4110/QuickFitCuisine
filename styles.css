@@ -1,1 +1,6 @@
 @charset "UTF-8";
+/* nav styles */
+nav {
+  font-family: Verdana, Arial, serif;
+  background-color: #6EFC35;
+}
