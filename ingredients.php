@@ -14,7 +14,7 @@
 	<main>
 
 		<h1>Recipe Finder</h1>
-		<form action="GetRecipes.php" method="POST">
+		<form action="ingredients.php" method="POST">
 			<fieldset>
 				<legend>Ingredient Selector</legend>
 				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
@@ -28,11 +28,21 @@
 				<label for="carrot">Carrot:</label>
 				<input type="checkbox" name="selection[]" id="carrot" value="carrot">
 
+				<label for="egg">Egg:</label>
+				<input type="checkbox" name="selection[]" id="egg" value="egg">
+
 
 
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" value="Find Recipe">
+				<?php 
+					if (isset($_POST['selection'])) 
+					{
+    					
+					}
+				?>
 			</fieldset>
+			
 		</form>
 
 
