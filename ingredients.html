@@ -1,49 +1,52 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Quick Fit Cuisine</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			@import url(styles.css);
-		</style>
-	</head>
-	<body>
 
-		<header>
-			<nav>
-				<ul>
-		  			<li><a href="ingredients.html">Recipe Finder</a></li>
-		  			<li><a href="SpecialHealthPage.html">Health Issues/Dietary Preferences</a></li>
-				</ul>
-			</nav>
+<head>
+	<meta charset="UTF-8">
+	<title>Quick Fit Cuisine</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		@import url(styles.css);
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<nav>
+			<ul>
+				<li><a href="ingredients.html">Recipe Finder</a></li>
+				<li><a href="SpecialHealthPage.html">Health Issues/Dietary Preferences</a></li>
+			</ul>
+		</nav>
 		<h1>Recipe Finder</h1>
-		</header>
-		<main>
+	</header>
+	<main>
 
-			<form action="UserSelections.php" method="POST">
-				<fieldset>
-					<legend>Ingredient Selector</legend>
-					<!--Ingredient Button Menu, name is array, id is for label, value is string-->
+		<form action="UserSelections.php" method="POST">
+			<fieldset>
+				<legend>Ingredient Selector</legend>
+				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 
-					<label for="broccoli">Broccoli:</label>
-					<input type="checkbox" name="selection[]" id="broccoli" value="broccoli">
+				<label for="broccoli">Broccoli:</label>
+				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli">
 
-					<label for="onion">Onion:</label>
-					<input type="checkbox" name="selection[]" id="onion" value="onion">
+				<label for="onion">Onion:</label>
+				<input type="checkbox" name="selection[]" id="onion" value="onion">
 
-					<label for="carrot">Carrot:</label>
-					<input type="checkbox" name="selection[]" id="carrot" value="carrot">
-
-		
-
-					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
-					<br><input type="submit" value="Find Recipe">
-				</fieldset>
-			</form>
+				<label for="carrot">Carrot:</label>
+				<input type="checkbox" name="selection[]" id="carrot" value="carrot">
 
 
 
-		</main>
-	</body>
+				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
+				<br><input type="submit" value="Find Recipe">
+			</fieldset>
+		</form>
+
+
+
+	</main>
+</body>
+
 </html>
