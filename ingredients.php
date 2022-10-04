@@ -89,7 +89,7 @@
 								}		
 								if($count == $matching) {
 									//each recipe is output here, the styling for each will be done here
-									echo "<p class='mycss'>Estimated Recipe Time: {$time} <br><a href=$link target=_blank>{$name}}</a><br></p>";
+									echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
 								}						
 							}
 						  } else {
