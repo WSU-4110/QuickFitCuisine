@@ -21,16 +21,16 @@
 				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 
 				<label for="broccoli">Broccoli:</label>
-				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli">
+				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
 
 				<label for="onion">Onion:</label>
-				<input type="checkbox" name="selection[]" id="onion" value="onion">
+				<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
 
 				<label for="carrot">Carrot:</label>
-				<input type="checkbox" name="selection[]" id="carrot" value="carrot">
+				<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
 
 				<label for="egg">Egg:</label>
-				<input type="checkbox" name="selection[]" id="egg" value="egg">
+				<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
 
 
 
@@ -46,6 +46,7 @@
 						$stmt = $myslqi->prepare("SELECT * from recipes");
 						$stmt->execute();
 						$result = $stmt->result_metadata();
+
 					}
 				?>
 			</fieldset>
