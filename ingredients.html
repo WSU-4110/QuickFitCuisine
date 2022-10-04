@@ -9,7 +9,7 @@
 		</style>
 	</head>
 	<body>
-
+		<div id="header">
 		<header>
 			<nav>
 				<ul>
@@ -19,8 +19,12 @@
 			</nav>
 		<h1>Recipe Finder</h1>
 		</header>
-		<main>
+		</div>
 
+		<main>
+			<div class="split left">
+				<div class="centeredL">
+				<h2>Your Pantry</h2>
 			<form action="UserSelections.php" method="POST">
 				<fieldset>
 					<legend>Ingredient Selector</legend>
@@ -41,8 +45,16 @@
 					<br><input type="submit" value="Find Recipe">
 				</fieldset>
 			</form>
+			</div>
+			</div>
 
-
+			<div class="split right">
+				<div class="centeredR">
+				  <h2>Your Recipies</h2>
+				  <p>Add ingredients to your pantry to see available recipies.
+				  </p>
+				</div>
+			  </div>
 
 		</main>
 	</body>
