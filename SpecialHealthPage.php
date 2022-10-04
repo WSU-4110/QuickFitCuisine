@@ -6,10 +6,7 @@
     <meta charset="utf-8">
     <title>Lifestyle Options</title>
     <script src="index.js" type="text/javascript" defer></script>
-   <!-- adding style sheet-->
-<style> 
- @import url(styles.css);
-</style>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
         
 </head>
 
