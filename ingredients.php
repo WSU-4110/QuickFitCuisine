@@ -63,17 +63,31 @@
 							// output link
 							while($row = $result->fetch_assoc()) {
 								$link = $row["link"];
+								$count = 0;
+								$matching = 0;
+								if($row["ingredient1"] != null) {
+									$count++;
+								}
+								else if($row["ingredient2"] != null) {
+									$count++;
+								}
+								else if($row["ingredient3"] != null) {
+									$count++;
+								}
 								for($i=0; $i < count($ingredients); $i++) {
 									if($row["ingredient1"] == $ingredients[$i]) {
-										echo "<a href=$link target=_blank>recipe</a>";
+										$matching++;
 									}
 									else if($row["ingredient2"] == $ingredients[$i]) {
-										echo "<a href=$link target=_blank>recipe</a>";
+										$matching++;
 									}
 									else if($row["ingredient3"] == $ingredients[$i]) {
-										echo "<a href=$link target=_blank>recipe</a>";
+										$matching++;
 									}
-								}								
+								}		
+								if($count == $matching) {
+									echo "<a href=$link target=_blank>recipe</a>";
+								}						
 							}
 						  } else {
 							echo "0 results";
