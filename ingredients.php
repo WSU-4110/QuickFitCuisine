@@ -37,18 +37,15 @@
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" value="Find Recipe">
 				<?php 
-					if (isset($_POST['selection'])) 
-					{
-    					$dbname = 'ingredientdb';
-						$dbuser = 'root';
-						$dbpass = 'pass1234';
-						$dbhost = 'localhost';
-						$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-						if (isset($_POST['selection'])) {
-							$stmt = $myslqi->prepare("SELECT * from recipes");
-							$stmt->execute();
-							$result = $stmt->result_metadata();
-						}
+    				$dbname = 'ingredientdb';
+					$dbuser = 'root';
+					$dbpass = 'pass1234';
+					$dbhost = 'localhost';
+					$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+					if (isset($_POST['selection'])) {
+						$stmt = $myslqi->prepare("SELECT * from recipes");
+						$stmt->execute();
+						$result = $stmt->result_metadata();
 					}
 				?>
 			</fieldset>
