@@ -48,7 +48,7 @@
 	<div class="split right">
   	<div class="centered">
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to your pantry to see available recipes.<br>
+    	<p>Add ingredients to your pantry to see available recipes.<br><br>
 		<?php 
     				$dbname = 'ingredientdb';
 					$dbuser = 'root';
@@ -63,6 +63,7 @@
 							// output link
 							while($row = $result->fetch_assoc()) {
 								$time = $row["time"];
+								$name = $row["name"];
 								$link = $row["link"];
 								$count = 0;
 								$matching = 0;
@@ -88,8 +89,8 @@
 								}		
 								if($count == $matching) {
 									//each recipe is output here, the styling for each will be done here
-									echo "<a href=$link target=_blank>click here for recipe</a><br>";
-									echo "<p>Estimated Recipe Time:</p> {$time} <br>";
+									echo "<a href=$link target=_blank>{$name}</a><br>";
+									echo "<p>Estimated Recipe Time: {$time} minutes </p><br>";
 								}						
 							}
 						  } else {
@@ -101,7 +102,7 @@
 						
 					}
 					else {
-						echo 'waiting';
+						//echo 'waiting';
 					}
 				?>
     	</p>
