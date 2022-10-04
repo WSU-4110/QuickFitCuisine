@@ -128,6 +128,12 @@ ul{
     background-color: rgb(221, 255, 243);
     height: 100px;
     }
+  .mycss {
+    color: green;
+    border: 1px solid #000;
+    background: #ccc;
+    padding: 10px;
+    }
   .border {
     border-width: 3px;
     border-style: solid;
