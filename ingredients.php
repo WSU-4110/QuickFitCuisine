@@ -36,7 +36,19 @@
 
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" value="Find Recipe">
-				<?php 
+				
+			</fieldset>
+			
+		</form>
+		
+		</div>
+	</div> 
+	
+	<div class="split right">
+  	<div class="centered">
+    	<h2>Your Recipes</h2>
+    	<p>Add ingredients to your pantry to see available recipes.
+		<?php 
     				$dbname = 'ingredientdb';
 					$dbuser = 'root';
 					$dbpass = 'pass1234';
@@ -49,7 +61,8 @@
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-							  echo "link: " . $row["link"]."<br>";
+								$link = $row["link"];
+							  	echo "<a href=$link target=_blank>recipe</a>";
 							}
 						  } else {
 							echo "0 results";
@@ -60,16 +73,6 @@
 						
 					}
 				?>
-			</fieldset>
-			
-		</form>
-		</div>
-	</div> 
-
-	<div class="split right">
-  	<div class="centered">
-    	<h2>Your Recipes</h2>
-    	<p>Add ingredients to your pantry to see available recipies.
     	</p>
   	</div>
 	</div>
