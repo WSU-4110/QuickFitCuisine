@@ -15,6 +15,7 @@
 	<div class="split left">
   	<div class="centered">
 		<h1>Recipe Finder</h1>
+		<p>We assume you have salt, pepper, and water.</p>
 		<form action="" method="post">
 			<fieldset>
 				<legend>Ingredient Selector</legend>
@@ -61,6 +62,7 @@
 						if ($result->num_rows > 0) {
 							// output link
 							while($row = $result->fetch_assoc()) {
+								$link = $row["link"];
 								for($i=0; $i < count($ingredients); $i++) {
 									if($row["ingredient1"] == $ingredients[$i]) {
 										echo "<a href=$link target=_blank>recipe</a>";
