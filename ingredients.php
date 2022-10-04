@@ -64,6 +64,7 @@
 							while($row = $result->fetch_assoc()) {
 								$time = $row["time"];
 								$link = $row["link"];
+								$name = $row["name"];
 								$count = 0;
 								$matching = 0;
 								if($row["ingredient1"] != null) {
@@ -88,7 +89,9 @@
 								}		
 								if($count == $matching) {
 									//each recipe is output here, the styling for each will be done here
-									echo "<p class='mycss'>Estimated Recipe Time: {$time} <br><a href=$link target=_blank>click here for recipe</a><br></p>";
+									//echo "<p class='mycss'>Estimated Recipe Time: {$time} <br><a href=$link target=_blank>click here for recipe</a><br></p>";
+									echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
+
 								}						
 							}
 						  } else {
