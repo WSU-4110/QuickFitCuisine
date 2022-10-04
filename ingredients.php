@@ -41,12 +41,23 @@
 					$dbuser = 'root';
 					$dbpass = 'pass1234';
 					$dbhost = 'localhost';
-					$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 					if (isset($_POST['selection'])) {
-						$stmt = $myslqi->prepare("SELECT * from recipes");
-						$stmt->execute();
-						$result = $stmt->result_metadata();
+						$sql = "SELECT link FROM recipes";
+						$result = $conn->query($sql);
 
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+							  echo "link: " . $row["link"]."<br>";
+							}
+						  } else {
+							echo "0 results";
+						  }
+						  $conn->close();
+						
+						//$result = $stmt->result_metadata();
+						
 					}
 				?>
 			</fieldset>
@@ -58,7 +69,7 @@
 	<div class="split right">
   	<div class="centered">
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to your pantry to see available recipes.
+    	<p>Add ingredients to your pantry to see available recipies.
     	</p>
   	</div>
 	</div>
