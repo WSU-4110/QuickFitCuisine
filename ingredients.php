@@ -12,7 +12,8 @@
 <body>
 	<main-header></main-header>
 	<main>
-
+	<div class="split left">
+  	<div class="centered">
 		<h1>Recipe Finder</h1>
 		<form action="ingredients.php" method="POST">
 			<fieldset>
@@ -44,8 +45,16 @@
 			</fieldset>
 			
 		</form>
+		</div>
+	</div> 
 
-
+		<div class="split right">
+  <div class="centered">
+    <h2>Your Recipies</h2>
+    <p>Add ingredients to your pantry to see available recipies.
+    </p>
+  </div>
+</div>
 
 	</main>
 </body>
