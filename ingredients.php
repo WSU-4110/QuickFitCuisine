@@ -48,13 +48,13 @@
 		</div>
 	</div> 
 
-		<div class="split right">
-  <div class="centered">
-    <h2>Your Recipies</h2>
-    <p>Add ingredients to your pantry to see available recipies.
-    </p>
-  </div>
-</div>
+	<div class="split right">
+  	<div class="centered">
+    	<h2>Your Recipies</h2>
+    	<p>Add ingredients to your pantry to see available recipies.
+    	</p>
+  	</div>
+	</div>
 
 	</main>
 </body>
