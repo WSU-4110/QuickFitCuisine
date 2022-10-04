@@ -62,6 +62,7 @@
 						if ($result->num_rows > 0) {
 							// output link
 							while($row = $result->fetch_assoc()) {
+								$time = $row["time"];
 								$link = $row["link"];
 								$count = 0;
 								$matching = 0;
@@ -87,7 +88,8 @@
 								}		
 								if($count == $matching) {
 									//each recipe is output here, the styling for each will be done here
-									echo "<a href=$link target=_blank>recipe</a>";
+									echo "<a href=$link target=_blank>click here for recipe</a><br>";
+									echo "<p>Estimated Recipe Time:</p> {$time} <br>";
 								}						
 							}
 						  } else {

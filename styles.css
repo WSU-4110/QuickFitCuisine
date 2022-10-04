@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* nav styles */
 nav {
   font-family: Verdana, Arial, serif;
@@ -127,5 +127,10 @@ ul{
   .header {
     background-color: rgb(221, 255, 243);
     height: 100px;
+    }
+  .border {
+    border-width: 3px;
+    border-style: solid;
+    border-color: #287EC7;
     }
   
