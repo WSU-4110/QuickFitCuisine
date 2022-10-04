@@ -86,6 +86,7 @@
 									}
 								}		
 								if($count == $matching) {
+									//each recipe is output here, the styling for each will be done here
 									echo "<a href=$link target=_blank>recipe</a>";
 								}						
 							}
