@@ -1,5 +1,12 @@
 @charset "UTF-8";
 /* nav styles */
+nav {
+  font-family: Verdana, Arial, serif;
+  background-color: #6EFC35;
+}
+ul{
+  list-style-type: none;
+}
 
 .switch li {
     position: absolute;
