@@ -76,6 +76,9 @@
 								else if($row["ingredient3"] != null) {
 									$count++;
 								}
+								else if($row["ingredient4"] != null) {
+									$count++;
+								}
 								for($i=0; $i < count($ingredients); $i++) {
 									if($row["ingredient1"] == $ingredients[$i]) {
 										$matching++;
@@ -84,6 +87,9 @@
 										$matching++;
 									}
 									else if($row["ingredient3"] == $ingredients[$i]) {
+										$matching++;
+									}
+									else if($row["ingredient4"] == $ingredients[$i]) {
 										$matching++;
 									}
 								}		
