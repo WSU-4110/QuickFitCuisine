@@ -56,6 +56,7 @@
 					$dbhost = 'localhost';
 					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 					if (isset($_POST['submit']) && !empty($_POST['submit'])) {
+						$recipes = 0;
 						$sql = "SELECT * FROM recipes";
 						$result = $conn->query($sql);
 						$ingredients = $_POST['selection'];
@@ -94,10 +95,20 @@
 									}
 								}		
 								if($count == $matching) {
+									$recipes_array[$recipes] = 
+									[
+										"name" => $name,
+										"link" => $link,
+										"time" => $time
+									];
+									$recipes++;
 									//each recipe is output here, the styling for each will be done here
 									echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
 								}						
 							}
+							
+
+
 						  } else {
 							echo "0 results";
 						  }
