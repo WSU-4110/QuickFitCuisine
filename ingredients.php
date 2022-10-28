@@ -60,9 +60,9 @@
 						$sql = "SELECT * FROM recipes";
 						$result = $conn->query($sql);
 						$ingredients = $_POST['selection'];
+						$recipe_arr = array();
 						if ($result->num_rows > 0) {
 							// fetch recipes from database
-							$recipe_arr = array;
 							while($row = $result->fetch_assoc()) {
 								$time = $row["time"];
 								$name = $row["name"];
@@ -95,21 +95,26 @@
 										$matching++;
 									}
 								}
+								//determine if the user selected all of the ingredients belonging to a recipe
 								if($count == $matching) {
+									//insert the new recipe into the array recipe_arr
 									$newrecipe = array (
-										'name' = $name;
-										'link' = $link;
-										'time' = $time;
-										'ingredients' = $count;
-									)
-									$recipe_arr[$recipes][] = $newrecipe;
-									//each recipe is output here, the styling for each will be done here
-									//echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
+										0 => $name,
+										1 => $link,
+										2 => $time,
+										3 => $count
+									);
+									array_push($recipe_arr, $newrecipe);
+									$recipes++;
 								}						
 							}
+							//each recipe is output here, the styling for each will be done here [basis for filtering for time, # of ingredients, etc]
 							for($i = 0; $i < $recipes; $i++) {
-								echo $recipe_arr[$i]['name'];
-								//echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
+								$name = $recipe_arr[$i][0];
+								$link = $recipe_arr[$i][1];
+								$time = $recipe_arr[$i][2];
+								$count = $recipe_arr[$i][3];
+								echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
 							}
 						  } 
 						  else {
