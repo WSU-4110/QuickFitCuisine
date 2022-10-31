@@ -1,4 +1,4 @@
-DROP DATABASE [ IF EXISTS ] {ingredientdb};
+DROP DATABASE IF EXISTS ingredientdb;
 CREATE DATABASE ingredientdb;
 USE ingredientdb;
 CREATE TABLE recipes(link VARCHAR(100), time INTEGER, name varchar(30), ingredient1 VARCHAR(20), ingredient2 VARCHAR(20), ingredient3 VARCHAR(20), ingredient4 VARCHAR(20), ingredient5 VARCHAR(20), ingredient6 VARCHAR(20), ingredient7 VARCHAR(20), ingredient8 VARCHAR(20), ingredient9 VARCHAR(20), ingredient10 VARCHAR(20));
