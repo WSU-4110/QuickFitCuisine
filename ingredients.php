@@ -1,4 +1,5 @@
 <?php
+include 'SpecialHealthPage.php';
 session_start();
 $_SESSION["newsession"]=$value;
 ?>
@@ -90,6 +91,24 @@ $_SESSION["newsession"]=$value;
 							else if($row["ingredient4"] != null) {
 								$count++;
 							}
+							else if($row["ingredient5"] != null) {
+								$count++;
+							}
+							else if($row["ingredient6"] != null) {
+								$count++;
+							}
+							else if($row["ingredient7"] != null) {
+								$count++;
+							}
+							else if($row["ingredient8"] != null) {
+								$count++;
+							}
+							else if($row["ingredient9"] != null) {
+								$count++;
+							}
+							else if($row["ingredient10"] != null) {
+								$count++;
+							}
 							for($i=0; $i < count($ingredients); $i++) {
 								if($row["ingredient1"] == $ingredients[$i]) {
 									$matching++;
@@ -101,6 +120,24 @@ $_SESSION["newsession"]=$value;
 									$matching++;
 								}
 								else if($row["ingredient4"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient5"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient6"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient7"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient8"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient9"] == $ingredients[$i]) {
+									$matching++;
+								}
+								else if($row["ingredient10"] == $ingredients[$i]) {
 									$matching++;
 								}
 							}
