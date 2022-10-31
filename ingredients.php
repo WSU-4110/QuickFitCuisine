@@ -1,7 +1,6 @@
 <?php
 include 'SpecialHealthPage.php';
 session_start();
-$_SESSION["newsession"]=$value;
 ?>
 <!doctype html>
 <html>
