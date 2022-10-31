@@ -1,6 +1,8 @@
 <?php
 include 'SpecialHealthPage.php';
 session_start();
+$_SESSION['recipes_arr'];
+$_SESSION['recipes'];
 ?>
 <!doctype html>
 <html>
@@ -79,6 +81,18 @@ session_start();
 				<label for="brusselsprouts">Brussel Sprouts:</label>
 				<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
 
+				<label for="potatoe">Potatoe:</label>
+				<input type="checkbox" name="selection[]" id="potatoe" value="potatoe"><br>
+
+				<label for="lettuce">Lettuce:</label>
+				<input type="checkbox" name="selection[]" id="lettuce" value="lettuce"><br>
+
+				<label for="milk">Milk:</label>
+				<input type="checkbox" name="selection[]" id="milk" value="milk"><br>
+
+				<label for="butter">Butter:</label>
+				<input type="checkbox" name="selection[]" id="butter" value="butter"><br>
+
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" name ="recipefinder" value="Find Recipe">
 				
@@ -121,31 +135,31 @@ session_start();
 							if($row["ingredient1"] != null) {
 								$count++;
 							}
-							else if($row["ingredient2"] != null) {
+							if($row["ingredient2"] != null) {
 								$count++;
 							}
-							else if($row["ingredient3"] != null) {
+							if($row["ingredient3"] != null) {
 								$count++;
 							}
-							else if($row["ingredient4"] != null) {
+							if($row["ingredient4"] != null) {
 								$count++;
 							}
-							else if($row["ingredient5"] != null) {
+							if($row["ingredient5"] != null) {
 								$count++;
 							}
-							else if($row["ingredient6"] != null) {
+							if($row["ingredient6"] != null) {
 								$count++;
 							}
-							else if($row["ingredient7"] != null) {
+							if($row["ingredient7"] != null) {
 								$count++;
 							}
-							else if($row["ingredient8"] != null) {
+							if($row["ingredient8"] != null) {
 								$count++;
 							}
-							else if($row["ingredient9"] != null) {
+							if($row["ingredient9"] != null) {
 								$count++;
 							}
-							else if($row["ingredient10"] != null) {
+							if($row["ingredient10"] != null) {
 								$count++;
 							}
 							for($i=0; $i < count($ingredients); $i++) {
@@ -204,7 +218,7 @@ session_start();
 							//call the function to print recipes and set session variables (this allows the values to be kept between page refreshes in order to further sort)
 							$_SESSION['recipes_arr'] = $recipe_arr;
 							$_SESSION['recipes'] = $recipes;
-							printRecipes($recipe_arr, $recipes);
+							printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
 						}
 					}
 					else {
@@ -226,55 +240,57 @@ session_start();
 					<input type='submit' name ='timeSortbutton' value='Sort Recipes by Cooking Time (Low-High)'>
 					<input type='submit' name ='descendingIngredientsButton' value='Sort Recipes by Amount of Ingredients (High-Low)'>
 					</form>";
-					timeSort($_SESSION['recipes_arr'], $_SESSION['recipes']);
+					descendingIngredients($_SESSION['recipes_arr'], $_SESSION['recipes']);
 				}
 				//sort recipes in ascending order by cooking time
-				function timeSort(Array &$recipe_arr, &$recipes) {
-					for($i = 0; $i < $recipes-1; $i++) {
-						for($j = 1; $j < $recipes; $j++) {
-							if($recipe_arr[$i][2] > $recipe_arr[$j][2]) {
-								$tempName = $recipe_arr[$i][0];
-								$tempLink = $recipe_arr[$i][1];
-								$tempTime = $recipe_arr[$i][2];
-								$tempCount = $recipe_arr[$i][3];
-								$recipe_arr[$i][0] = $recipe_arr[$j][0];
-								$recipe_arr[$i][1] = $recipe_arr[$j][1];
-								$recipe_arr[$i][2] = $recipe_arr[$j][2];
-								$recipe_arr[$i][3] = $recipe_arr[$j][3];
-								$recipe_arr[$j][0] = $tempName;
-								$recipe_arr[$j][1] = $tempLink;
-								$recipe_arr[$j][2] = $tempTime;
-								$recipe_arr[$j][3] = $tempCount;
+				function timeSort(Array $recipe_arr, $recipes) {	
+					for($i = 0; $i < $recipes-1; $i++) {		
+						for($j = 0; $j < $recipes - $i - 1; $j++) {
+							if($recipe_arr[$j][2] > $recipe_arr[$j+1][2]) {
+								$tempName = $recipe_arr[$j][0];
+								$tempLink = $recipe_arr[$j][1];
+								$tempTime = $recipe_arr[$j][2];
+								$tempCount = $recipe_arr[$j][3];
+								$recipe_arr[$j][0] = $recipe_arr[$j+1][0];
+								$recipe_arr[$j][1] = $recipe_arr[$j+1][1];
+								$recipe_arr[$j][2] = $recipe_arr[$j+1][2];
+								$recipe_arr[$j][3] = $recipe_arr[$j+1][3];
+								$recipe_arr[$j+1][0] = $tempName;
+								$recipe_arr[$j+1][1] = $tempLink;
+								$recipe_arr[$j+1][2] = $tempTime;
+								$recipe_arr[$j+1][3] = $tempCount;
 							}
 						}
 					}
-					printRecipes($recipe_arr, $recipes);
+					$_SESSION['recipes_arr'] = $recipe_arr;
+					printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
 				}
 				//sort recipes in descending order by # of ingredients
-				function descendingIngredients(Array &$recipe_arr, &$recipes) {
+				function descendingIngredients(Array $recipe_arr, $recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {
-						for($j = 1; $j < $recipes; $j++) {
-							if($recipe_arr[$i][3] < $recipe_arr[$j][3]) {
-								$tempName = $recipe_arr[$i][0];
-								$tempLink = $recipe_arr[$i][1];
-								$tempTime = $recipe_arr[$i][2];
-								$tempCount = $recipe_arr[$i][3];
-								$recipe_arr[$i][0] = $recipe_arr[$j][0];
-								$recipe_arr[$i][1] = $recipe_arr[$j][1];
-								$recipe_arr[$i][2] = $recipe_arr[$j][2];
-								$recipe_arr[$i][3] = $recipe_arr[$j][3];
-								$recipe_arr[$j][0] = $tempName;
-								$recipe_arr[$j][1] = $tempLink;
-								$recipe_arr[$j][2] = $tempTime;
-								$recipe_arr[$j][3] = $tempCount;
+						for($j = 0; $j < $recipes - $i - 1; $j++) {
+							if($recipe_arr[$j][3] < $recipe_arr[$j+1][3]) {
+								$tempName = $recipe_arr[$j][0];
+								$tempLink = $recipe_arr[$j][1];
+								$tempTime = $recipe_arr[$j][2];
+								$tempCount = $recipe_arr[$j][3];
+								$recipe_arr[$j][0] = $recipe_arr[$j+1][0];
+								$recipe_arr[$j][1] = $recipe_arr[$j+1][1];
+								$recipe_arr[$j][2] = $recipe_arr[$j+1][2];
+								$recipe_arr[$j][3] = $recipe_arr[$j+1][3];
+								$recipe_arr[$j+1][0] = $tempName;
+								$recipe_arr[$j+1][1] = $tempLink;
+								$recipe_arr[$j+1][2] = $tempTime;
+								$recipe_arr[$j+1][3] = $tempCount;
 							}
 						}
 					}
-					printRecipes($recipe_arr, $recipes);
+					$_SESSION['recipes_arr'] = $recipe_arr;
+					printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
 				}
 				//each recipe is output here
-				function printRecipes(Array &$recipe_arr, &$recipes) {
-					$cols = 3;
+				function printRecipes(Array $recipe_arr, $recipes) {
+					$cols = 5;
 					$colCount = 0;
 						echo "
 						<table>
@@ -295,6 +311,7 @@ session_start();
 						<br>Estimated Recipe Time: {$time}
 						<br>Ingredients: {$count}
 						</td>";
+						$colCount++;
 					}
 					echo "</tr>
 					</table>";
