@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION["newsession"]=$value;
+?>
 <!doctype html>
 <html>
 
@@ -49,7 +53,7 @@
   	<div class="centered">
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to your pantry to see available recipes.<br><br>
-			<?php 
+			<?php
 				//database connection variables
     			$dbname = 'ingredientdb';
 				$dbuser = 'root';
@@ -58,17 +62,15 @@
 				$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 				$recipes = 0;
 				$recipe_arr = array();
+				$recipe_arr_timeSort = array();
 				//if find recipe button is clicked
 				if (isset($_POST['recipefinder']) && !empty($_POST['recipefinder'])) {
+					session_reset();
 					$sql = "SELECT * FROM recipes";
 					$result = $conn->query($sql);
 					$ingredients = $_POST['selection'];
 					//if there is atleast 1 recipe
 					if ($result->num_rows > 0) {
-						//sorting buttons (can add however many)
-						echo "<form method='post'>
-						<input type='submit' name='timeSort' value='Lowest-Highest Time to Cook'/>
-						</form>";
 						// fetch recipes from database
 						while($row = $result->fetch_assoc()) {
 							$time = $row["time"];
@@ -105,6 +107,7 @@
 							//determine if the user selected all of the ingredients belonging to a recipe
 							if($count == $matching) {
 								//insert the new recipe into the array recipe_arr
+								//insertRecipe($name, $link, $time, $count);
 								$newrecipe = array (
 									0 => $name,
 									1 => $link,
@@ -115,21 +118,42 @@
 								$recipes++;
 							}						
 						}
-						//call the function to print recipes
-						printRecipes($recipe_arr, $recipes);
-						if (isset($_POST['timeSort']) && !empty($_POST['timeSort'])) {
-							timeSort($recipe_arr, $recipes);
-						}	
+						//check if there is atleast 1 recipe
+						if($recipes > 0) {
+							//Sort buttons are displayed here
+							echo "<form method='post'>
+							<input type='submit' name ='timeSortbutton' value='Sort Recipes by Cooking Time (Low-High)'>
+							<input type='submit' name ='descendingIngredientsButton' value='Sort Recipes by Amount of Ingredients (High-Low)'>
+							</form>";
+							//call the function to print recipes and set session variables (this allows the values to be kept between page refreshes in order to further sort)
+							$_SESSION['recipes_arr'] = $recipe_arr;
+							$_SESSION['recipes'] = $recipes;
+							printRecipes($recipe_arr, $recipes);
+						}
 					}
 					else {
-						echo "0 Recipes";
+						echo "0 Recipes stored in database";
 					}
 					$conn->close();
-				}	
-				else {
-					//waiting for user to press find ingredient button;
 				}
-				function timeSort(Array $recipe_arr, $recipes) {
+				if (isset($_POST['timeSortbutton']) && !empty($_POST['timeSortbutton'])) {
+					//Sort buttons are displayed here
+					echo "<form method='post'>
+					<input type='submit' name ='timeSortbutton' value='Sort Recipes by Cooking Time (Low-High)'>
+					<input type='submit' name ='descendingIngredientsButton' value='Sort Recipes by Amount of Ingredients (High-Low)'>
+					</form>";
+					timeSort($_SESSION['recipes_arr'], $_SESSION['recipes']);
+				}
+				if (isset($_POST['descendingIngredientsButton']) && !empty($_POST['descendingIngredientsButton'])) {
+					//Sort buttons are displayed here
+					echo "<form method='post'>
+					<input type='submit' name ='timeSortbutton' value='Sort Recipes by Cooking Time (Low-High)'>
+					<input type='submit' name ='descendingIngredientsButton' value='Sort Recipes by Amount of Ingredients (High-Low)'>
+					</form>";
+					timeSort($_SESSION['recipes_arr'], $_SESSION['recipes']);
+				}
+				//sort recipes in ascending order by cooking time
+				function timeSort(Array &$recipe_arr, &$recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {
 						for($j = 1; $j < $recipes; $j++) {
 							if($recipe_arr[$i][2] > $recipe_arr[$j][2]) {
@@ -150,13 +174,36 @@
 					}
 					printRecipes($recipe_arr, $recipes);
 				}
-				//each recipe is output here, the styling for each will be done here [basis for filtering for time, # of ingredients, etc]
-				function printRecipes(Array $recipe_arr, $recipes) {
+				//sort recipes in descending order by # of ingredients
+				function descendingIngredients(Array &$recipe_arr, &$recipes) {
+					for($i = 0; $i < $recipes-1; $i++) {
+						for($j = 1; $j < $recipes; $j++) {
+							if($recipe_arr[$i][3] < $recipe_arr[$j][3]) {
+								$tempName = $recipe_arr[$i][0];
+								$tempLink = $recipe_arr[$i][1];
+								$tempTime = $recipe_arr[$i][2];
+								$tempCount = $recipe_arr[$i][3];
+								$recipe_arr[$i][0] = $recipe_arr[$j][0];
+								$recipe_arr[$i][1] = $recipe_arr[$j][1];
+								$recipe_arr[$i][2] = $recipe_arr[$j][2];
+								$recipe_arr[$i][3] = $recipe_arr[$j][3];
+								$recipe_arr[$j][0] = $tempName;
+								$recipe_arr[$j][1] = $tempLink;
+								$recipe_arr[$j][2] = $tempTime;
+								$recipe_arr[$j][3] = $tempCount;
+							}
+						}
+					}
+					printRecipes($recipe_arr, $recipes);
+				}
+				//each recipe is output here
+				function printRecipes(Array &$recipe_arr, &$recipes) {
 					for($i = 0; $i < $recipes; $i++) {
 						$name = $recipe_arr[$i][0];
 						$link = $recipe_arr[$i][1];
 						$time = $recipe_arr[$i][2];
 						$count = $recipe_arr[$i][3];
+						//styling for each recipe is done here
 						echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
 					}
 				}
