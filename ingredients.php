@@ -20,7 +20,7 @@ $_SESSION["newsession"]=$value;
 	<div class="split left">
   	<div class="centered">
 		<h1>Recipe Finder</h1>
-		<p>We assume you have salt, pepper, and water.</p>
+		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
 			<fieldset>
 				<legend>Ingredient Selector</legend>
@@ -38,7 +38,47 @@ $_SESSION["newsession"]=$value;
 				<label for="egg">Egg:</label>
 				<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
 
+				<label for="salmon">Salmon:</label>
+				<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
 
+				<label for="mustard">Mustard:</label>
+				<input type="checkbox" name="selection[]" id="mustard" value="mustard"><br>
+
+				<label for="maplesyrup">Maple Syrup:</label>
+				<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup"><br>
+
+				<label for="peas">Peas:</label>
+				<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
+
+				<label for="garlic">Garlic:</label>
+				<input type="checkbox" name="selection[]" id="garlic" value="garlic"><br>
+
+				<label for="cheese">Cheese:</label>
+				<input type="checkbox" name="selection[]" id="cheese" value="cheese"><br>
+
+				<label for="spaghetti">Maple Syrup:</label>
+				<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti"><br>
+
+				<label for="spices">Spices:</label>
+				<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+
+				<label for="greekyogurt">Greek Yogurt:</label>
+				<input type="checkbox" name="selection[]" id="greekyogurt" value="greekyogurt"><br>
+
+				<label for="blackbeans">Black Beans:</label>
+				<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans"><br>
+
+				<label for="avocado">Avocado:</label>
+				<input type="checkbox" name="selection[]" id="avocado" value="avocado"><br>
+
+				<label for="salsa">Salsa:</label>
+				<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
+
+				<label for="groundmeat">Ground Meat:</label>
+				<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat"><br>
+
+				<label for="brusselsprouts">Brussel Sprouts:</label>
+				<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
 
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" name ="recipefinder" value="Find Recipe">
@@ -235,14 +275,30 @@ $_SESSION["newsession"]=$value;
 				}
 				//each recipe is output here
 				function printRecipes(Array &$recipe_arr, &$recipes) {
+					$cols = 3;
+					$colCount = 0;
+						echo "
+						<table>
+						<tr>";
 					for($i = 0; $i < $recipes; $i++) {
+						if($colCount == $cols) {
+							$colCount = 0;
+							echo "</tr><tr>";
+						}
 						$name = $recipe_arr[$i][0];
 						$link = $recipe_arr[$i][1];
 						$time = $recipe_arr[$i][2];
 						$count = $recipe_arr[$i][3];
 						//styling for each recipe is done here
-						echo "<p class='mycss'><a href=$link target=_blank>{$name}</a><br>Estimated Recipe Time: {$time}<br></p>";
+						echo "
+						<td class='mycss'>
+						<a href=$link target=_blank>{$name}</a>
+						<br>Estimated Recipe Time: {$time}
+						<br>Ingredients: {$count}
+						</td>";
 					}
+					echo "</tr>
+					</table>";
 				}
 			?>
     	</p>
