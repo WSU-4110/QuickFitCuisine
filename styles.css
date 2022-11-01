@@ -99,43 +99,6 @@ body {
   color: black;
 }
 
-.split {
-  height: 100%;
-  width: 65%;
-  position: fixed;
-  z-index: 1;
-  top: 100px;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.left {
-  left: 0;
-  background-color: tomato;
-}
-
-.right {
-  right: 0;
-  background-color: white;
-}
-
-.centeredL {
-  position: absolute;
-  top: 10%;
-  left: 25%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.centeredR {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: "Lucida Console", "Courier New", monospace;
-  font-size: x-large;
-}
 
 .header {
   background-color: rgb(221, 255, 243);
