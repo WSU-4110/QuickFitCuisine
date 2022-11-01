@@ -144,6 +144,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="avocado">Avocado:</label>
 						<input type="checkbox" name="selection[]" id="avocado" value="avocado">
+
+						<label for="tomato">Tomato:</label>
+						<input type="checkbox" name="selection[]" id="tomato" value="tomato">
 	
 					</div>
 					</fieldset>
@@ -154,8 +157,8 @@ $_SESSION['ingredientsSortBool'] = false;
 						<label for="chicken">Chicken:</label>
 						<input type="checkbox" name="selection[]" id="chicken" value="chicken">
 	
-						<label for="groundmeat">Ground Beef:</label>
-						<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat">
+						<label for="groundbeef">Ground Beef:</label>
+						<input type="checkbox" name="selection[]" id="groundbeef" value="groundbeef">
 	
 						<label for="bacon">Bacon:</label>
 						<input type="checkbox" name="selection[]" id="bacon" value="bacon">
@@ -185,6 +188,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 							<label for="tilapia">Tilapia:</label>
 							<input type="checkbox" name="selection[]" id="tilapia" value="tilapia">
+
+							<label for="tuna">Tuna:</label>
+							<input type="checkbox" name="selection[]" id="tuna" value="tuna">
 						</div>
 					</fieldset>
 					
@@ -239,6 +245,21 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 	
 					</fieldset>
+
+					<fieldset>
+					<legend>Grains</legend>
+
+						<div class="filterDiv vegetarian vegan pescatarian">
+						<label for="rice">Rice:</label>
+						<input type="checkbox" name="selection[]" id="rice" value="rice">
+
+						<label for="lentils">Lentils:</label>
+						<input type="checkbox" name="selection[]" id="lentils" value="lentils">
+	
+						</div>
+	
+	
+					</fieldset>
 	
 					<fieldset>
 					<legend>Misc</legend>
@@ -258,6 +279,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="honey">Honey:</label>
 						<input type="checkbox" name="selection[]" id="honey" value="honey">
+
+						<label for="garlic">Garlic:</label>
+						<input type="checkbox" name="selection[]" id="garlic" value="garlic"
 						</div>
 	
 	

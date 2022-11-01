@@ -22,7 +22,7 @@ insert into recipes(link, time, name, ingredient1, ingredient2, ingredient3, ing
 ('https://plantbasedonabudget.com/yellow-dal/', 30, 'Easy Yellow Dal', 'garlic', 'onion', 'rice', 'lentils', null, null, null, null, null,null),
 ('https://www.gimmesomeoven.com/5-ingredient-black-bean-soup/', 20, 'Black Bean Soup', 'blackbeans', 'salsa', 'spices', 'garlic', null, null, null, null, null, null),
 ('https://www.tasteofhome.com/recipes/tilapia-florentine/', 30, 'Tilapia Florentine', 'spinach', 'tilapia', 'lemon', 'egg', 'cheese', null, null, null, null, null),
-('https://www.tasteofhome.com/recipes/lime-cilantro-tilapia/', 25, 'Lime-Cilantro Tilapia', 'lime', 'cilantro', 'spices', 'tilapia', null, null, null, null, null, null),
+('https://www.tasteofhome.com/recipes/lime-cilantro-tilapia/', 25, 'Lime-Cilantro Tilapia', 'lime', null, 'spices', 'tilapia', null, null, null, null, null, null),
 ('https://www.tasteofhome.com/recipes/tuna-crescent-ring/', 30, 'Tuna Cresent Ring', 'tuna', 'peas', 'carrot', 'onion', 'mustard', 'mayonnaise', null, null, null, null),
 ('https://www.tasteofhome.com/recipes/cornmeal-crusted-catfish/', 30, 'Cornmeal-Crusted Catfish', 'egg', null, 'spices', 'catfish', null, null, null, null, null, null),
 ('https://www.tasteofhome.com/recipes/citrus-coconut-steamed-cod/', 30, 'Citrus Coconut Steamed Cod', 'orange', 'spices', 'cod', 'almonds', 'onion', null, null, null, null, null),
