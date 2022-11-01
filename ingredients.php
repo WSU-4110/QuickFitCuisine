@@ -53,7 +53,7 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 					<fieldset>
 					<legend>Dairy</legend>
-						<div class="filterDiv vegetarian">
+						<div class="filterDiv vegetarian pescatarian">
 	
 						<label for="egg">Egg:</label>
 						<input type="checkbox" name="selection[]" id="egg" value="egg">
@@ -76,7 +76,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					<fieldset>
 					<legend>Vegetables</legend>
 
-						<div class="filterDiv vegetarian vegan">
+						<div class="filterDiv vegetarian vegan pescatarian">
 						<label for="onion">Onion:</label>
 						<input type="checkbox" name="selection[]" id="onion" value="onion">
 
@@ -95,8 +95,8 @@ $_SESSION['ingredientsSortBool'] = false;
 						<label for="avocado">Avocado:</label>
 						<input type="checkbox" name="selection[]" id="avocado" value="avocado">
 
-						<label for="greenbean">Green Bean:</label>
-						<input type="checkbox" name="selection[]" id="greenbean" value="greenbean">
+						<label for="greenbeans">Green Beans:</label>
+						<input type="checkbox" name="selection[]" id="greenbeans" value="greenbeans">
 
 						<label for="redpepper">Red Pepper:</label>
 						<input type="checkbox" name="selection[]" id="redpepper" value="redpepper">
@@ -144,14 +144,20 @@ $_SESSION['ingredientsSortBool'] = false;
 							<label for="branzino">Branzino:</label>
 							<input type="checkbox" name="selection[]" id="branzino" value="branzino">
 		
-							<label for="sardines">Sardines :</label>
+							<label for="sardines">Sardines:</label>
 							<input type="checkbox" name="selection[]" id="sardines" value="sardines">
+
+							<label for="catfish">Catfish:</label>
+							<input type="checkbox" name="selection[]" id="catfish" value="catfish">
+
+							<label for="cod">Cod:</label>
+							<input type="checkbox" name="selection[]" id="cod" value="cod">
 						</div>
 					</fieldset>
 					
 					<fieldset>
 					<legend>Condiments</legend>	
-						<div class="filterDiv vegetarian vegan">
+						<div class="filterDiv vegetarian vegan pescatarian">
 	
 						<label for="mustard">Mustard:</label>
 						<input type="checkbox" name="selection[]" id="mustard" value="mustard">
@@ -204,7 +210,15 @@ $_SESSION['ingredientsSortBool'] = false;
 						<div class="filterDiv">
 						<label for="bread">Bread:</label>
 						<input type="checkbox" name="selection[]" id="bread" value="bread">
-	
+
+						<label for="broth">Broth:</label>
+						<input type="checkbox" name="selection[]" id="broth" value="broth">
+
+						<label for="vinegar">Vinegar:</label>
+						<input type="checkbox" name="selection[]" id="vinegar" value="vinegar">
+
+						<label for="almonds">Almonds:</label>
+						<input type="checkbox" name="selection[]" id="almonds" value="almonds">
 						</div>
 	
 	
