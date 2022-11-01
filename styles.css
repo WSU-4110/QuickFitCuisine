@@ -87,7 +87,62 @@ ul{
     font-family: Arial;
     color: black;
   }
+
+  .selection {
+    position: fixed;
+    top: 100px;
+    bottom: 10px;
+    width: 500px;
+    background: #eee;
+    margin: 10px;
+    overflow: scroll;
+  }
   
+  .inner {
+    
+  }
+  
+  .result {
+    background: rgba(221, 221, 221, 0.999);
+    margin-left: 510px;
+  }
+  
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: scroll;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+  /*
   .split {
     height: 100%;
     width: 65%;
@@ -124,6 +179,8 @@ ul{
     font-family: "Lucida Console", "Courier New", monospace;
     font-size: x-large;
   }
+  */
+
   .header {
     background-color: rgb(221, 255, 243);
     height: 100px;

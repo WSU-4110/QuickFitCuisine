@@ -15,11 +15,27 @@ $_SESSION['recipes'];
 	<script src="index.js" type="text/javascript" defer></script>
 </head>
 
+<script>
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+	
+	for (i = 0; i < coll.length; i++) {
+	  coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.maxHeight){
+		  content.style.maxHeight = null;
+		} else {
+		  content.style.maxHeight = content.scrollHeight + "px";
+		} 
+	  });
+	}
+	</script>
+
 <body>
 	<main-header></main-header>
 	<main>
-	<div class="split left">
-  	<div class="centered">
+	<div class="selection">
 		<h1>Recipe Finder</h1>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
@@ -27,71 +43,122 @@ $_SESSION['recipes'];
 				<legend>Ingredient Selector</legend>
 				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 
-				<label for="broccoli">Broccoli:</label>
-				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
+				<fieldset>
+					<legend>Dairy</legend>
+					
+					<button class="collapsible"></button>
+					<div class="content"></div>
 
-				<label for="onion">Onion:</label>
-				<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
+					<label for="egg">Egg:</label>
+					<input type="checkbox" name="selection[]" id="egg" value="egg">
 
-				<label for="carrot">Carrot:</label>
-				<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
+					<label for="greekyogurt">Greek Yogurt:</label>
+					<input type="checkbox" name="selection[]" id="greekyogurt" value="greekyogurt">
+	
+					<label for="cheese">Cheese:</label>
+					<input type="checkbox" name="selection[]" id="cheese" value="cheese">
 
-				<label for="egg">Egg:</label>
-				<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
+					<label for="milk">Milk:</label>
+					<input type="checkbox" name="selection[]" id="milk" value="milk">
 
-				<label for="salmon">Salmon:</label>
-				<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
+					<label for="butter">Butter:</label>
+					<input type="checkbox" name="selection[]" id="butter" value="butter">
+		
+				</fieldset>
 
-				<label for="mustard">Mustard:</label>
-				<input type="checkbox" name="selection[]" id="mustard" value="mustard"><br>
+				<fieldset>
+					<legend>Vegetables</legend>
+					<label for="onion">Onion:</label>
+					<input type="checkbox" name="selection[]" id="onion" value="onion">
 
-				<label for="maplesyrup">Maple Syrup:</label>
-				<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup"><br>
+					<label for="red onion">Red Onion:</label>
+					<input type="checkbox" name="selection[]" id="red onion" value="red onion">
 
-				<label for="peas">Peas:</label>
-				<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
+					<label for="carrot">Carrot:</label>
+					<input type="checkbox" name="selection[]" id="carrot" value="carrot">
 
-				<label for="garlic">Garlic:</label>
-				<input type="checkbox" name="selection[]" id="garlic" value="garlic"><br>
+					<label for="peas">Peas:</label>
+					<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
 
-				<label for="cheese">Cheese:</label>
-				<input type="checkbox" name="selection[]" id="cheese" value="cheese"><br>
+					<label for="avocado">Avocado:</label>
+					<input type="checkbox" name="selection[]" id="avocado" value="avocado">
 
-				<label for="spaghetti">Maple Syrup:</label>
-				<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti"><br>
+					<label for="broccoli">Broccoli:</label>
+					<input type="checkbox" name="selection[]" id="broccoli" value="broccoli">
+
+					<label for="garlic">Garlic:</label>
+					<input type="checkbox" name="selection[]" id="garlic" value="garlic">
+
+					<label for="brusselsprouts">Brussel Sprouts:</label>
+					<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
+
+					<label for="potatoe">Potatoe:</label>
+					<input type="checkbox" name="selection[]" id="potatoe" value="potatoe">
+					
+					<label for="blackbeans">Black Beans:</label>
+					<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans">
+					
+					<label for="lettuce">Lettuce:</label>
+					<input type="checkbox" name="selection[]" id="lettuce" value="lettuce">
+				</fieldset>
+
+				<fieldset>
+					<legend>Meats</legend>
+					<label for="salmon">Salmon:</label>
+					<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
+
+					<label for="groundmeat">Ground Meat:</label>
+					<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat"><br>
+
+					<label for="chicken">Chicken :</label>
+					<input type="checkbox" name="selection[]" id="chicken" value="chicken"><br>
+
+				
+				</fieldset>
+				
+				<fieldset>
+					<legend>Condoiments</legend>
+
+					<label for="mustard">Mustard:</label>
+					<input type="checkbox" name="selection[]" id="mustard" value="mustard"><br>
+
+					<label for="ketchup">Ketchup:</label>
+					<input type="checkbox" name="selection[]" id="ketchup" value="ketchup"><br>
+
+					<label for="maplesyrup">Maple Syrup:</label>
+					<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup"><br>
+
+					<label for="salsa">Salsa:</label>
+					<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
+
+
+
+				</fieldset>
+				
+				<fieldset>
+					<legend>Pasta</legend>
+
+					<label for="spaghetti">Spaghetti:</label>
+					<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti"><br>
+
+					<label for="penne">Penne:</label>
+					<input type="checkbox" name="selection[]" id="penne" value="penne"><br>
+
+					<label for="orzo">orzo:</label>
+					<input type="checkbox" name="selection[]" id="orzo" value="orzo"><br>
+
+					<label for="lingiune">lingiune:</label>
+					<input type="checkbox" name="selection[]" id="lingiune" value="lingiune"><br>
+
+					<label for="fettuccine">fettuccine:</label>
+					<input type="checkbox" name="selection[]" id="fettuccine" value="fettuccine"><br>
+
+
+				</fieldset>
 
 				<label for="spices">Spices:</label>
 				<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
 
-				<label for="greekyogurt">Greek Yogurt:</label>
-				<input type="checkbox" name="selection[]" id="greekyogurt" value="greekyogurt"><br>
-
-				<label for="blackbeans">Black Beans:</label>
-				<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans"><br>
-
-				<label for="avocado">Avocado:</label>
-				<input type="checkbox" name="selection[]" id="avocado" value="avocado"><br>
-
-				<label for="salsa">Salsa:</label>
-				<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
-
-				<label for="groundmeat">Ground Meat:</label>
-				<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat"><br>
-
-				<label for="brusselsprouts">Brussel Sprouts:</label>
-				<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
-
-				<label for="potatoe">Potatoe:</label>
-				<input type="checkbox" name="selection[]" id="potatoe" value="potatoe"><br>
-
-				<label for="lettuce">Lettuce:</label>
-				<input type="checkbox" name="selection[]" id="lettuce" value="lettuce"><br>
-
-				<label for="milk">Milk:</label>
-				<input type="checkbox" name="selection[]" id="milk" value="milk"><br>
-
-				<label for="butter">Butter:</label>
-				<input type="checkbox" name="selection[]" id="butter" value="butter"><br>
 
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" name ="recipefinder" value="Find Recipe">
@@ -103,8 +170,7 @@ $_SESSION['recipes'];
 		</div>
 	</div> 
 	
-	<div class="split right">
-  	<div class="centered">
+	<div class="result">
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to your pantry to see available recipes.<br><br>
 			<?php

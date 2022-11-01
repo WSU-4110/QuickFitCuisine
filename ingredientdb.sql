@@ -16,3 +16,8 @@ insert into recipes(link, time, name, ingredient1, ingredient2, ingredient3, ing
 ('https://www.inspiredtaste.net/15938/easy-and-smooth-hummus-recipe/#itr-recipe-15938',10,'Chickpeas','Lemon Juice','Tahini','Garlic Clove','Oil','Ground Cumin','Salt','Water','Paprika',null)
 ('https://www.gimmesomeoven.com/baked-chicken-breast/#tasty-recipes-60192',35,'Boneless Skinless Chicken Breast','Oil','Salt','Black Pepper','Garlic Powder','Paprika',null,null,null,null)
 ('https://plantbasedonabudget.com/yellow-dal/',30,'Oil','Onion','Garlic','Ginger','Coriander','Cumin','Turmeric','Lentils','Water',null);
+('https://caitsplate.com/easy-turkey-taco-skillet/#tasty-recipes-35532-jump-target',15,'Turkey Taco Skillet','Oil','Ground Turkey','Black Beans','Corn','Cheese',null,null.null,null,null)
+('https://www.almanac.com/recipe/rosemary-chicken-spinach', 30,'Rosemary Chicken', 'Chicken Breast','Rosemary','Garlic', 'Oil','Vinegar','Sugar','Spinach',null.null,null)
+('https://minimalistbaker.com/chicken-noodle-soup-1-pot/', 35,'Chicken Noodle Soup','Chicken Thighs','Onion','Garlic', 'Oil','Carrot','Celery','Tumeric','Ginger'.'Thyme',null)
+('https://www.cookinglight.com/recipes/one-pot-pasta-spinach-tomatoes', 35,'One Pot Pasta', 'Onion','Tomato','Garlic', 'Oil','Oregano','Chicken Stock','Linguine','Spinach'.'Parmesan',null)
+('https://caitsplate.com/honey-mustard-onion-pretzel-encrusted-chicken-tenders/', 25, 'Honey Chicken Tenders','Chicken Breast','Honey','Mustard','Onion','Egg','Flour',null,null,null,null)
