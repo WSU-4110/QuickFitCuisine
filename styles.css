@@ -10,6 +10,11 @@ ul {
   list-style-type: none;
 }
 
+body {
+  font-family: Arial,Verdana,'Times New Roman', Times, serif;
+  font-weight: bold;
+  }
+
 .switch li {
   position: absolute;
   left: -14rem;
