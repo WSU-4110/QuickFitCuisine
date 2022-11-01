@@ -130,7 +130,7 @@ body {
 
   .selection {
     position: fixed;
-    top: 0px;
+    top: 75px;
     bottom: 10px;
     width: 500px;
     background: #eee;
@@ -264,4 +264,9 @@ body {
   }
   .container {
      overflow: hidden;
+  }
+
+  h1{
+      text-align:center;
+      padding-bottom: 6px;
   }
