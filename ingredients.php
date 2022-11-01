@@ -122,6 +122,24 @@ $_SESSION['ingredientsSortBool'] = false;
 						
 						<label for="lettuce">Lettuce:</label>
 						<input type="checkbox" name="selection[]" id="lettuce" value="lettuce">
+
+						<label for="celery">Celery:</label>
+						<input type="checkbox" name="selection[]" id="celery" value="celery">
+
+						<label for="spinach">Spinach:</label>
+						<input type="checkbox" name="selection[]" id="spinach" value="spinach">
+					</div>
+					</fieldset>
+
+					<fieldset>
+					<legend>Fruits</legend>
+						<div class="filterDiv vegetarian vegan pescatarian">
+						<label for="lemon">Lemon:</label>
+						<input type="checkbox" name="selection[]" id="lemon" value="lemons">
+
+						<label for="lime">Lime:</label>
+						<input type="checkbox" name="selection[]" id="lime" value="lime">
+	
 					</div>
 					</fieldset>
 	
@@ -134,8 +152,11 @@ $_SESSION['ingredientsSortBool'] = false;
 						<label for="groundmeat">Ground Beef:</label>
 						<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat">
 	
-						<label for="bacon">Bacon :</label>
-						<input type="checkbox" name="selection[]" id="chicken" value="chicken">
+						<label for="bacon">Bacon:</label>
+						<input type="checkbox" name="selection[]" id="bacon" value="bacon">
+
+						<label for="turkey">Turkey:</label>
+						<input type="checkbox" name="selection[]" id="turkey" value="turkey">
 					</div>
 					</fieldset>
 	
@@ -156,6 +177,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 							<label for="cod">Cod:</label>
 							<input type="checkbox" name="selection[]" id="cod" value="cod">
+
+							<label for="tilapia">Tilapia:</label>
+							<input type="checkbox" name="selection[]" id="tilapia" value="tilapia">
 						</div>
 					</fieldset>
 					
@@ -175,11 +199,14 @@ $_SESSION['ingredientsSortBool'] = false;
 						<label for="salsa">Salsa:</label>
 						<input type="checkbox" name="selection[]" id="salsa" value="salsa">
 
-						<label for="pesto">Salsa:</label>
+						<label for="pesto">Pesto:</label>
 						<input type="checkbox" name="selection[]" id="pesto" value="pesto"><br>
 
 						<label for="spices">Spices:</label>
 						<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+
+						<label for="mayonnaise">Mayonnaise:</label>
+						<input type="checkbox" name="selection[]" id="mayonnaise" value="mayonnaise"><br>
 					</div>
 	
 	
@@ -223,6 +250,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="almonds">Almonds:</label>
 						<input type="checkbox" name="selection[]" id="almonds" value="almonds">
+
+						<label for="honey">Honey:</label>
+						<input type="checkbox" name="selection[]" id="honey" value="honey">
 						</div>
 	
 	
