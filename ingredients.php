@@ -54,7 +54,16 @@
 					$dbuser = 'root';
 					$dbpass = 'pass1234';
 					$dbhost = 'localhost';
-					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+					$conn;
+					if (strtoupper(substr(php_uname('s'), 0, 1)) === 'D') {
+						$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname, 3306, "/tmp/mysql.sock");
+					}
+					else {
+						$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+					}
+					if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+					}
 					if (isset($_POST['submit']) && !empty($_POST['submit'])) {
 						$sql = "SELECT * FROM recipes";
 						$result = $conn->query($sql);
