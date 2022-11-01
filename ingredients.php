@@ -51,8 +51,8 @@ $_SESSION['ingredientsSortBool'] = false;
 					<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 	
 					<fieldset>
+					<legend>Dairy</legend>
 						<div class="filterDiv vegetarian">
-						<legend>Dairy</legend>
 	
 						<label for="egg">Egg:</label>
 						<input type="checkbox" name="selection[]" id="egg" value="egg">
@@ -73,7 +73,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					</fieldset>
 	
 					<fieldset>
-						<legend>Vegetables</legend>
+					<legend>Vegetables</legend>
 
 						<div class="filterDiv vegetarian vegan">
 						<label for="onion">Onion:</label>
@@ -114,8 +114,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					</fieldset>
 	
 					<fieldset>
-						
-						<legend>Meats</legend>
+					<legend>Meats</legend>
 						<div class="filterDiv">
 						<label for="salmon">Salmon:</label>
 						<input type="checkbox" name="selection[]" id="salmon" value="salmon">
@@ -131,8 +130,8 @@ $_SESSION['ingredientsSortBool'] = false;
 					</fieldset>
 					
 					<fieldset>
+					<legend>Condiments</legend>	
 						<div class="filterDiv vegetarian vegan">
-						<legend>Condoiments</legend>
 	
 						<label for="mustard">Mustard:</label>
 						<input type="checkbox" name="selection[]" id="mustard" value="mustard">
@@ -151,7 +150,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					</fieldset>
 					
 					<fieldset>
-						<legend>Pasta</legend>
+					<legend>Pasta</legend>
 
 						<div class="filterDiv vegetarian vegan">
 						<label for="spaghetti">Spaghetti:</label>
