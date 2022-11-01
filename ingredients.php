@@ -90,10 +90,7 @@ $_SESSION['ingredientsSortBool'] = false;
 						<input type="checkbox" name="selection[]" id="carrot" value="carrot">
 	
 						<label for="peas">Peas:</label>
-						<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
-	
-						<label for="avocado">Avocado:</label>
-						<input type="checkbox" name="selection[]" id="avocado" value="avocado">
+						<input type="checkbox" name="selection[]" id="peas" value="peas">
 
 						<label for="greenbeans">Green Beans:</label>
 						<input type="checkbox" name="selection[]" id="greenbeans" value="greenbeans">
@@ -108,7 +105,7 @@ $_SESSION['ingredientsSortBool'] = false;
 						<input type="checkbox" name="selection[]" id="garlic" value="garlic">
 	
 						<label for="brusselsprouts">Brussel Sprouts:</label>
-						<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
+						<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts">
 	
 						<label for="potato">Potato:</label>
 						<input type="checkbox" name="selection[]" id="potato" value="potato">
@@ -140,6 +137,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="corn">Corn:</label>
 						<input type="checkbox" name="selection[]" id="corn" value="corn">
+
+						<label for="avocado">Avocado:</label>
+						<input type="checkbox" name="selection[]" id="avocado" value="avocado">
 	
 					</div>
 					</fieldset>
@@ -201,13 +201,13 @@ $_SESSION['ingredientsSortBool'] = false;
 						<input type="checkbox" name="selection[]" id="salsa" value="salsa">
 
 						<label for="pesto">Pesto:</label>
-						<input type="checkbox" name="selection[]" id="pesto" value="pesto"><br>
+						<input type="checkbox" name="selection[]" id="pesto" value="pesto">
 
 						<label for="spices">Spices:</label>
-						<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+						<input type="checkbox" name="selection[]" id="spices" value="spices">
 
 						<label for="mayonnaise">Mayonnaise:</label>
-						<input type="checkbox" name="selection[]" id="mayonnaise" value="mayonnaise"><br>
+						<input type="checkbox" name="selection[]" id="mayonnaise" value="mayonnaise">
 					</div>
 	
 	
