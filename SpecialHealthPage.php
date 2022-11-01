@@ -16,33 +16,39 @@
 
     <br>Lifestyle Options
     <!--style sheet--> <br>
-    <ul>
-        <li>Diabetic
-            <!-- Rounded switch -->
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-              </label></li>
-            <li>Vegan
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li>
-            <li>Pescatarian
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li> 
-            <li>Vegetarian
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li>
-           <!--new addition, link for new html document.-->
-        </ul>
+	
+	<form method = "get" action="ingredients.php">
+		<div id="switchContainer">
+			<ul>
+				<li>Vegan
+					<label class="switch">
+						<input type="checkbox" id="myCheck" value="filterSelection('vegan')">
+						<span class="slider round"></span>
+					</label>
+				</li>
+				<li>Vegetarian
+					<label class="switch">
+						<input type="checkbox" id="myCheck" value="filterSelection('vegetarian')">
+						<span class="slider round"></span>
+					</label>
+				</li>
+				<li>Pescatarian
+					<label class="switch">
+						<input type="checkbox" id="myCheck" value="filterSelection('pescatarian')">
+						<span class="slider round"></span>
+					</label>
+				</li>
+				<li>Diabetic
+					<label class="switch">
+						<input type="checkbox" id="myCheck" value="filterSelection('diabetic')">
+						<span class="slider round"></span>
+					</label>
+				</li>
+				<br><input type="submit" value="Save Prefrences">
+				<!--new addition, link for new html document.-->
+			</ul>
+		</div>
+	</form>
         
         <footer>
             <p><small>QuickFitCuisine<b></b></small></p>

@@ -23,78 +23,130 @@ $_SESSION['ingredientsSortBool'] = false;
 	<div class="split left">
   	<div class="centered">
 		<h1>Recipe Finder</h1>
+		<div id="myBtnContainer">
+		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
+		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
+		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
+		  <button class="btn" onclick="filterSelection('diabetic')"> Diabetic</button>
+		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
-			<fieldset>
-				<legend>Ingredient Selector</legend>
-				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
+			<div class="container">
+				<fieldset>
+					<legend>Ingredient Selector</legend>
+					<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 
-				<label for="broccoli">Broccoli:</label>
-				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="broccoli">Broccoli:</label>
+					<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
+					</div>
 
-				<label for="onion">Onion:</label>
-				<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="onion">Onion:</label>
+					<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
+					</div>
 
-				<label for="carrot">Carrot:</label>
-				<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="carrot">Carrot:</label>
+					<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
+					</div>
 
-				<label for="egg">Egg:</label>
-				<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
+					<div class="filterDiv vegetarian">
+					<label for="egg">Egg:</label>
+					<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
+					</div>
 
-				<label for="salmon">Salmon:</label>
-				<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
+					<div class="filterDiv">
+					<label for="salmon">Salmon:</label>
+					<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
+					</div>
 
-				<label for="mustard">Mustard:</label>
-				<input type="checkbox" name="selection[]" id="mustard" value="mustard"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="mustard">Mustard:</label>
+					<input type="checkbox" name="selection[]" id="mustard" value="mustard"><br>
+					</div>
 
-				<label for="maplesyrup">Maple Syrup:</label>
-				<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="maplesyrup">Maple Syrup:</label>
+					<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup"><br>
+					</div>
 
-				<label for="peas">Peas:</label>
-				<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="peas">Peas:</label>
+					<input type="checkbox" name="selection[]" id="peas" value="peas"><br>
+					</div>
 
-				<label for="garlic">Garlic:</label>
-				<input type="checkbox" name="selection[]" id="garlic" value="garlic"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="garlic">Garlic:</label>
+					<input type="checkbox" name="selection[]" id="garlic" value="garlic"><br>
+					</div>
 
-				<label for="cheese">Cheese:</label>
-				<input type="checkbox" name="selection[]" id="cheese" value="cheese"><br>
+					<div class="filterDiv vegetarian">
+					<label for="cheese">Cheese:</label>
+					<input type="checkbox" name="selection[]" id="cheese" value="cheese"><br>
+					</div>
 
-				<label for="spaghetti">Maple Syrup:</label>
-				<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="spaghetti">Maple Syrup:</label>
+					<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti"><br>
+					</div>
 
-				<label for="spices">Spices:</label>
-				<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="spices">Spices:</label>
+					<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+					</div>
 
-				<label for="greekyogurt">Greek Yogurt:</label>
-				<input type="checkbox" name="selection[]" id="greekyogurt" value="greekyogurt"><br>
+					<div class="filterDiv vegetarian">
+					<label for="greekyogurt">Greek Yogurt:</label>
+					<input type="checkbox" name="selection[]" id="greekyogurt" value="greekyogurt"><br>
+					</div>
 
-				<label for="blackbeans">Black Beans:</label>
-				<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="blackbeans">Black Beans:</label>
+					<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans"><br>
+					</div>
 
-				<label for="avocado">Avocado:</label>
-				<input type="checkbox" name="selection[]" id="avocado" value="avocado"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="avocado">Avocado:</label>
+					<input type="checkbox" name="selection[]" id="avocado" value="avocado"><br>
+					</div>
 
-				<label for="salsa">Salsa:</label>
-				<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="salsa">Salsa:</label>
+					<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
+					</div>
 
-				<label for="groundmeat">Ground Meat:</label>
-				<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat"><br>
+					<div class="filterDiv">
+					<label for="groundmeat">Ground Meat:</label>
+					<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat"><br>
+					</div>
 
-				<label for="brusselsprouts">Brussel Sprouts:</label>
-				<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="brusselsprouts">Brussel Sprouts:</label>
+					<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
+					</div>
 
-				<label for="potatoe">Potatoe:</label>
-				<input type="checkbox" name="selection[]" id="potatoe" value="potatoe"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="potatoe">Potatoe:</label>
+					<input type="checkbox" name="selection[]" id="potatoe" value="potatoe"><br>
+					</div>
 
-				<label for="lettuce">Lettuce:</label>
-				<input type="checkbox" name="selection[]" id="lettuce" value="lettuce"><br>
+					<div class="filterDiv vegetarian vegan">
+					<label for="lettuce">Lettuce:</label>
+					<input type="checkbox" name="selection[]" id="lettuce" value="lettuce"><br>
+					</div>
 
-				<label for="milk">Milk:</label>
-				<input type="checkbox" name="selection[]" id="milk" value="milk"><br>
+					<div class="filterDiv vegetarian">
+					<label for="milk">Milk:</label>
+					<input type="checkbox" name="selection[]" id="milk" value="milk"><br>
+					</div>
 
-				<label for="butter">Butter:</label>
-				<input type="checkbox" name="selection[]" id="butter" value="butter"><br>
-
+					<div class="filterDiv vegetarian">
+					<label for="butter">Butter:</label>
+					<input type="checkbox" name="selection[]" id="butter" value="butter"><br>
+					</div>
+		
 				<label for="rice">Rice:</label>
 				<input type="checkbox" name="selection[]" id="rice" value="rice"><br>
 
@@ -116,10 +168,9 @@ $_SESSION['ingredientsSortBool'] = false;
 				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 				<br><input type="submit" name ="recipefinder" value="Find Recipe">
 				
-			</fieldset>
-			
+				</fieldset>
+			</div>
 		</form>
-		
 		</div>
 	</div> 
 	
@@ -133,7 +184,13 @@ $_SESSION['ingredientsSortBool'] = false;
 				$dbuser = 'root';
 				$dbpass = 'pass1234';
 				$dbhost = 'localhost';
-				$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+				$conn;
+				if (strtoupper(substr(php_uname('s'), 0, 1)) === 'D') {
+					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname, 3306, "/tmp/mysql.sock");
+				}
+				else {
+					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+				}
 				$recipes = 0;
 				$recipe_arr = array();
 				$recipe_arr_timeSort = array();
@@ -338,7 +395,7 @@ $_SESSION['ingredientsSortBool'] = false;
     	</p>
   	</div>
 	</div>
-
+	<script src="filterScript.js"></script>
 	</main>
 </body>
 
