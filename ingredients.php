@@ -184,7 +184,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					<fieldset>
 					<legend>Pasta</legend>
 
-						<div class="filterDiv vegetarian vegan">
+						<div class="filterDiv vegetarian vegan pescatarian">
 						<label for="spaghetti">Spaghetti:</label>
 						<input type="checkbox" name="selection[]" id="spaghetti" value="spaghetti">
 	
@@ -207,7 +207,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					<fieldset>
 					<legend>Misc</legend>
 
-						<div class="filterDiv">
+						<div class="filterDiv pescatarian vegan vegetarian">
 						<label for="bread">Bread:</label>
 						<input type="checkbox" name="selection[]" id="bread" value="bread">
 
