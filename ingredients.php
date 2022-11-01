@@ -35,8 +35,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 <body>
 	<main>
+		<h1>Welcome to Quick Fit Cuisine</h1>
 	<div class="selection">
-		<h1>Recipe Finder</h1>
+		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
