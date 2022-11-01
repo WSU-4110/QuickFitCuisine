@@ -42,7 +42,6 @@ $_SESSION['ingredientsSortBool'] = false;
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		  <button class="btn" onclick="filterSelection('diabetic')"> Diabetic</button>
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
@@ -54,9 +53,6 @@ $_SESSION['ingredientsSortBool'] = false;
 					<fieldset>
 						<div class="filterDiv vegetarian">
 						<legend>Dairy</legend>
-						
-						<button class="collapsible"></button>
-						<div class="content"></div>
 	
 						<label for="egg">Egg:</label>
 						<input type="checkbox" name="selection[]" id="egg" value="egg">
