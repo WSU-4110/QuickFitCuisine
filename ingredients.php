@@ -147,9 +147,26 @@ $_SESSION['ingredientsSortBool'] = false;
 					<input type="checkbox" name="selection[]" id="butter" value="butter"><br>
 					</div>
 		
+				<label for="rice">Rice:</label>
+				<input type="checkbox" name="selection[]" id="rice" value="rice"><br>
 
-					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
-					<br><input type="submit" name ="recipefinder" value="Find Recipe">
+				<label for="lentils">Lentils:</label>
+				<input type="checkbox" name="selection[]" id="lentils" value="lentils"><br>
+
+				<label for="chicken">Chicken:</label>
+				<input type="checkbox" name="selection[]" id="chicken" value="chicken"><br>
+
+				<label for="chickpeas">Chickpeas:</label>
+				<input type="checkbox" name="selection[]" id="chickpeas" value="chickpeas"><br>
+
+				<label for="lemon">Lemon:</label>
+				<input type="checkbox" name="selection[]" id="lemon" value="lemon"><br>
+
+				<label for="bread">Bread:</label>
+				<input type="checkbox" name="selection[]" id="bread" value="bread"><br>
+
+				<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
+				<br><input type="submit" name ="recipefinder" value="Find Recipe">
 				
 				</fieldset>
 			</div>
