@@ -144,6 +144,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="tomato">Tomato:</label>
 						<input type="checkbox" name="selection[]" id="tomato" value="tomato">
+
+						<label for="orange">Orange:</label>
+						<input type="checkbox" name="selection[]" id="orange" value="orange">
 	
 					</div>
 					</fieldset>
