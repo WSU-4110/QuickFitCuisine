@@ -134,7 +134,7 @@ body {
     top: 70px;
     bottom: 10px;
     width: 500px;
-    background: green;
+    background:rgb(0, 192, 0);
     margin: 10px;
     overflow: scroll;
   }
