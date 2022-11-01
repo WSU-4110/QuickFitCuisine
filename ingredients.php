@@ -11,13 +11,14 @@ $_SESSION['ingredientsSortBool'] = false;
 <head>
 	<meta charset="UTF-8">
 	<title>Quick Fit Cuisine</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="styles.css" rel="stylesheet" type="text/css" />
 	<script src="index.js" type="text/javascript" defer></script>
 </head>
 
 <body>
 	<main>
+	<div class="wrapper">
 	<div class="split left">
   	<div class="centered">
 		<h1>Recipe Finder</h1>
@@ -213,6 +214,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		</form>
 		</div>
 	</div> 
+	</div>	
 	
 	<div class="split right">
   	<div class="centered">
