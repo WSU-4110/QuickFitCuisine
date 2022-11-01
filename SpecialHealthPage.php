@@ -7,7 +7,7 @@
     <title>Lifestyle Options</title>
     <script src="index.js" type="text/javascript" defer></script>
     <link href="styles.css" rel="stylesheet" type="text/css" />
-        
+
 </head>
 
 <body>
@@ -22,30 +22,32 @@
             <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
-              </label></li>
-            <li>Vegan
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li>
-            <li>Pescatarian
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li> 
-            <li>Vegetarian
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </li>
-           <!--new addition, link for new html document.-->
-        </ul>
-        
-        <footer>
-            <p><small>QuickFitCuisine<b></b></small></p>
-        </footer>
-    </body>
+            </label>
+        </li>
+        <li>Vegan
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </li>
+        <li>Pescatarian
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </li>
+        <li>Vegetarian
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </li>
+        <!--new addition, link for new html document.-->
+    </ul>
+
+    <footer>
+        <p><small>QuickFitCuisine<b></b></small></p>
+    </footer>
+</body>
+
 </html>

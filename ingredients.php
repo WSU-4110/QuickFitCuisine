@@ -29,17 +29,17 @@ $_SESSION['ingredientsSortBool'] = false;
 				<legend>Ingredient Selector</legend>
 				<!--Ingredient Button Menu, name is array, id is for label, value is string-->
 
-				<label for="broccoli">Broccoli:</label>
-				<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
+						<label for="broccoli">Broccoli:</label>
+						<input type="checkbox" name="selection[]" id="broccoli" value="broccoli"><br>
 
-				<label for="onion">Onion:</label>
-				<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
+						<label for="onion">Onion:</label>
+						<input type="checkbox" name="selection[]" id="onion" value="onion"><br>
 
-				<label for="carrot">Carrot:</label>
-				<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
+						<label for="carrot">Carrot:</label>
+						<input type="checkbox" name="selection[]" id="carrot" value="carrot"><br>
 
-				<label for="egg">Egg:</label>
-				<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
+						<label for="egg">Egg:</label>
+						<input type="checkbox" name="selection[]" id="egg" value="egg"><br>
 
 				<label for="salmon">Salmon:</label>
 				<input type="checkbox" name="selection[]" id="salmon" value="salmon"><br>
@@ -115,7 +115,13 @@ $_SESSION['ingredientsSortBool'] = false;
 				$dbuser = 'root';
 				$dbpass = 'pass1234';
 				$dbhost = 'localhost';
-				$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+				$conn;
+				if (strtoupper(substr(php_uname('s'), 0, 1)) === 'D') {
+					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname, 3306, "/tmp/mysql.sock");
+				}
+				else {
+					$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+				}
 				$recipes = 0;
 				$recipe_arr = array();
 				$recipe_arr_timeSort = array();
