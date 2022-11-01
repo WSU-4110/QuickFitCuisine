@@ -138,9 +138,11 @@ body {
     overflow: scroll;
   }
   
+  /*
   .inner {
     
   }
+  */
   
   .result {
     background: rgba(221, 221, 221, 0.999);
