@@ -126,14 +126,15 @@ body {
   body {
     font-family: Arial;
     color: black;
+    background-color: lightgreen;
   }
 
   .selection {
-    position: fixed;
-    top: 0px;
+    position:fixed;
+    top: 70px;
     bottom: 10px;
     width: 500px;
-    background: #eee;
+    background: green;
     margin: 10px;
     overflow: scroll;
   }
@@ -145,7 +146,7 @@ body {
   */
   
   .result {
-    background: rgba(221, 221, 221, 0.999);
+    background: greenyellow;
     margin-left: 510px;
   }
   
