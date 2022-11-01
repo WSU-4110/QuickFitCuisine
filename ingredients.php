@@ -13,7 +13,6 @@ $_SESSION['ingredientsSortBool'] = false;
 	<title>Quick Fit Cuisine</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="styles.css" rel="stylesheet" type="text/css" />
-	<script src="index.js" type="text/javascript" defer></script>
 </head>
 
 <script>
@@ -44,6 +43,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
+		  <img src="moon.png" width="20" height ="20">
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
@@ -177,7 +177,6 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 					<label for="spices">Spices:</label>
 					<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
-<<<<<<< HEAD
 					</div>
 							</td>
 						</tr>
@@ -282,8 +281,6 @@ $_SESSION['ingredientsSortBool'] = false;
 		</div>
 	</div> 
 	</div>	
-=======
->>>>>>> main
 	
 	
 					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
@@ -297,6 +294,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		</div> 
 	
 	<div class="result">
+		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br>
 			<?php
@@ -517,6 +515,14 @@ $_SESSION['ingredientsSortBool'] = false;
   	</div>
 	</div>
 	<script src="filterScript.js"></script>
+<script>
+	var icon = document.getElementById("myBtnContainer");
+
+	icon.onclick = function(){
+		document.body.classList.toggle("dark-theme");
+	}
+</script>
+
 	</main>
 </body>
 
