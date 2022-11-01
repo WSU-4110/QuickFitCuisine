@@ -1,5 +1,4 @@
 <?php
-include 'SpecialHealthPage.php';
 session_start();
 $_SESSION['recipes_arr'];
 $_SESSION['recipes'];
@@ -18,7 +17,6 @@ $_SESSION['ingredientsSortBool'] = false;
 </head>
 
 <body>
-	<main-header></main-header>
 	<main>
 	<div class="split left">
   	<div class="centered">
