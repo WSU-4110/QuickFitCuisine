@@ -79,7 +79,9 @@ $_SESSION['ingredientsSortBool'] = false;
 						<div class="filterDiv vegetarian vegan">
 						<label for="onion">Onion:</label>
 						<input type="checkbox" name="selection[]" id="onion" value="onion">
-	
+
+						<label for="chickpeas">Chickpeas:</label>
+						<input type="checkbox" name="selection[]" id="chickpeas" value="chickpeas">
 	
 						<label for="red onion">Red Onion:</label>
 						<input type="checkbox" name="selection[]" id="red onion" value="red onion">
@@ -92,8 +94,13 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 						<label for="avocado">Avocado:</label>
 						<input type="checkbox" name="selection[]" id="avocado" value="avocado">
+
+						<label for="greenbean">Green Bean:</label>
+						<input type="checkbox" name="selection[]" id="greenbean" value="greenbean">
+
+						<label for="redpepper">Red Pepper:</label>
+						<input type="checkbox" name="selection[]" id="redpepper" value="redpepper">
 					
-	
 						<label for="broccoli">Broccoli:</label>
 						<input type="checkbox" name="selection[]" id="broccoli" value="broccoli">
 	
@@ -116,24 +123,35 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 					<fieldset>
 					<legend>Meats</legend>
-						<div class="filterDiv">
-						<label for="salmon">Salmon:</label>
-						<input type="checkbox" name="selection[]" id="salmon" value="salmon">
+						<div class="filterDiv ">
+						<label for="chicken">Chicken:</label>
+						<input type="checkbox" name="selection[]" id="chicken" value="chicken">
 	
-						<label for="groundmeat">Ground Meat:</label>
+						<label for="groundmeat">Ground Beef:</label>
 						<input type="checkbox" name="selection[]" id="groundmeat" value="groundmeat">
 	
-						<label for="chicken">Chicken :</label>
+						<label for="bacon">Bacon :</label>
 						<input type="checkbox" name="selection[]" id="chicken" value="chicken">
 					</div>
+					</fieldset>
 	
-					
+					<fieldset>
+						<legend>Fish</legend>
+							<div class="filterDiv pescatarian vegan vegetarian">
+							<label for="salmon">Salmon:</label>
+							<input type="checkbox" name="selection[]" id="salmon" value="salmon">
+		
+							<label for="branzino">Branzino:</label>
+							<input type="checkbox" name="selection[]" id="branzino" value="branzino">
+		
+							<label for="sardines">Sardines :</label>
+							<input type="checkbox" name="selection[]" id="sardines" value="sardines">
+						</div>
 					</fieldset>
 					
 					<fieldset>
 					<legend>Condiments</legend>	
 						<div class="filterDiv vegetarian vegan">
-						<legend>Condoiments</legend>
 	
 						<label for="mustard">Mustard:</label>
 						<input type="checkbox" name="selection[]" id="mustard" value="mustard">
@@ -145,7 +163,13 @@ $_SESSION['ingredientsSortBool'] = false;
 						<input type="checkbox" name="selection[]" id="maplesyrup" value="maplesyrup">
 	
 						<label for="salsa">Salsa:</label>
-						<input type="checkbox" name="selection[]" id="salsa" value="salsa"><br>
+						<input type="checkbox" name="selection[]" id="salsa" value="salsa">
+
+						<label for="pesto">Salsa:</label>
+						<input type="checkbox" name="selection[]" id="pesto" value="pesto"><br>
+
+						<label for="spices">Spices:</label>
+						<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
 					</div>
 	
 	
@@ -174,8 +198,17 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 					</fieldset>
 	
-					<label for="spices">Spices:</label>
-					<input type="checkbox" name="selection[]" id="spices" value="spices"><br>
+					<fieldset>
+					<legend>Misc</legend>
+
+						<div class="filterDiv">
+						<label for="bread">Bread:</label>
+						<input type="checkbox" name="selection[]" id="bread" value="bread">
+	
+						</div>
+	
+	
+					</fieldset>
 	
 	
 					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->

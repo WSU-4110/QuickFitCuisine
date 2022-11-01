@@ -133,13 +133,13 @@ body {
     top: 75px;
     bottom: 10px;
     width: 500px;
-    background: #eee;
+    background: rgb(17, 236, 112);
     margin: 10px;
     overflow: scroll;
   }
   
   .result {
-    background: rgba(221, 221, 221, 0.999);
+    background: rgba(180, 93, 93, 0.999);
     margin-left: 510px;
   }
   
