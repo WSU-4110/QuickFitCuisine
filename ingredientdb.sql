@@ -6,7 +6,7 @@ insert into recipes(link, time, name, ingredient1, ingredient2, ingredient3, ing
 ('https://tasty.co/recipe/weekday-meal-prep-pesto-chicken-veggies', 22, 'Pesto Chicken & Veggies', 'chicken', 'greenbeans', 'tomato', 'pesto', null, null, null, null, null, null),
 ('https://www.gimmesomeoven.com/5-ingredient-pasta-salad/#tasty-recipes-65190', 15, 'Pesto Pasta Salad', 'spaghetti', 'redpepper', 'pesto', 'cheese', null, null, null, null, null, null),
 ('https://www.cookingclassy.com/balsamic-glazed-salmon/#jump-to-recipe', 20, 'Balsamic Glazed Salmon', 'vinegar', 'broth', 'honey', 'mustard', 'garlic', 'salmon', null, null, null, null),
-('https://damndelicious.net/2014/03/29/spaghetti-carbonara/', 20, 'Spaghetti Carbonara', 'spaghetti', 'eggs', 'cheese', 'bacon', 'garlic', null, null, null, null, null),
+('https://damndelicious.net/2014/03/29/spaghetti-carbonara/', 20, 'Spaghetti Carbonara', 'spaghetti', 'egg', 'cheese', 'bacon', 'garlic', null, null, null, null, null),
 ('https://www.deliciousmeetshealthy.com/how-to-make-perfect-hard-boiled-eggs/', 7, 'Hard Boiled Egg', 'egg', null, null, null, null, null, null, null, null, null),
 ('https://leitesculinaria.com/37545/recipes-perfect-fried-egg.html', 5, 'Fried Egg', 'egg', null, null, null, null, null, null, null, null, null),
 ('https://thehealthyepicurean.com/maple-mustard-salmon-roasted-broccoli/', 25, 'Salmon and Broccoli', 'salmon', 'broccoli', 'mustard', 'maplesyrup', null, null, null, null, null, null),
