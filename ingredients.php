@@ -110,8 +110,8 @@ $_SESSION['ingredientsSortBool'] = false;
 						<label for="brusselsprouts">Brussel Sprouts:</label>
 						<input type="checkbox" name="selection[]" id="brusselsprouts" value="brusselsprouts"><br>
 	
-						<label for="potatoe">Potatoe:</label>
-						<input type="checkbox" name="selection[]" id="potatoe" value="potatoe">
+						<label for="potato">Potato:</label>
+						<input type="checkbox" name="selection[]" id="potato" value="potato">
 						
 						<label for="blackbeans">Black Beans:</label>
 						<input type="checkbox" name="selection[]" id="blackbeans" value="blackbeans">
@@ -124,6 +124,8 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="spinach">Spinach:</label>
 						<input type="checkbox" name="selection[]" id="spinach" value="spinach">
+
+						
 					</div>
 					</fieldset>
 
@@ -135,6 +137,9 @@ $_SESSION['ingredientsSortBool'] = false;
 
 						<label for="lime">Lime:</label>
 						<input type="checkbox" name="selection[]" id="lime" value="lime">
+
+						<label for="corn">Corn:</label>
+						<input type="checkbox" name="selection[]" id="corn" value="corn">
 	
 					</div>
 					</fieldset>
@@ -158,7 +163,7 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 					<fieldset>
 						<legend>Fish</legend>
-							<div class="filterDiv pescatarian vegan vegetarian">
+							<div class="filterDiv pescatarian">
 							<label for="salmon">Salmon:</label>
 							<input type="checkbox" name="selection[]" id="salmon" value="salmon">
 		
