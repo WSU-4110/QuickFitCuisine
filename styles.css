@@ -130,23 +130,17 @@ body {
   }
 
   .selection {
-    position:fixed;
-    top: 70px;
+    position: fixed;
+    top: 75px;
     bottom: 10px;
     width: 500px;
-    background:rgb(0, 192, 0);
+    background: rgb(17, 236, 112);
     margin: 10px;
     overflow: scroll;
   }
   
-  /*
-  .inner {
-    
-  }
-  */
-  
   .result {
-    background: greenyellow;
+    background: rgba(180, 93, 93, 0.999);
     margin-left: 510px;
   }
   
@@ -267,6 +261,7 @@ body {
      overflow: hidden;
   }
 
-h1 {
-  text-align: center;
-}
+  h1{
+      text-align:center;
+      padding-bottom: 6px;
+  }
