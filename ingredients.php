@@ -35,7 +35,24 @@ $_SESSION['ingredientsSortBool'] = false;
 		} 
 	  });
 	}
-	</script>
+</script>
+
+<script type="text/javascript">
+	function toggleAll(){  
+		var checkboxes=document.getElementsByName('selection[]');  
+		for(var i=0; i<checkboxes.length; i++){  
+           if(checkboxes[i].type=='checkbox')  
+            checkboxes[i].checked=true; 
+		} 
+	}
+	function deSelectAll(){  
+                var checkboxes=document.getElementsByName('selection[]');  
+                for(var i=0; i<checkboxes.length; i++){  
+                    if(checkboxes[i].type=='checkbox')  
+                        checkboxes[i].checked=false;  
+                }  
+    }             
+</script>
 
 <body>
 	<main>
@@ -262,7 +279,9 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 	
 					</fieldset>
-	
+
+					<input type="checkbox" onClick="toggleAll()" /> Toggle All<br/>
+					<input type="checkbox" onClick="deSelectAll()" /> Deselect All<br/>
 	
 					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 					<br><input type="submit" name ="recipefinder" value="Find Recipe">
