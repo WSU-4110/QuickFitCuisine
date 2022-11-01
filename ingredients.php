@@ -131,9 +131,10 @@ $_SESSION['ingredientsSortBool'] = false;
 					</fieldset>
 					
 					<fieldset>
-						<div class="filterDiv vegetarian vegan">
+						
 						<legend>Condoiments</legend>
-	
+						<div class="filterDiv vegetarian vegan">
+							
 						<label for="mustard">Mustard:</label>
 						<input type="checkbox" name="selection[]" id="mustard" value="mustard">
 	
