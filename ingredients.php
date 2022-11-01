@@ -177,7 +177,7 @@ $_SESSION['ingredientsSortBool'] = false;
 	<div class="split right">
   	<div class="centered">
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to your pantry to see available recipes.<br><br>
+    	<p>Add ingredients to see available recipes.<br><br>
 			<?php
 				//database connection variables
     			$dbname = 'ingredientdb';
