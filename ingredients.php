@@ -3,6 +3,8 @@ include 'SpecialHealthPage.php';
 session_start();
 $_SESSION['recipes_arr'];
 $_SESSION['recipes'];
+$_SESSION['timeSortBool'] = false;
+$_SESSION['ingredientsSortBool'] = false;
 ?>
 <!doctype html>
 <html>
@@ -243,7 +245,7 @@ $_SESSION['recipes'];
 					descendingIngredients($_SESSION['recipes_arr'], $_SESSION['recipes']);
 				}
 				//sort recipes in ascending order by cooking time
-				function timeSort(Array $recipe_arr, $recipes) {	
+				function timeSort(Array $recipe_arr, $recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {		
 						for($j = 0; $j < $recipes - $i - 1; $j++) {
 							if($recipe_arr[$j][2] > $recipe_arr[$j+1][2]) {
@@ -261,9 +263,8 @@ $_SESSION['recipes'];
 								$recipe_arr[$j+1][3] = $tempCount;
 							}
 						}
-					}
-					$_SESSION['recipes_arr'] = $recipe_arr;
-					printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
+					}	
+					printRecipes($recipe_arr, $_SESSION['recipes']);
 				}
 				//sort recipes in descending order by # of ingredients
 				function descendingIngredients(Array $recipe_arr, $recipes) {
@@ -285,8 +286,7 @@ $_SESSION['recipes'];
 							}
 						}
 					}
-					$_SESSION['recipes_arr'] = $recipe_arr;
-					printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
+					printRecipes($recipe_arr, $_SESSION['recipes']);
 				}
 				//each recipe is output here
 				function printRecipes(Array $recipe_arr, $recipes) {
