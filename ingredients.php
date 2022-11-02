@@ -56,7 +56,7 @@ $_SESSION['ingredientsSortBool'] = false;
 
 <body>
 	<main>
-	<h1>Welcome to Quickfit Cuisine</h1>
+	<h1>Welcome to Quick Fit Cuisine</h1>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
