@@ -148,7 +148,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					<legend>Fruits</legend>
 						<div class="filterDiv vegetarian vegan pescatarian">
 						<label for="lemon">Lemon:</label>
-						<input type="checkbox" name="selection[]" id="lemon" value="lemons">
+						<input type="checkbox" name="selection[]" id="lemon" value="lemon">
 
 						<label for="lime">Lime:</label>
 						<input type="checkbox" name="selection[]" id="lime" value="lime">
