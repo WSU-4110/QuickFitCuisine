@@ -11,7 +11,7 @@ $_SESSION['ingredientsSortBool'] = false;
 <head>
 	<meta charset="UTF-8">
 	<title>Quick Fit Cuisine</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="styles.css" rel="stylesheet" type="text/css" />
 	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -64,6 +64,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
+		  <img src="moon.png" width="20" height ="20">
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
@@ -318,6 +319,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		</div> 
 	
 	<div class="result">
+		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br>
 			<?php
@@ -538,6 +540,14 @@ $_SESSION['ingredientsSortBool'] = false;
   	</div>
 	</div>
 	<script src="filterScript.js"></script>
+<script>
+	var icon = document.getElementById("myBtnContainer");
+
+	icon.onclick = function(){
+		document.body.classList.toggle("dark-theme");
+	}
+</script>
+
 	</main>
 </body>
 
