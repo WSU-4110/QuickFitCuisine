@@ -11,7 +11,7 @@ $_SESSION['ingredientsSortBool'] = false;
 <head>
 	<meta charset="UTF-8">
 	<title>Quick Fit Cuisine</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="styles.css" rel="stylesheet" type="text/css" />
 	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -35,11 +35,28 @@ $_SESSION['ingredientsSortBool'] = false;
 		} 
 	  });
 	}
-	</script>
+</script>
+
+<script type="text/javascript">
+	function toggleAll(){  
+		var checkboxes=document.getElementsByName('selection[]');  
+		for(var i=0; i<checkboxes.length; i++){  
+           if(checkboxes[i].type=='checkbox')  
+            checkboxes[i].checked=true; 
+		} 
+	}
+	function deSelectAll(){  
+                var checkboxes=document.getElementsByName('selection[]');  
+                for(var i=0; i<checkboxes.length; i++){  
+                    if(checkboxes[i].type=='checkbox')  
+                        checkboxes[i].checked=false;  
+                }  
+    }             
+</script>
 
 <body>
 	<main>
-	<h1>Welcome to Quickfit Cuisine</h1>
+	<h1>Welcome to Quick Fit Cuisine</h1>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
@@ -47,6 +64,7 @@ $_SESSION['ingredientsSortBool'] = false;
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
+		  <img src="moon.png" width="20" height ="20">
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="" method="post">
@@ -131,7 +149,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					<legend>Fruits</legend>
 						<div class="filterDiv vegetarian vegan pescatarian">
 						<label for="lemon">Lemon:</label>
-						<input type="checkbox" name="selection[]" id="lemon" value="lemons">
+						<input type="checkbox" name="selection[]" id="lemon" value="lemon">
 
 						<label for="lime">Lime:</label>
 						<input type="checkbox" name="selection[]" id="lime" value="lime">
@@ -286,7 +304,9 @@ $_SESSION['ingredientsSortBool'] = false;
 	
 	
 					</fieldset>
-	
+
+					<input type="checkbox" onClick="toggleAll()" /> Toggle All<br/>
+					<input type="checkbox" onClick="deSelectAll()" /> Deselect All<br/>
 	
 					<!--Submit button, clicked after user selects all ingredients. Recipes will load after this button is clicked.-->
 					<br><input type="submit" name ="recipefinder" value="Find Recipe">
@@ -299,9 +319,50 @@ $_SESSION['ingredientsSortBool'] = false;
 		</div> 
 	
 	<div class="result">
+		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br>
 			<?php
+
+			class Recipe {
+				private $Rname;
+				private $Rlink;
+				private $Rtime;
+				private $Rcount;
+
+				function __construct($n, $l, $t, $c) {
+					$this->name = $n;
+					$this->link = $l;
+					$this->time = $t;
+					$this->count = $c;
+				}
+
+				function getRname() {
+					return $Rname;
+				}
+				function setRname($n) {
+					$Rname = $n;
+				}
+				function getRlink() {
+					return $Rlink;
+				}
+				function setRlink($l) {
+					$Rlink = $l;
+				}
+				function getRime() {
+					return $Rtime;
+				}
+				function setRtime($t) {
+					$Rtime = $t;
+				}
+				function getRcount() {
+					return $Rcount;
+				}
+				function setRcount($c) {
+					$Rcount = $c;
+				}
+			}
+
 				//database connection variables
     			$dbname = 'ingredientdb';
 				$dbuser = 'root';
@@ -316,7 +377,6 @@ $_SESSION['ingredientsSortBool'] = false;
 				}
 				$recipes = 0;
 				$recipe_arr = array();
-				$recipe_arr_timeSort = array();
 				//if find recipe button is clicked
 				if (isset($_POST['recipefinder']) && !empty($_POST['recipefinder'])) {
 					session_reset();
@@ -397,14 +457,8 @@ $_SESSION['ingredientsSortBool'] = false;
 							//determine if the user selected all of the ingredients belonging to a recipe
 							if($count == $matching) {
 								//insert the new recipe into the array recipe_arr
-								//insertRecipe($name, $link, $time, $count);
-								$newrecipe = array (
-									0 => $name,
-									1 => $link,
-									2 => $time,
-									3 => $count
-								);
-								array_push($recipe_arr, $newrecipe);
+								$rec = new Recipe($name, $link, $time, $count);
+								$recipe_arr[] = $rec;
 								$recipes++;
 							}						
 						}
@@ -426,6 +480,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					}
 					$conn->close();
 				}
+                
 				if (isset($_POST['timeSortbutton']) && !empty($_POST['timeSortbutton'])) {
 					//Sort buttons are displayed here
 					echo "<form method='post'>
@@ -446,19 +501,19 @@ $_SESSION['ingredientsSortBool'] = false;
 				function timeSort(Array $recipe_arr, $recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {		
 						for($j = 0; $j < $recipes - $i - 1; $j++) {
-							if($recipe_arr[$j][2] > $recipe_arr[$j+1][2]) {
-								$tempName = $recipe_arr[$j][0];
-								$tempLink = $recipe_arr[$j][1];
-								$tempTime = $recipe_arr[$j][2];
-								$tempCount = $recipe_arr[$j][3];
-								$recipe_arr[$j][0] = $recipe_arr[$j+1][0];
-								$recipe_arr[$j][1] = $recipe_arr[$j+1][1];
-								$recipe_arr[$j][2] = $recipe_arr[$j+1][2];
-								$recipe_arr[$j][3] = $recipe_arr[$j+1][3];
-								$recipe_arr[$j+1][0] = $tempName;
-								$recipe_arr[$j+1][1] = $tempLink;
-								$recipe_arr[$j+1][2] = $tempTime;
-								$recipe_arr[$j+1][3] = $tempCount;
+							if($recipe_arr[$j]->getRtime() > $recipe_arr[$j+1]->getRtime()) {
+								$tempName = $recipe_arr[$j]->getRname();
+								$tempLink = $recipe_arr[$j]->getRlink();
+								$tempTime = $recipe_arr[$j]->getRtime();
+								$tempCount = $recipe_arr[$j]->getRcount();
+								$recipe_arr[$j]->setRname($recipe_arr[$j+1]->getRname());
+								$recipe_arr[$j]->setRlink($recipe_arr[$j+1]->getRlink());
+								$recipe_arr[$j]->setRtime($recipe_arr[$j+1]->getRtime());
+								$recipe_arr[$j]->setRcount($recipe_arr[$j+1]->getRcount());
+								$recipe_arr[$j+1]->setRname($tempName);
+								$recipe_arr[$j+1]->setRlink($tempLink);
+								$recipe_arr[$j+1]->setRtime($tempTime);
+								$recipe_arr[$j+1]->setRcount($tempCount);
 							}
 						}
 					}	
@@ -519,6 +574,14 @@ $_SESSION['ingredientsSortBool'] = false;
   	</div>
 	</div>
 	<script src="filterScript.js"></script>
+<script>
+	var icon = document.getElementById("myBtnContainer");
+
+	icon.onclick = function(){
+		document.body.classList.toggle("dark-theme");
+	}
+</script>
+
 	</main>
 </body>
 
