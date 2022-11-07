@@ -321,7 +321,7 @@ $_SESSION['recipes'];
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br>
 			<?php
-
+			
 			class Recipe {
 				private $Rname;
 				private $Rlink;
@@ -453,7 +453,7 @@ $_SESSION['recipes'];
 							}
 							//determine if the user selected all of the ingredients belonging to a recipe
 							if($count == $matching) {
-								//insert the new recipe into the array recipe_arr
+								//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
 								$rec = new Recipe($name, $link, $time, $count);		
 								$recipe_arr[] = $rec;
 								$recipes++;
