@@ -2,8 +2,6 @@
 session_start();
 $_SESSION['recipes_arr'];
 $_SESSION['recipes'];
-$_SESSION['timeSortBool'] = false;
-$_SESSION['ingredientsSortBool'] = false;
 ?>
 <!doctype html>
 <html>
@@ -323,6 +321,93 @@ $_SESSION['ingredientsSortBool'] = false;
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br>
 			<?php
+			
+			class Recipe {
+				private $Rname;
+				private $Rlink;
+				private $Rtime;
+				private $Rcount;
+
+				function __construct($n, $l, $t, $c) {
+					$this->Rname = $n;
+					$this->Rlink = $l;
+					$this->Rtime = $t;
+					$this->Rcount = $c;
+				}
+
+				public function getRname() {
+					return $this->Rname;
+				}
+				public function setRname($n) {
+					$this->Rname = $n;
+				}
+				public function getRlink() {
+					return $this->Rlink;
+				}
+				public function setRlink($l) {
+					$this->Rlink = $l;
+				}
+				public function getRtime() {
+					return $this->Rtime;
+				}
+				public function setRtime($t) {
+					$this->Rtime = $t;
+				}
+				public function getRcount() {
+					return $this->Rcount;
+				}
+				public function setRcount($c) {
+					$this->Rcount = $c;
+				}
+			}
+			
+			/*
+			abstract class RecipeArray {
+				public $recipearray = array();
+				public $recipes;
+
+				function __construct($recipe_arr, $recipes) {
+					$this->recipearray = $recipe_arr;
+					$this->recipes = $recipes;
+				}
+
+				//each recipe is output here
+				public function printRecipes() {
+					$cols = 5;
+					$colCount = 0;
+						echo "
+						<table>
+						<tr>";
+					for($i = 0; $i < $this->recipes; $i++) {
+						if($colCount == $cols) {
+							$colCount = 0;
+							echo "</tr><tr>";
+						}
+						$name = $this->recipearray[$i][0];
+						$link = $this->recipe_arr[$i][1];
+						$time = $this->recipe_arr[$i][2];
+						$count = $this->recipe_arr[$i][3];
+						//styling for each recipe is done here
+						echo "
+						<td class='mycss'>
+						<a href=$link target=_blank>{$name}</a>
+						<br>Estimated Recipe Time: {$time}
+						<br>Ingredients: {$count}
+						</td>";
+						$colCount++;
+					}
+					echo "</tr>
+					</table>";
+				}
+
+				abstract public function sort();
+			}
+			class timeSort extends RecipeArray {
+				public function sort() {
+
+				}
+			}
+			*/
 				//database connection variables
     			$dbname = 'ingredientdb';
 				$dbuser = 'root';
@@ -337,7 +422,6 @@ $_SESSION['ingredientsSortBool'] = false;
 				}
 				$recipes = 0;
 				$recipe_arr = array();
-				$recipe_arr_timeSort = array();
 				//if find recipe button is clicked
 				if (isset($_POST['recipefinder']) && !empty($_POST['recipefinder'])) {
 					session_reset();
@@ -417,8 +501,11 @@ $_SESSION['ingredientsSortBool'] = false;
 							}
 							//determine if the user selected all of the ingredients belonging to a recipe
 							if($count == $matching) {
-								//insert the new recipe into the array recipe_arr
-								//insertRecipe($name, $link, $time, $count);
+								
+								//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
+								$rec = new Recipe($name, $link, $time, $count);		
+								$recipe_arr[] = $rec;
+								/*
 								$newrecipe = array (
 									0 => $name,
 									1 => $link,
@@ -426,6 +513,7 @@ $_SESSION['ingredientsSortBool'] = false;
 									3 => $count
 								);
 								array_push($recipe_arr, $newrecipe);
+								*/
 								$recipes++;
 							}						
 						}
@@ -439,6 +527,11 @@ $_SESSION['ingredientsSortBool'] = false;
 							//call the function to print recipes and set session variables (this allows the values to be kept between page refreshes in order to further sort)
 							$_SESSION['recipes_arr'] = $recipe_arr;
 							$_SESSION['recipes'] = $recipes;
+
+							/*
+							$recipearr = new RecipeArray($recipe_arr, $recipes);
+							$recipearr->printRecipes();
+							*/ 
 							printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
 						}
 					}
@@ -447,6 +540,7 @@ $_SESSION['ingredientsSortBool'] = false;
 					}
 					$conn->close();
 				}
+                
 				if (isset($_POST['timeSortbutton']) && !empty($_POST['timeSortbutton'])) {
 					//Sort buttons are displayed here
 					echo "<form method='post'>
@@ -467,19 +561,19 @@ $_SESSION['ingredientsSortBool'] = false;
 				function timeSort(Array $recipe_arr, $recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {		
 						for($j = 0; $j < $recipes - $i - 1; $j++) {
-							if($recipe_arr[$j][2] > $recipe_arr[$j+1][2]) {
-								$tempName = $recipe_arr[$j][0];
-								$tempLink = $recipe_arr[$j][1];
-								$tempTime = $recipe_arr[$j][2];
-								$tempCount = $recipe_arr[$j][3];
-								$recipe_arr[$j][0] = $recipe_arr[$j+1][0];
-								$recipe_arr[$j][1] = $recipe_arr[$j+1][1];
-								$recipe_arr[$j][2] = $recipe_arr[$j+1][2];
-								$recipe_arr[$j][3] = $recipe_arr[$j+1][3];
-								$recipe_arr[$j+1][0] = $tempName;
-								$recipe_arr[$j+1][1] = $tempLink;
-								$recipe_arr[$j+1][2] = $tempTime;
-								$recipe_arr[$j+1][3] = $tempCount;
+							if($recipe_arr[$j]->getRtime() > $recipe_arr[$j+1]->getRtime()) {
+								$tempName = $recipe_arr[$j]->getRname();
+								$tempLink = $recipe_arr[$j]->getRlink();
+								$tempTime = $recipe_arr[$j]->getRtime();
+								$tempCount = $recipe_arr[$j]->getRcount();
+								$recipe_arr[$j]->setRname($recipe_arr[$j+1]->getRname());
+								$recipe_arr[$j]->setRlink($recipe_arr[$j+1]->getRlink());
+								$recipe_arr[$j]->setRtime($recipe_arr[$j+1]->getRtime());
+								$recipe_arr[$j]->setRcount($recipe_arr[$j+1]->getRcount());
+								$recipe_arr[$j+1]->setRname($tempName);
+								$recipe_arr[$j+1]->setRlink($tempLink);
+								$recipe_arr[$j+1]->setRtime($tempTime);
+								$recipe_arr[$j+1]->setRcount($tempCount);
 							}
 						}
 					}	
@@ -489,19 +583,19 @@ $_SESSION['ingredientsSortBool'] = false;
 				function descendingIngredients(Array $recipe_arr, $recipes) {
 					for($i = 0; $i < $recipes-1; $i++) {
 						for($j = 0; $j < $recipes - $i - 1; $j++) {
-							if($recipe_arr[$j][3] < $recipe_arr[$j+1][3]) {
-								$tempName = $recipe_arr[$j][0];
-								$tempLink = $recipe_arr[$j][1];
-								$tempTime = $recipe_arr[$j][2];
-								$tempCount = $recipe_arr[$j][3];
-								$recipe_arr[$j][0] = $recipe_arr[$j+1][0];
-								$recipe_arr[$j][1] = $recipe_arr[$j+1][1];
-								$recipe_arr[$j][2] = $recipe_arr[$j+1][2];
-								$recipe_arr[$j][3] = $recipe_arr[$j+1][3];
-								$recipe_arr[$j+1][0] = $tempName;
-								$recipe_arr[$j+1][1] = $tempLink;
-								$recipe_arr[$j+1][2] = $tempTime;
-								$recipe_arr[$j+1][3] = $tempCount;
+							if($recipe_arr[$j]->getRcount() < $recipe_arr[$j+1]->getRcount()) {
+								$tempName = $recipe_arr[$j]->getRname();
+								$tempLink = $recipe_arr[$j]->getRlink();
+								$tempTime = $recipe_arr[$j]->getRtime();
+								$tempCount = $recipe_arr[$j]->getRcount();
+								$recipe_arr[$j]->setRname($recipe_arr[$j+1]->getRname());
+								$recipe_arr[$j]->setRlink($recipe_arr[$j+1]->getRlink());
+								$recipe_arr[$j]->setRtime($recipe_arr[$j+1]->getRtime());
+								$recipe_arr[$j]->setRcount($recipe_arr[$j+1]->getRcount());
+								$recipe_arr[$j+1]->setRname($tempName);
+								$recipe_arr[$j+1]->setRlink($tempLink);
+								$recipe_arr[$j+1]->setRtime($tempTime);
+								$recipe_arr[$j+1]->setRcount($tempCount);
 							}
 						}
 					}
@@ -519,10 +613,10 @@ $_SESSION['ingredientsSortBool'] = false;
 							$colCount = 0;
 							echo "</tr><tr>";
 						}
-						$name = $recipe_arr[$i][0];
-						$link = $recipe_arr[$i][1];
-						$time = $recipe_arr[$i][2];
-						$count = $recipe_arr[$i][3];
+						$name = $recipe_arr[$i]->getRname();
+						$link = $recipe_arr[$i]->getRlink();
+						$time = $recipe_arr[$i]->getRtime();
+						$count = $recipe_arr[$i]->getRcount();
 						//styling for each recipe is done here
 						echo "
 						<td class='mycss'>
