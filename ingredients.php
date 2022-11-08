@@ -360,6 +360,54 @@ $_SESSION['recipes'];
 					$this->Rcount = $c;
 				}
 			}
+			
+			/*
+			abstract class RecipeArray {
+				public $recipearray = array();
+				public $recipes;
+
+				function __construct($recipe_arr, $recipes) {
+					$this->recipearray = $recipe_arr;
+					$this->recipes = $recipes;
+				}
+
+				//each recipe is output here
+				public function printRecipes() {
+					$cols = 5;
+					$colCount = 0;
+						echo "
+						<table>
+						<tr>";
+					for($i = 0; $i < $this->recipes; $i++) {
+						if($colCount == $cols) {
+							$colCount = 0;
+							echo "</tr><tr>";
+						}
+						$name = $this->recipearray[$i][0];
+						$link = $this->recipe_arr[$i][1];
+						$time = $this->recipe_arr[$i][2];
+						$count = $this->recipe_arr[$i][3];
+						//styling for each recipe is done here
+						echo "
+						<td class='mycss'>
+						<a href=$link target=_blank>{$name}</a>
+						<br>Estimated Recipe Time: {$time}
+						<br>Ingredients: {$count}
+						</td>";
+						$colCount++;
+					}
+					echo "</tr>
+					</table>";
+				}
+
+				abstract public function sort();
+			}
+			class timeSort extends RecipeArray {
+				public function sort() {
+
+				}
+			}
+			*/
 				//database connection variables
     			$dbname = 'ingredientdb';
 				$dbuser = 'root';
@@ -453,9 +501,19 @@ $_SESSION['recipes'];
 							}
 							//determine if the user selected all of the ingredients belonging to a recipe
 							if($count == $matching) {
+								
 								//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
 								$rec = new Recipe($name, $link, $time, $count);		
 								$recipe_arr[] = $rec;
+								/*
+								$newrecipe = array (
+									0 => $name,
+									1 => $link,
+									2 => $time,
+									3 => $count
+								);
+								array_push($recipe_arr, $newrecipe);
+								*/
 								$recipes++;
 							}						
 						}
@@ -469,6 +527,11 @@ $_SESSION['recipes'];
 							//call the function to print recipes and set session variables (this allows the values to be kept between page refreshes in order to further sort)
 							$_SESSION['recipes_arr'] = $recipe_arr;
 							$_SESSION['recipes'] = $recipes;
+
+							/*
+							$recipearr = new RecipeArray($recipe_arr, $recipes);
+							$recipearr->printRecipes();
+							*/ 
 							printRecipes($_SESSION['recipes_arr'], $_SESSION['recipes']);
 						}
 					}
