@@ -35,6 +35,7 @@ public interface AddRemove{
 	}
 }
 
+public class Button{
 	var btnContainer = document.getElementById("myBtnContainer");
 	var btns = btnContainer.getElementsByClassName("btn");
 	for (var i = 0; i < btns.length; i++) {
@@ -44,3 +45,4 @@ public interface AddRemove{
 			this.className += " active";
 		});
 	}
+}
