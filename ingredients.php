@@ -361,7 +361,81 @@ $_SESSION['recipes'];
 				}
 			}
 
+			class RecipeArray {
+				protected $RecArr = array();
+				protected $recipes;
+				protected $sorted;
+
+				function __construct($recipe_arr, $recipes) {
+					$this->RecArr = $recipe_arr;
+					$this->sorted = new Sorting();
+					$this->recipes = $recipes;
+				}
+
+				public function setSort($s = new Sorting()) {
+					$this->sorted = $s;
+				}
+
+				public function getSort() {
+					return $sorted;
+				}
+
+				public function SortedArray() {
+					$this->RecArr = $sorted->sort($this->RecArr, $this->recipes);
+				}
+			}
 			
+			interface Sorting {
+				public function sort(Array $recipe_arr, $recipes);
+			}
+
+			class TimeSort implements Sorting {
+				public function sort(Array $recipe_arr, $recipes) {
+					for($i = 0; $i < $recipes-1; $i++) {		
+						for($j = 0; $j < $recipes - $i - 1; $j++) {
+							if($recipe_arr[$j]->getRtime() > $recipe_arr[$j+1]->getRtime()) {
+								$tempName = $recipe_arr[$j]->getRname();
+								$tempLink = $recipe_arr[$j]->getRlink();
+								$tempTime = $recipe_arr[$j]->getRtime();
+								$tempCount = $recipe_arr[$j]->getRcount();
+								$recipe_arr[$j]->setRname($recipe_arr[$j+1]->getRname());
+								$recipe_arr[$j]->setRlink($recipe_arr[$j+1]->getRlink());
+								$recipe_arr[$j]->setRtime($recipe_arr[$j+1]->getRtime());
+								$recipe_arr[$j]->setRcount($recipe_arr[$j+1]->getRcount());
+								$recipe_arr[$j+1]->setRname($tempName);
+								$recipe_arr[$j+1]->setRlink($tempLink);
+								$recipe_arr[$j+1]->setRtime($tempTime);
+								$recipe_arr[$j+1]->setRcount($tempCount);
+							}
+						}
+					}	
+					return $recipe_arr;
+				}
+			}
+
+			class HighToLowIngredientsSort implements Sorting {
+				public function sort(Array $recipe_arr, $recipes) {
+					for($i = 0; $i < $recipes-1; $i++) {
+						for($j = 0; $j < $recipes - $i - 1; $j++) {
+							if($recipe_arr[$j]->getRcount() < $recipe_arr[$j+1]->getRcount()) {
+								$tempName = $recipe_arr[$j]->getRname();
+								$tempLink = $recipe_arr[$j]->getRlink();
+								$tempTime = $recipe_arr[$j]->getRtime();
+								$tempCount = $recipe_arr[$j]->getRcount();
+								$recipe_arr[$j]->setRname($recipe_arr[$j+1]->getRname());
+								$recipe_arr[$j]->setRlink($recipe_arr[$j+1]->getRlink());
+								$recipe_arr[$j]->setRtime($recipe_arr[$j+1]->getRtime());
+								$recipe_arr[$j]->setRcount($recipe_arr[$j+1]->getRcount());
+								$recipe_arr[$j+1]->setRname($tempName);
+								$recipe_arr[$j+1]->setRlink($tempLink);
+								$recipe_arr[$j+1]->setRtime($tempTime);
+								$recipe_arr[$j+1]->setRcount($tempCount);
+							}
+						}
+					}
+					return $recipe_arr;
+				}
+			}
 
 				//database connection variables
     			$dbname = 'ingredientdb';
