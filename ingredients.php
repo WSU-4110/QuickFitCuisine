@@ -360,54 +360,9 @@ $_SESSION['recipes'];
 					$this->Rcount = $c;
 				}
 			}
+
 			
-			/*
-			abstract class RecipeArray {
-				public $recipearray = array();
-				public $recipes;
 
-				function __construct($recipe_arr, $recipes) {
-					$this->recipearray = $recipe_arr;
-					$this->recipes = $recipes;
-				}
-
-				//each recipe is output here
-				public function printRecipes() {
-					$cols = 5;
-					$colCount = 0;
-						echo "
-						<table>
-						<tr>";
-					for($i = 0; $i < $this->recipes; $i++) {
-						if($colCount == $cols) {
-							$colCount = 0;
-							echo "</tr><tr>";
-						}
-						$name = $this->recipearray[$i][0];
-						$link = $this->recipe_arr[$i][1];
-						$time = $this->recipe_arr[$i][2];
-						$count = $this->recipe_arr[$i][3];
-						//styling for each recipe is done here
-						echo "
-						<td class='mycss'>
-						<a href=$link target=_blank>{$name}</a>
-						<br>Estimated Recipe Time: {$time}
-						<br>Ingredients: {$count}
-						</td>";
-						$colCount++;
-					}
-					echo "</tr>
-					</table>";
-				}
-
-				abstract public function sort();
-			}
-			class timeSort extends RecipeArray {
-				public function sort() {
-
-				}
-			}
-			*/
 				//database connection variables
     			$dbname = 'ingredientdb';
 				$dbuser = 'root';
