@@ -52,6 +52,8 @@
 <body>
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
+	<a href="login.jsp" target="_self">Login</a><br>
+	<a href="register.jsp" target="_self">Register</a><br>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">

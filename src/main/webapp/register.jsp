@@ -34,7 +34,8 @@
 					</td>
 				</tr>
 			</table>
-			<a href="login.jsp" target="_self">Return to Login Page</a>
+			<a href="login.jsp" target="_self">Login</a>
+			<a href="ingredients.jsp" target="_self">Find Recipes</a><br>
 		</form>
 	</div>
 </body>

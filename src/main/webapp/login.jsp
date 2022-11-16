@@ -31,7 +31,8 @@
 					</td>
 				</tr>
 			</table>
-			<a href="register.jsp" target="_self">Register Here</a>
+			<a href="register.jsp" target="_self">Register</a>
+			<a href="ingredients.jsp" target="_self">Find Recipes</a><br>
 		</form>
 	</div>
 </body>
