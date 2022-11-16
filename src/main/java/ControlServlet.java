@@ -79,11 +79,21 @@ public class ControlServlet extends HttpServlet {
         	 case "/reset": 
                  resetIngredients(request, response);           	
                  break;
+        	 case "/all": 
+                 listAllRecipes(request, response);           	
+                 break;
 	    	}
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
 	    	}
+	    }
+	    
+	    private void listAllRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+	    	System.out.println("displaying all recipes");
+	    	selections = new ArrayList<String>();
+	    	request.setAttribute("listRecipes", recipesDAO.allRecipes());
+	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    
 	    private void resetIngredients(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
@@ -103,12 +113,11 @@ public class ControlServlet extends HttpServlet {
 			}
 	    	if(added == false) {
 	    		selections.add(s);
-				request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
 	    	}
 	    	else {
 	    		System.out.println("Ingredient already added. Cannot add again");
 	    	}
-			
+	    	request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    

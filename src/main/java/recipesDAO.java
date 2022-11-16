@@ -198,6 +198,56 @@ public class recipesDAO
         return recipeList;
     }
     
+    public List<recipes> allRecipes() throws SQLException {
+        List<recipes> recipeList = new ArrayList<recipes>();        
+        String sql = "SELECT * FROM Recipes";      
+        connect_func();      
+        statement = (Statement) connect.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            String link = resultSet.getString("link");
+            int time = resultSet.getInt("time");   
+            int count = 0;
+			if(resultSet.getString("ingredient1") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient2") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient3") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient4") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient5") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient6") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient7") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient8") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient9") != null) {
+				count++;
+			}
+			if(resultSet.getString("ingredient10") != null) {
+				count++;
+			}
+			//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
+			recipes rec = new recipes(link, name, time, count);
+	        recipeList.add(rec);	
+        }        
+        resultSet.close();
+        statement.close();
+        disconnect();        
+        return recipeList;
+    }
     
     protected void disconnect() throws SQLException {
         if (connect != null && !connect.isClosed()) {

@@ -268,6 +268,10 @@
 					<!--reset button, clears selected ingredients-->
 					<br><input type="submit" value="Clear Ingredients">	
 			</form>	
+			<form action="all" method="post">
+					<!--displays all recipes in db-->
+					<br><input type="submit" value="Show All Recipes">	
+			</form>	
 	</div> 
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
