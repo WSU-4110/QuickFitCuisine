@@ -31,7 +31,7 @@ public class recipesDAO
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	
+	private List<recipes> savedRecipes = new ArrayList<recipes>();
 	public recipesDAO(){}
 	
 	/** 
@@ -194,7 +194,8 @@ public class recipesDAO
         }        
         resultSet.close();
         statement.close();
-        disconnect();        
+        disconnect();       
+        savedRecipes = recipeList;
         return recipeList;
     }
     
@@ -245,7 +246,32 @@ public class recipesDAO
         }        
         resultSet.close();
         statement.close();
-        disconnect();        
+        disconnect();     
+        savedRecipes = recipeList;
+        return recipeList;
+    }
+    
+    public List<recipes> timeSort(boolean check) throws NullPointerException {
+        List<recipes> recipeList = new ArrayList<recipes>();        
+        if(check) {
+        	//sort in descending order
+        	
+        }
+        else {
+        	//sort in ascending order
+        	
+        }
+           
+        
+        return recipeList;
+    }
+    
+    public List<recipes> ingredientsSort(boolean check) throws NullPointerException {
+        List<recipes> recipeList = new ArrayList<recipes>();        
+        
+        
+           
+        
         return recipeList;
     }
     

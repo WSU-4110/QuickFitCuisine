@@ -279,7 +279,15 @@
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
     	<p>Add ingredients to see available recipes.<br><br></p>
-    	
+    	<fieldset>
+    	<legend>Filters</legend>
+    	<form action="sort" method="post">
+					<!--sorts recipes by time-->
+					<br><input type="submit" name="sortButton" value="Time">	
+					<!--sorts recipes by # of ingredients-->
+					<br><input type="submit" name="sortButton" value="Ingredients">
+		</form>
+    	</fieldset>
     	<table style="width:100%">
             <%
             int cols = 5;
