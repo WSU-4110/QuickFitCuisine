@@ -14,6 +14,9 @@ public class ingredients
 	    //constructors
 		public ingredients() {
 		}
+		public ingredients(int recipeid) {
+			this.recipeid = recipeid;
+		}
 	    public ingredients(int recipeid, String ingredient1, String ingredient2, String ingredient3, String ingredient4, String ingredient5, String ingredient6, String ingredient7, String ingredient8, String ingredient9, String ingredient10) {
 	    	this.recipeid = recipeid;
 	    	this.ingredient1 = ingredient1;

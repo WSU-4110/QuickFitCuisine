@@ -85,10 +85,93 @@ public class ingredientsDAO
         }
     }
     
-    public ingredients specificIngredients() {
-    	ingredients i = new ingredients();
+    public ingredients specificIngredients(int recipeid) throws SQLException {
+    	ingredients ing = new ingredients(recipeid);
+    	String sql = "SELECT * FROM Ingredients where recipeid='" + recipeid + "'";      
+        connect_func();      
+        statement = (Statement) connect.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        resultSet.next();
+    	String ing1 = resultSet.getString("ingredient1");
+    	String ing2 = resultSet.getString("ingredient2");
+    	String ing3 = resultSet.getString("ingredient3");
+    	String ing4 = resultSet.getString("ingredient4");
+    	String ing5 = resultSet.getString("ingredient5");
+    	String ing6 = resultSet.getString("ingredient6");
+    	String ing7 = resultSet.getString("ingredient7");
+    	String ing8 = resultSet.getString("ingredient8");
+    	String ing9 = resultSet.getString("ingredient9");
+    	String ing10 = resultSet.getString("ingredient10");
+    	if(ing1 != null) {
+    		ing.setIngredient1(ing1);
+    	}
+    	else {
+    		ing.setIngredient1("");
+    	}
     	
+    	if(ing2 != null) {
+    		ing.setIngredient2(ing2);
+    	}
+    	else {
+    		ing.setIngredient2("");
+    	}
     	
-    	return i;
+    	if(ing3 != null) {
+    		ing.setIngredient3(ing3);
+    	}
+    	else {
+    		ing.setIngredient3("");
+    	}
+    	
+    	if(ing4 != null) {
+    		ing.setIngredient4(ing4);
+    	}
+    	else {
+    		ing.setIngredient4("");
+    	}
+    	
+    	if(ing5 != null) {
+    		ing.setIngredient5(ing5);
+    	}
+    	else {
+    		ing.setIngredient5("");
+    	}
+    	
+    	if(ing6 != null) {
+    		ing.setIngredient6(ing6);
+    	}
+    	else {
+    		ing.setIngredient6("");
+    	}
+    	
+    	if(ing7 != null) {
+    		ing.setIngredient7(ing7);
+    	}
+    	else {
+    		ing.setIngredient7("");
+    	}
+    	
+    	if(ing8 != null) {
+    		ing.setIngredient8(ing8);
+    	}
+    	else {
+    		ing.setIngredient8("");
+    	}
+    	
+    	if(ing9 != null) {
+    		ing.setIngredient9(ing9);
+    	}
+    	else {
+    		ing.setIngredient9("");
+    	}
+    	
+    	if(ing10 != null) {
+    		ing.setIngredient10(ing10);
+    	}
+    	else {
+    		ing.setIngredient10("");
+    	}
+    	
+    	return ing;
     }
 }
