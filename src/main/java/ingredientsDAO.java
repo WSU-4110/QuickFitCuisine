@@ -86,7 +86,7 @@ public class ingredientsDAO
     }
     
     public ingredients specificIngredients(int recipeid) throws SQLException {
-    	ingredients ing = new ingredients(recipeid);
+    	ingredients ing = new ingredients();
     	String sql = "SELECT * FROM Ingredients where recipeid='" + recipeid + "'";      
         connect_func();      
         statement = (Statement) connect.createStatement();
@@ -174,4 +174,5 @@ public class ingredientsDAO
     	
     	return ing;
     }
+    
 }

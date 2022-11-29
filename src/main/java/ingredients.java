@@ -14,9 +14,24 @@ public class ingredients
 	    //constructors
 		public ingredients() {
 		}
+		
 		public ingredients(int recipeid) {
 			this.recipeid = recipeid;
 		}
+		
+		public ingredients(String ingredient1, String ingredient2, String ingredient3, String ingredient4, String ingredient5, String ingredient6, String ingredient7, String ingredient8, String ingredient9, String ingredient10) {
+	    	this.ingredient1 = ingredient1;
+	    	this.ingredient2 = ingredient2;
+	    	this.ingredient3 = ingredient3;
+	    	this.ingredient4 = ingredient4;
+	    	this.ingredient5 = ingredient5;
+	    	this.ingredient6 = ingredient6;
+	    	this.ingredient7 = ingredient7;
+	    	this.ingredient8 = ingredient8;
+	    	this.ingredient9 = ingredient9;
+	    	this.ingredient10 = ingredient10;
+	    }
+		
 	    public ingredients(int recipeid, String ingredient1, String ingredient2, String ingredient3, String ingredient4, String ingredient5, String ingredient6, String ingredient7, String ingredient8, String ingredient9, String ingredient10) {
 	    	this.recipeid = recipeid;
 	    	this.ingredient1 = ingredient1;
@@ -107,5 +122,27 @@ public class ingredients
 	    }
 	    public void setIngredient10(String ingredient10) {
 	    	this.ingredient10 = ingredient10;
+	    }
+	    @Override
+	    public boolean equals(Object o) {
+	    	if(o == this) {
+	    		return true;
+	    	}
+	    	if(!(o instanceof ingredients)) {
+	    		return false;
+	    	}
+	    	ingredients i = (ingredients) o;
+	    	return Integer.compare(
+	    			recipeid, i.recipeid) == 0 &&
+	    			ingredient1.equals(i.ingredient1) &&
+	    			ingredient2.equals(i.ingredient2) &&
+	    			ingredient3.equals(i.ingredient3) &&
+	    			ingredient4.equals(i.ingredient4) &&
+	    			ingredient5.equals(i.ingredient5) &&
+	    			ingredient6.equals(i.ingredient6) &&
+	    			ingredient7.equals(i.ingredient7) &&
+	    			ingredient8.equals(i.ingredient8) &&
+	    			ingredient9.equals(i.ingredient9) &&
+	    			ingredient10.equals(i.ingredient10);
 	    }
 	}
