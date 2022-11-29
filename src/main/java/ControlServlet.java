@@ -151,6 +151,9 @@ public class ControlServlet extends HttpServlet {
 	    	else {
 	    		System.out.println("Ingredient already added. Cannot add again");
 	    	}
+	    	for(int i = 0; i < selections.size(); i++) {
+	    		System.out.print(selections.get(i) + " ");
+	    	}
 	    	request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
