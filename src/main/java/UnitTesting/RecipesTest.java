@@ -4,11 +4,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import recipes.recipes;
 
 public class RecipesTest {
 	
 	recipes recipe;
+	recipes test;
 	
 	@BeforeEach
 	void setUp() {
@@ -20,36 +23,73 @@ public class RecipesTest {
 	}
 	
 	@AfterEach
-	void tearDown() {}
+	void tearDown() {
+		recipe = null;
+		test = null;
+	}
 	
 	@Test
-	void getRecipeid() {}
+	void getLink() {
+		String expected = "https://tasty.co/recipe/weekday-meal-prep-pesto-chicken-veggies";
+		String actual = recipe.getLink();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void setRecipeid() {}
+	void setLink() {
+		test = new recipes("", "", 0, 0);
+		test.setLink("https://tasty.co/recipe/weekday-meal-prep-pesto-chicken-veggies");
+		String expected = "https://tasty.co/recipe/weekday-meal-prep-pesto-chicken-veggies";
+		String actual = test.getLink();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void getLink() {}
+	void getName() {
+		String expected = "Pesto Chicken & Veggies";
+		String actual = recipe.getName();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void setLink() {}
+	void setName() {
+		test = new recipes("", "", 0, 0);
+		test.setName("Pesto Chicken & Veggies");
+		String expected = "Pesto Chicken & Veggies";
+		String actual = test.getName();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void getName() {}
+	void getTime() {
+		int expected = 22;
+		int actual = recipe.getTime();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void setName() {}
+	void setTime() {
+		test = new recipes("", "", 0, 0);
+		test.setTime(22);
+		int expected = 22;
+		int actual = test.getTime();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void getTime() {}
+	void getCount() {
+		int expected = 4;
+		int actual = recipe.getCount();
+		assertEquals(expected, actual);
+	}
 	
 	@Test
-	void setTime() {}
-	
-	@Test
-	void getCount() {}
-	
-	@Test
-	void setCount() {}
+	void setCount() {
+		test = new recipes("", "", 0, 0);
+		test.setCount(4);
+		int expected = 4;
+		int actual = test.getCount();
+		assertEquals(expected, actual);
+	}
 
 }
