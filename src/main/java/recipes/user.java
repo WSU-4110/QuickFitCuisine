@@ -1,3 +1,4 @@
+package recipes;
 public class user 
 {
 		protected String password;

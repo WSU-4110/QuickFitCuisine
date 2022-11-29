@@ -1,3 +1,4 @@
+package recipes;
 public class recipes
 {
 		protected int recipeid;
