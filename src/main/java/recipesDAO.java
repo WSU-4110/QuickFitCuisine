@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 //import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 /**
  * Servlet implementation class Connect
  */
@@ -31,7 +32,7 @@ public class recipesDAO
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	
+	private List<recipes> savedRecipes = new ArrayList<recipes>();
 	public recipesDAO(){}
 	
 	/** 
@@ -139,47 +140,47 @@ public class recipesDAO
 						matching++;
 					}
 				}
-				else if(i2) {
+				if(i2) {
 					if(resultSet.getString("ingredient2").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i3) {
+				if(i3) {
 					if(resultSet.getString("ingredient3").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i4) {
+				if(i4) {
 					if(resultSet.getString("ingredient4").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i5) {
+				if(i5) {
 					if(resultSet.getString("ingredient5").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i6) {
+				if(i6) {
 					if(resultSet.getString("ingredient6").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i7) {
+				if(i7) {
 					if(resultSet.getString("ingredient7").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i8) {
+				if(i8) {
 					if(resultSet.getString("ingredient8").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i9) {
+				if(i9) {
 					if(resultSet.getString("ingredient9").equals(selections.get(i))) {
 						matching++;
 					}
 				}
-				else if(i10) {
+				if(i10) {
 					if(resultSet.getString("ingredient10").equals(selections.get(i))) {
 						matching++;
 					}
@@ -194,7 +195,8 @@ public class recipesDAO
         }        
         resultSet.close();
         statement.close();
-        disconnect();        
+        disconnect();       
+        savedRecipes = recipeList;
         return recipeList;
     }
     
@@ -245,7 +247,60 @@ public class recipesDAO
         }        
         resultSet.close();
         statement.close();
-        disconnect();        
+        disconnect();     
+        savedRecipes = recipeList;
+        return recipeList;
+    }
+    
+    public List<recipes> timeSort(boolean check) throws NullPointerException {
+        List<recipes> recipeList = new ArrayList<recipes>();     
+        recipeList = savedRecipes;
+        if(check) {
+        	//sort in descending order
+        	for(int i = 0; i < recipeList.size()-1; i++) {
+        		for(int j = 0; j < recipeList.size() - i - 1; j++) {
+        			if(recipeList.get(j).getTime() < recipeList.get(j+1).getTime()) {
+        				Collections.swap(recipeList, j, j+1);
+        			}
+        		}
+        	}
+        }
+        else {
+        	//sort in ascending order
+        	for(int i = 0; i < recipeList.size()-1; i++) {
+        		for(int j = 0; j < recipeList.size() - i - 1; j++) {
+        			if(recipeList.get(j).getTime() > recipeList.get(j+1).getTime()) {
+        				Collections.swap(recipeList, j, j+1);
+        			}
+        		}
+        	}
+        }
+        return recipeList;
+    }
+    
+    public List<recipes> ingredientsSort(boolean check) throws NullPointerException {
+    	List<recipes> recipeList = new ArrayList<recipes>();     
+        recipeList = savedRecipes;
+        if(check) {
+        	//sort in ascending order
+        	for(int i = 0; i < recipeList.size()-1; i++) {
+        		for(int j = 0; j < recipeList.size() - i - 1; j++) {
+        			if(recipeList.get(j).getCount() > recipeList.get(j+1).getCount()) {
+        				Collections.swap(recipeList, j, j+1);
+        			}
+        		}
+        	}
+        }
+        else {
+        	//sort in descending order
+        	for(int i = 0; i < recipeList.size()-1; i++) {
+        		for(int j = 0; j < recipeList.size() - i - 1; j++) {
+        			if(recipeList.get(j).getCount() < recipeList.get(j+1).getCount()) {
+        				Collections.swap(recipeList, j, j+1);
+        			}
+        		}
+        	}
+        }
         return recipeList;
     }
     

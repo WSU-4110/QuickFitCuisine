@@ -233,6 +233,7 @@ public class userDAO
 					        "use recipedb; ",
 					        "drop table if exists User; ",
 					        "drop table if exists Recipes; ",
+					        "drop table if exists Ingredients; ",
 					        ("CREATE TABLE if not exists User( " +
 					            "email VARCHAR(100) NOT NULL, " + 
 					            "password VARCHAR(20) NOT NULL, " +
@@ -252,6 +253,20 @@ public class userDAO
 						            "ingredient8 VARCHAR(30), " +
 						            "ingredient9 VARCHAR(30), " +
 						            "ingredient10 VARCHAR(30), " +
+						            "PRIMARY KEY(recipeid) "+"); "),
+					        ("CREATE TABLE if not exists ingredients( " +
+						            "recipeid INT NOT NULL, " + 
+						            "ingredient1 VARCHAR(30), " +
+						            "ingredient2 VARCHAR(30), " +
+						            "ingredient3 VARCHAR(30), " +
+						            "ingredient4 VARCHAR(30), " +
+						            "ingredient5 VARCHAR(30), " +
+						            "ingredient6 VARCHAR(30), " +
+						            "ingredient7 VARCHAR(30), " +
+						            "ingredient8 VARCHAR(30), " +
+						            "ingredient9 VARCHAR(30), " +
+						            "ingredient10 VARCHAR(30), " +
+						            "FOREIGN KEY(recipeid) REFERENCES Recipes(recipeid)," +
 						            "PRIMARY KEY(recipeid) "+"); ")
         					};
         String[] TUPLES = {("insert into User(email, password)"+" values "
@@ -286,6 +301,8 @@ public class userDAO
 						+ "('https://caitsplate.com/honey-mustard-onion-pretzel-encrusted-chicken-tenders/', 25, 'Honey Chicken Tenders','chicken','honey','mustard','onion','egg',null,null,null,null,null),"
 						+ "('https://caitsplate.com/easy-turkey-taco-skillet/#tasty-recipes-35532%27,15,%27Turkey', 15, 'Taco Skillet','turkey','blackbeans','corn','cheese',null,null,null,null,null,null),"
             			+ "('https://plantbasedonabudget.com/yellow-dal/', 30, 'Easy Yellow Dal', 'garlic', 'onion', 'rice', 'lentils', null, null, null, null, null,null);"),
+        				("insert into Ingredients(recipeid, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10)"+" values "
+        				+ "(1, 'chicken', 'greenbeans', 'tomato', 'pesto', null, null, null, null, null, null);"),
 			    			};
         
         //for loop to put these in database

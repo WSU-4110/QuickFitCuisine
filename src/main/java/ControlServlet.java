@@ -28,6 +28,8 @@ public class ControlServlet extends HttpServlet {
 	    private recipesDAO recipesDAO = new recipesDAO();
 	    private String currentUser;
 	    private ArrayList<String> selections = new ArrayList<String>();
+	    private boolean sortByTime = false;
+	    private boolean sortByIngredients = false;
 	    private HttpSession session=null;
 	    
 	    public ControlServlet()
@@ -82,11 +84,43 @@ public class ControlServlet extends HttpServlet {
         	 case "/all": 
                  listAllRecipes(request, response);           	
                  break;
+        	 case "/sort": 
+                 sortRecipes(request, response);           	
+                 break;
 	    	}
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
 	    	}
+	    }
+	    
+	    private void sortRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+	    	System.out.println("sorting recipes");
+	    	String filter = request.getParameter("sortButton");	
+	    	if(selections.isEmpty()) {
+	    		System.out.println("Cannot sort recipes when no ingredients have been selected.");
+	    	}
+	    	else {
+	    		if(filter.equals("Time")) {
+		    		request.setAttribute("listRecipes", recipesDAO.timeSort(sortByTime));
+		    		if(sortByTime) {
+		    			sortByTime = false;
+		    		}
+		    		else {
+		    			sortByTime = true;
+		    		}
+		    	}
+		    	else if(filter.equals("Ingredients")) {
+		    		request.setAttribute("listRecipes", recipesDAO.ingredientsSort(sortByIngredients));
+		    		if(sortByIngredients) {
+		    			sortByIngredients = false;
+		    		}
+		    		else {
+		    			sortByIngredients = true;
+		    		}
+		    	}
+	    	}
+	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    
 	    private void listAllRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
@@ -116,6 +150,9 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    	else {
 	    		System.out.println("Ingredient already added. Cannot add again");
+	    	}
+	    	for(int i = 0; i < selections.size(); i++) {
+	    		System.out.print(selections.get(i) + " ");
 	    	}
 	    	request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
