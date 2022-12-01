@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+h1{
+      text-align:center;
+      padding-bottom: 6px;
+      color: blue;
+  }
+
+
 /* nav styles */
 nav {
   font-family: Verdana, Arial, serif;
@@ -260,8 +267,4 @@ body {
      overflow: hidden;
   }
 
-  h1{
-      text-align:center;
-      padding-bottom: 6px;
-      color: blue;
-  }
+  
