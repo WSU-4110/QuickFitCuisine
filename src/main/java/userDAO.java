@@ -50,6 +50,18 @@ public class userDAO
         }
     }
     
+    protected void connect_func_init() throws SQLException {
+    	//uses default connection to the database
+        if (connect == null || connect.isClosed()) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new SQLException(e);
+            }
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?useSSL=false&user=john&password=john1234");
+            System.out.println(connect);
+        }
+    }
     
     public boolean database_login(String email, String password) throws SQLException{
     	try {
@@ -225,7 +237,7 @@ public class userDAO
     
     
     public void init() throws SQLException, FileNotFoundException, IOException{
-    	connect_func();
+    	connect_func_init();
         statement =  (Statement) connect.createStatement();
         
         String[] INITIAL = {"drop database if exists recipedb; ",

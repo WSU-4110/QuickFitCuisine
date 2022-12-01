@@ -32,6 +32,7 @@
 	}
 </script>
 
+<!--  
 <script type="text/javascript">
 	function toggleAll(){  
 		var checkboxes=document.getElementsByName('selection[]');  
@@ -48,7 +49,7 @@
                 }  
     }             
 </script>
-
+-->
 <body>
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
@@ -255,10 +256,10 @@
 	
 					</fieldset>
 					<!-- 
-					
-					 -->
 					<input type="checkbox" onClick="toggleAll()" /> Toggle All<br/>
 					<input type="checkbox" onClick="deSelectAll()" /> Deselect All<br/>
+					 -->
+					
 	
 					
 					
@@ -285,7 +286,7 @@
 					<!--sorts recipes by time-->
 					<br><input type="submit" name="sortButton" value="Time">	
 					<!--sorts recipes by # of ingredients-->
-					<br><input type="submit" name="sortButton" value="Ingredients">
+					<input type="submit" name="sortButton" value="Ingredients">
 		</form>
     	</fieldset>
     	<table style="width:100%">
