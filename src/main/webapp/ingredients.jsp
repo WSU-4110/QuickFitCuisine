@@ -54,15 +54,17 @@
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<a href="login.jsp" target="_self">Login</a><br>
-	<a href="register.jsp" target="_self">Register</a><br>
-	<div class="selection">
+	<a href="register.jsp" target="_self">Register</a><br><br>
+	
+	
+	<div class="selection"><br>
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		  <!-- <img src="moon.png" width="20" height ="20"/>  -->
+		 <!--  <img src="moon.png" width="20" height ="20"/> -->
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="find" method="post">

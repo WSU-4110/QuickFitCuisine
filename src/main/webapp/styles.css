@@ -137,12 +137,13 @@ body {
 
   .selection {
     position: fixed;
-    top: 75px;
+    top: 150px;
     bottom: 10px;
     width: 500px;
     background: rgb(17, 236, 112);
-    margin: 10px;
+    margin-top: 10px;
     overflow: scroll;
+    
   }
   
   .result {
