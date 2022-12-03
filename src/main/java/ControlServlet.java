@@ -155,6 +155,7 @@ public class ControlServlet extends HttpServlet {
 	    		System.out.print(selections.get(i) + " ");
 	    	}
 	    	request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+	    	request.setAttribute("ingredientSelections", selections);
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    

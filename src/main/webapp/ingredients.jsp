@@ -279,7 +279,18 @@
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to see available recipes.<br><br></p>
+    	<p>Add ingredients to see available recipes.</p>
+    	
+    	<c:forEach var="ingredient" items="${ingredientSelections}" varStatus="i">
+    		${ingredient}
+    		${not i.last ? ', ' : ''}
+    		<c:if test="${(i.count % 5) == 0}">
+    			<br>
+    		</c:if>
+    	</c:forEach>
+    	
+    	<br><br>
+    	
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
