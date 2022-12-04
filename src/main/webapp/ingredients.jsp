@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 	<link rel="manifest" href="images/site.webmanifest">
-	<script src="index.js" type="text/javascript" defer></script>
+	
 </head>
 
 <script>
@@ -54,7 +54,9 @@
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<a href="login.jsp" target="_self">Login</a><br>
-	<a href="register.jsp" target="_self">Register</a><br><br>
+	<a href="register.jsp" target="_self">Register</a><br>
+	<img src="src\main\webapp\moon.png" width="30" height ="30"/>
+	
 	
 	
 	<div class="selection"><br>
