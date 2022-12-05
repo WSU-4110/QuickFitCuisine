@@ -38,7 +38,7 @@
  #yourrecipe {
   background-color: transparent; /* Black background color*/
   position: fixed; /* Make it stick/fixed */
-  top: 61px; /* Hide the navbar 50 px outside of the top view */
+  top: 90px; /* Hide the navbar 50 px outside of the top view */
   width: 100%; /* Full width */
   
 }
@@ -87,7 +87,7 @@ input{
 
   .selection {
     position: fixed;
-    top: 216.5px;
+    top: 255px;
     bottom: 10px;
     width: 590px;
     background: black;
@@ -100,11 +100,11 @@ input{
   
   .result {
   position:fixed;
-  top:190px;
+  top:248px;
   bottom: 20px;
   width:900px;
     background: black;
-    top: 200px;
+    
     margin-left: 600px;
     overflow: scroll;
     color: white;
@@ -179,11 +179,15 @@ input{
   .container {
      overflow: hidden;
   }
+body {
+  background: black;
+  }
 /*
 
 Navbar
 
 */
+/*
 .navbar {
   display: flex;
   align-items: center;
@@ -269,4 +273,4 @@ Navbar
   }
   
 
-}
+}*/

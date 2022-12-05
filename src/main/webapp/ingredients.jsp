@@ -58,38 +58,44 @@
 </script>
 -->
 <body>
+<!--  -->
 <!--  nav -->
-<nav class="navbar">
-<div class="nav-center">
+<!--  <nav class="navbar"> -->
+<!--  <div class="nav-center"> -->
 	<!-- header -->
-<div class="nav-header">
-<a href= "ingredients.jsp" class="nav-logo">
-<img src="${pageContext.request.contextPath}/images/apple-touch-icon.png" alt="QuickFitCuisine" />
+<!--  <div class="nav-header">   -->
+<!-- <a href= "ingredients.jsp" class="nav-logo">  -->
+<!-- <img src="${pageContext.request.contextPath}/images/apple-touch-icon.png" alt="QuickFitCuisine" />  -->
 
-</a>
-<button type="button" class="btn nav-btn">
- <i class="fas fa-align-justify"></i>
+ <!-- </a>  -->
+<!-- <button type="button" class="btn nav-btn">  -->
+ <!-- <i class="fas fa-align-justify"></i> 
 </button>
-</div>
+</div>   -->
 <!-- links -->
-<div class="nav-links">
+<!-- <div class="nav-links">
  <a href="login.jsp" class="nav-links" target="_self">Login</a>
-	<a href="register.jsp" class="nav-links" target="_self">Register</a>
-	<img src="${pageContext.request.contextPath}/images/moon.png" width="100" height ="100"/>
- </div>
+	<a href="register.jsp" class="nav-links" target="_self">Register</a> -->
+	<!-- <img src="${pageContext.request.contextPath}/images/moon.png" width="100" height ="100"/> -->
+<!--   </div>
 </div>
-</nav>
+</nav> -->
 
 	<main>
 	
-	<h1>Welcome to Quick Fit Cuisine</h1>
-	
+	<!--  <h1>Welcome to Quick Fit Cuisine</h1> -->
 	<div class="selection">
 		
 		<div id="myBtnContainer">	
 		<br>
 		<br>
 		<h1>QuickFitCuisine</h1>
+		
+		<div class="nav-links">
+ 	<a href="login.jsp" class="nav-links" target="_self">Login</a>
+	<a href="register.jsp" class="nav-links" target="_self">Register</a>
+	</div>
+	
 		<h3>Recipe Finder</h3>                  
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -311,7 +317,7 @@
 	<div class="result">
 		<div id="yourrecipe"><br>
     	<h3>Your Recipes</h3>
-    	
+    	<br>
     	<p>Add ingredients to see available recipes.</p>
     	</div><br>
     	<fieldset>
