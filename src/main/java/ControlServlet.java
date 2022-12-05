@@ -124,7 +124,12 @@ public class ControlServlet extends HttpServlet {
 	    	if(currentUser.equals("")) {
 	    		System.out.println("Must be logged in to save recipes.");
 	    		request.setAttribute("saveRecipesError", "You must be logged in to save recipes.");
-	    		request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+	    		if(selections.isEmpty()) {
+	    			request.setAttribute("listRecipes", recipesDAO.allRecipes());
+	    		}
+	    		else {
+	    			request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+	    		}
 	    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    	}
 	    	else {
@@ -132,7 +137,7 @@ public class ControlServlet extends HttpServlet {
 	    		if(savedRecipesDAO.checkNumberOfSavedRecipe(currentUser, id) == 10) {
 	    			System.out.println("You have already saved 10 recipes, cannot save anymore. Delete current saved recipes to make room for others.");
 		    		request.setAttribute("saveRecipesError3", "You have already saved 10 recipes, cannot save anymore. Delete current saved recipes to make room for others.");
-		    		request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+		    		request.setAttribute("listRecipes", recipesDAO.listSavedRecipes(currentUser));
 		    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    		}
 	    		else {
@@ -147,7 +152,12 @@ public class ControlServlet extends HttpServlet {
 			    	else {
 			    		System.out.println("Recipe Already Saved");
 			    		request.setAttribute("saveRecipesError2", "You have already saved that recipe.");
-			    		request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+			    		if(selections.isEmpty()) {
+			    			request.setAttribute("listRecipes", recipesDAO.allRecipes());
+			    		}
+			    		else {
+			    			request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+			    		}
 			    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 			    	}
 	    		}
