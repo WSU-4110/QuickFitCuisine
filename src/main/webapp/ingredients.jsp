@@ -5,12 +5,19 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Quick Fit Cuisine</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 	<link rel="manifest" href="images/site.webmanifest">
 	
 </head>
@@ -51,13 +58,30 @@
 </script>
 -->
 <body>
+<!--  nav -->
+<nav class="navbar">
+<div class="nav-center">
+	<!-- header -->
+<div class="nav-header">
+<a href= "ingredients.jsp" class="nav-logo">
+<img src="${pageContext.request.contextPath}/images/apple-touch-icon.png" alt="QuickFitCuisine" />
+
+</a>
+<button type="button" class="btn nav-btn">
+ <i class="fas fa-align-justify"></i>
+</button>
+</div>
+<!-- links -->
+<div class="nav-links">
+ <a href="login.jsp" class="nav-links" target="_self">Login</a>
+	<a href="register.jsp" class="nav-links" target="_self">Register</a>
+	<img src="${pageContext.request.contextPath}/images/moon.png" width="100" height ="100"/>
+ </div>
+</div>
+</nav>
+
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
-	<a href="login.jsp" target="_self">Login</a><br>
-	<a href="register.jsp" target="_self">Register</a><br>
-	<img src="src\main\webapp\moon.png" width="30" height ="30"/>
-	
-	
 	
 	<div class="selection"><br>
 		<h2>Recipe Finder</h2>
@@ -66,7 +90,7 @@
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		 <!--  <img src="moon.png" width="20" height ="20"/> -->
+		  <img src="moon.png" width="20" height ="20"/>
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="find" method="post">
