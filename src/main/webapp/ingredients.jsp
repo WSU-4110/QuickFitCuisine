@@ -31,7 +31,7 @@
 	  });
 	}
 </script>
-
+<img src="${pageContext.request.contextPath}/moon.png" alt="Dark/Light Mode" width="100" height ="100"/>
 <!--  
 <script type="text/javascript">
 	function toggleAll(){  
