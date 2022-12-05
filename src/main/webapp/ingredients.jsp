@@ -81,18 +81,22 @@
 </nav>
 
 	<main>
+	
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	
-	<div class="selection"><br>
-		<h2>Recipe Finder</h2>
-		<div id="myBtnContainer">
+	<div class="selection">
+		
+		<div id="myBtnContainer">	
+		<br>
+		<br>
+		<h1>QuickFitCuisine</h1>
+		<h3>Recipe Finder</h3>                  
+		<p>We assume you have salt, pepper, water, and oil.</p>
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		  <img src="moon.png" width="20" height ="20"/>
 		</div>
-		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -305,9 +309,11 @@
 			</form>	
 	</div> 
 	<div class="result">
-		<h1>QuickFitCuisine</h1>
-    	<h2>Your Recipes</h2>
-    	<p>Add ingredients to see available recipes.<br><br></p>
+		<div id="yourrecipe"><br>
+    	<h3>Your Recipes</h3>
+    	
+    	<p>Add ingredients to see available recipes.</p>
+    	</div><br>
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
@@ -341,15 +347,29 @@
 	 	</table>
     	
   	</div>
+  	<script>
+  	window.onscroll = function() {scrollFunction()};
+
+  	function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("myBtnContainer").style.top = "0";
+  	  } else {
+  	    document.getElementById("myBtnContainer").style.top = "-50px";
+  	  }
+  	}
+  	</script>
+  	<script>
+  	window.onscroll = function() {scrollFunction()};
+
+  	function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("yourrecipe").style.top = "0";
+  	  } else {
+  	    document.getElementById("yourrecipe").style.top = "-50px";
+  	  }
+  	}
+  	</script>
 	<script src="filterScript.js"></script>
-<script>
-	var icon = document.getElementById("myBtnContainer");
-
-	icon.onclick = function(){
-		document.body.classList.toggle("dark-theme");
-	}
-</script>
-
 	</main>
 </body>
 
