@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class ingredients
 {
 		protected int recipeid;
@@ -13,7 +11,6 @@ public class ingredients
 		protected String ingredient8;
 		protected String ingredient9;
 		protected String ingredient10;
-		protected ArrayList<String> ingredientList;
 		
 	    //constructors
 		public ingredients() {
@@ -126,23 +123,6 @@ public class ingredients
 	    }
 	    public void setIngredient10(String ingredient10) {
 	    	this.ingredient10 = ingredient10;
-	    }
-	    
-	    public ArrayList<String> getIngredientList() {
-	    	return ingredientList;
-	    }
-	    public void setIngredientList() {
-	    	ingredientList = new ArrayList<String>();
-	    	ingredientList.add(ingredient1);
-	    	ingredientList.add(ingredient2);
-	    	ingredientList.add(ingredient3);
-	    	ingredientList.add(ingredient4);
-	    	ingredientList.add(ingredient5);
-	    	ingredientList.add(ingredient6);
-	    	ingredientList.add(ingredient7);
-	    	ingredientList.add(ingredient8);
-	    	ingredientList.add(ingredient9);
-	    	ingredientList.add(ingredient10);
 	    }
 	    
 	    @Override
