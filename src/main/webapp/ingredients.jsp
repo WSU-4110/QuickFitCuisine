@@ -31,7 +31,6 @@
 	  });
 	}
 </script>
-<img src="${pageContext.request.contextPath}/moon.png" alt="Dark/Light Mode" width="100" height ="100"/>
 <!--  
 <script type="text/javascript">
 	function toggleAll(){  
@@ -341,7 +340,7 @@
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
-					<br><input type="submit" name="deleteButton" value="Delete Saved Recipe ${recipes.name}">	
+					<br><input type="submit" name="deleteButton" value="Delete Recipe ${recipes.name}">	
                     </td>
             	<%colCount2++;%>
 			</c:forEach>

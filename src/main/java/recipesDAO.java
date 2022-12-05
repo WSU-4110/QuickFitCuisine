@@ -230,10 +230,9 @@ public class recipesDAO
         connect_func();      
         statement = (Statement) connect.createStatement();
         for(int i = 0; i < 10; i++) {
-        	System.out.println("loop");
         	ResultSet resultSet = statement.executeQuery(sql[i]);
             if(resultSet.next() == false) {
-            	break;
+            	continue;
             }
                 String name = resultSet.getString("name");
                 String link = resultSet.getString("link");

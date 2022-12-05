@@ -92,11 +92,26 @@ public class ControlServlet extends HttpServlet {
         	 case "/save": 
                  saveRecipe(request, response);           	
                  break;
+             case "/delete": 
+                 deleteRecipe(request, response);           	
+                 break;
 	    	}
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
 	    	}
+	    }
+	    
+	    private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	System.out.println("Deleting recipe function");
+	    	String name = request.getParameter("deleteButton");
+	    	name = name.substring(14);
+	    	System.out.println(name);
+	    	int id = recipesDAO.sendRecipeID(name);
+	    	System.out.println(id);
+	    	savedRecipesDAO.delete(currentUser, id);
+	    	request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
+	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    
 	    private void saveRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -126,6 +141,7 @@ public class ControlServlet extends HttpServlet {
 	    				//valid path, saving recipe
 			    		System.out.println("saving recipe");
 			    		savedRecipesDAO.insertSavedRecipe(currentUser, id);
+			    		request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
 			    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 			    	}
 			    	else {
@@ -145,28 +161,23 @@ public class ControlServlet extends HttpServlet {
 	    	if(filter.equals("Saved")) {
 	    		request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
 	    	}
-	    	else if(selections.isEmpty()) {
-	    		System.out.println("Cannot sort recipes when no ingredients have been selected.");
+	    	else if(filter.equals("Time")) {
+	    		request.setAttribute("listRecipes", recipesDAO.timeSort(sortByTime));
+	    		if(sortByTime) {
+	    			sortByTime = false;
+	    		}
+	    		else {
+	    			sortByTime = true;
+	    		}
 	    	}
-	    	else {
-	    		if(filter.equals("Time")) {
-		    		request.setAttribute("listRecipes", recipesDAO.timeSort(sortByTime));
-		    		if(sortByTime) {
-		    			sortByTime = false;
-		    		}
-		    		else {
-		    			sortByTime = true;
-		    		}
-		    	}
-		    	else if(filter.equals("Ingredients")) {
-		    		request.setAttribute("listRecipes", recipesDAO.ingredientsSort(sortByIngredients));
-		    		if(sortByIngredients) {
-		    			sortByIngredients = false;
-		    		}
-		    		else {
-		    			sortByIngredients = true;
-		    		}
-		    	}
+		    else if(filter.equals("Ingredients")) {
+		    	request.setAttribute("listRecipes", recipesDAO.ingredientsSort(sortByIngredients));
+		    	if(sortByIngredients) {
+		    		sortByIngredients = false;
+		   		}
+		   		else {
+		   			sortByIngredients = true;
+		   		}
 	    	}
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }

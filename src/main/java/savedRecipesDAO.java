@@ -102,16 +102,60 @@ public class savedRecipesDAO
     	String sql = "update SavedRecipes set " + col + "='" + id + "' where email ='" + user + "'";
     	statement = (Statement) connect.createStatement();
     	statement.executeUpdate(sql);
-    	/*
-		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setString(1, col);
-			preparedStatement.setInt(2, id);
-			preparedStatement.setString(3, user);
-		preparedStatement.executeUpdate();
-        preparedStatement.close();
-        */
     	statement.close();
         disconnect(); 
+    }
+    
+    public void delete(String user, int id) throws SQLException {
+    	connect_func("root","pass1234");         
+    	String sql = "select * from SavedRecipes where email='"+user+"'";
+    	String sql2;
+    	statement = (Statement) connect.createStatement();
+    	ResultSet resultSet = statement.executeQuery(sql);
+    	resultSet.next();
+    	if(resultSet.getString("recipeid1") != null && resultSet.getInt("recipeid1") == id) {
+    		sql2 = "update SavedRecipes set recipeid1=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid2") != null && resultSet.getInt("recipeid2") == id) {
+    		sql2 = "update SavedRecipes set recipeid2=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid3") != null && resultSet.getInt("recipeid3") == id) {
+    		sql2 = "update SavedRecipes set recipeid3=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid4") != null && resultSet.getInt("recipeid4") == id) {
+    		sql2 = "update SavedRecipes set recipeid4=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid5") != null && resultSet.getInt("recipeid5") == id) {
+    		sql2 = "update SavedRecipes set recipeid5=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid6") != null && resultSet.getInt("recipeid6") == id) {
+    		sql2 = "update SavedRecipes set recipeid6=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid7") != null && resultSet.getInt("recipeid7") == id) {
+    		sql2 = "update SavedRecipes set recipeid7=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid8") != null && resultSet.getInt("recipeid8") == id) {
+    		sql2 = "update SavedRecipes set recipeid8=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid9") != null && resultSet.getInt("recipeid9") == id) {
+    		sql2 = "update SavedRecipes set recipeid9=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	else if(resultSet.getString("recipeid10") != null && resultSet.getInt("recipeid10") == id) {
+    		sql2 = "update SavedRecipes set recipeid10=null where email ='"+user+"'";
+			statement.executeUpdate(sql2);
+    	}
+    	resultSet.close();
+    	statement.close();
+        disconnect();
     }
     
 	public boolean checkSavedRecipe(String currentUser, int id) throws SQLException {
@@ -121,55 +165,35 @@ public class savedRecipesDAO
 	    	statement = (Statement) connect.createStatement();
 	    	ResultSet resultSet = statement.executeQuery(sql);
 	    	resultSet.next();
-	    	if(resultSet.getString("recipeid1") != null) {
-	    		if(id == resultSet.getInt("recipeid1")) {
-	    			return false;
-	    		}
+	    	if(resultSet.getString("recipeid1") != null && resultSet.getInt("recipeid1") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid2") != null) {
-	    		if(id == resultSet.getInt("recipeid2")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid2") != null && resultSet.getInt("recipeid2") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid3") != null) {
-	    		if(id == resultSet.getInt("recipeid3")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid3") != null && resultSet.getInt("recipeid3") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid4") != null) {
-	    		if(id == resultSet.getInt("recipeid4")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid4") != null && resultSet.getInt("recipeid4") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid5") != null) {
-	    		if(id == resultSet.getInt("recipeid5")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid5") != null && resultSet.getInt("recipeid5") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid6") != null) {
-	    		if(id == resultSet.getInt("recipeid6")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid6") != null && resultSet.getInt("recipeid6") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid7") != null) {
-	    		if(id == resultSet.getInt("recipeid7")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid7") != null && resultSet.getInt("recipeid7") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid8") != null) {
-	    		if(id == resultSet.getInt("recipeid8")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid8") != null && resultSet.getInt("recipeid8") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid9") != null) {
-	    		if(id == resultSet.getInt("recipeid9")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid9") != null && resultSet.getInt("recipeid9") == id) {
+	    		return false;
 	    	}
-	    	else if(resultSet.getString("recipeid10") != null) {
-	    		if(id == resultSet.getInt("recipeid10")) {
-	    			return false;
-	    		}
+	    	else if(resultSet.getString("recipeid10") != null && resultSet.getInt("recipeid10") == id) {
+	    		return false;
 	    	}
 	    	resultSet.close();
 	        statement.close();
