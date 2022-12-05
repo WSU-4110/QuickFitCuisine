@@ -55,6 +55,9 @@
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<a href="login.jsp" target="_self">Login</a><br>
 	<a href="register.jsp" target="_self">Register</a><br>
+	<form action="logout" method="post">
+	<input type="submit" name="logout" value="Logout">
+	</form>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
@@ -279,7 +282,11 @@
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to see available recipes.<br><br></p>
+    	<p>Add ingredients to see available recipes.<br><br>
+    	${saveRecipesError}
+    	${saveRecipesError2}
+    	${saveRecipesError3}
+    	</p>
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
@@ -287,8 +294,11 @@
 					<br><input type="submit" name="sortButton" value="Time">	
 					<!--sorts recipes by # of ingredients-->
 					<input type="submit" name="sortButton" value="Ingredients">
+					<!--sorts recipes by saved-->
+					<input type="submit" name="sortButton" value="Saved">
 		</form>
     	</fieldset>
+    	<form action="save" method="post">
     	<table style="width:100%">
             <%
             int cols = 5;
@@ -306,12 +316,38 @@
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="saveButton" value="Save Recipe ${recipes.name}">	
                     </td>
             	<%colCount++;%>
 			</c:forEach>
 			</tr>
 	 	</table>
-    	
+    	</form>
+    	<form action="delete" method="post">
+    	<table style="width:100%">
+            <%
+            int cols2 = 5;
+            int colCount2 = 0;
+            %>
+            <tr>
+            <c:forEach var="recipes" items="${listSavedRecipes}">
+            	<%
+            	if(colCount2 == cols2) {
+            		colCount2 = 0;
+            		out.println("</tr><tr>");
+            	}
+            	%>
+                	<td class='mycss'>
+                	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
+                    <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
+					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="deleteButton" value="Delete Saved Recipe ${recipes.name}">	
+                    </td>
+            	<%colCount2++;%>
+			</c:forEach>
+			</tr>
+	 	</table>
+    	</form>
   	</div>
 	<script src="filterScript.js"></script>
 <script>

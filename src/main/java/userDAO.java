@@ -106,6 +106,7 @@ public class userDAO
             listUser.add(users);
         }        
         resultSet.close();
+        statement.close();
         disconnect();        
         return listUser;
     }
@@ -126,6 +127,7 @@ public class userDAO
 
 		preparedStatement.executeUpdate();
         preparedStatement.close();
+        disconnect(); 
     }
     
     public boolean delete(String email) throws SQLException {
@@ -137,11 +139,11 @@ public class userDAO
          
         boolean rowDeleted = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
-        return rowDeleted;     
+        return rowDeleted; 
     }
      
     public boolean update(user users) throws SQLException {
-        String sql = "update User set firstName=?, password = ?, where email = ?";
+        String sql = "update User set password = ?, where email = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
@@ -246,6 +248,7 @@ public class userDAO
 					        "drop table if exists User; ",
 					        "drop table if exists Recipes; ",
 					        "drop table if exists Ingredients; ",
+					        "drop table if exists SavedRecipes; ",
 					        ("CREATE TABLE if not exists User( " +
 					            "email VARCHAR(100) NOT NULL, " + 
 					            "password VARCHAR(20) NOT NULL, " +
@@ -279,11 +282,27 @@ public class userDAO
 						            "ingredient9 VARCHAR(30), " +
 						            "ingredient10 VARCHAR(30), " +
 						            "FOREIGN KEY(recipeid) REFERENCES Recipes(recipeid)," +
-						            "PRIMARY KEY(recipeid) "+"); ")
+						            "PRIMARY KEY(recipeid) "+"); "),
+					        ("CREATE TABLE if not exists SavedRecipes( " +
+						            "email VARCHAR(100) NOT NULL, " + 
+						            "recipeid1 INT," +
+						            "recipeid2 INT," +
+						            "recipeid3 INT," +
+						            "recipeid4 INT," +
+						            "recipeid5 INT," +
+						            "recipeid6 INT," +
+						            "recipeid7 INT," +
+						            "recipeid8 INT," +
+						            "recipeid9 INT," +
+						            "recipeid10 INT," +
+						            "FOREIGN KEY(email) REFERENCES User(email)," +
+ 						            "PRIMARY KEY (email) "+"); "),
         					};
         String[] TUPLES = {("insert into User(email, password)"+" values "
         			+ "('root', 'pass1234'),"
         			+ "('d@gmail.com', 'pass');"),
+        				("insert into SavedRecipes(email, recipeid1, recipeid2, recipeid3, recipeid4, recipeid5, recipeid6, recipeid7, recipeid8, recipeid9, recipeid10)"+" values "
+            			+ "('d@gmail.com', null, null, null, null, null, null, null, null, null, null);"),
         				("insert into Recipes(link, time, name, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10)"+" values "
         				+ "('https://tasty.co/recipe/weekday-meal-prep-pesto-chicken-veggies', 22, 'Pesto Chicken & Veggies', 'chicken', 'greenbeans', 'tomato', 'pesto', null, null, null, null, null, null),"
 						+ "('https://www.gimmesomeoven.com/5-ingredient-pasta-salad/#tasty-recipes-65190', 15, 'Pesto Pasta Salad', 'spaghetti', 'redpepper', 'pesto', 'cheese', null, null, null, null, null, null),"
