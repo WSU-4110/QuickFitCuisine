@@ -89,12 +89,9 @@ public class ControlServlet extends HttpServlet {
         	 case "/sort": 
                  sortRecipes(request, response);           	
                  break;
-        	 case "/save": 
-                 saveRecipe(request, response);           	
-                 break;
-             case "/delete": 
-                 deleteRecipe(request, response);           	
-                 break;
+        	 case "/recipeActions":
+        		 determineRecipeAction(request, response);
+        		 break;
 	    	}
 	    }
 	    catch(Exception ex) {
@@ -102,9 +99,30 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    }
 	    
-	    private void deleteRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    private void determineRecipeAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	String action = request.getParameter("recipeActionButton");
+	    	char check = action.charAt(0);
+	    	if(check == 'D') {
+	    		deleteRecipe(request, response, action);
+	    	}
+	    	else if(check == 'S') {
+	    		saveRecipe(request, response, action);
+	    	}
+	    	else if(check == 'V') {
+	    		viewIngredients(request, response, action);
+	    	}
+	    }
+	    
+	    private void viewIngredients(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
+	    	/* follow what I did for the deleterecipe and saverecipe functions in order to get the name of the recipe, then make a function in recipesDAO that adds the non-null 
+	    	 * ingredients to an ingredients object from ingredients.java, and set the variables of the object to the ingredient attributes you make in the cell of the recipes
+	    	 * in ingredient.jsp, similar to what I did in the end of the delete and save recipes functions
+	    	 */
+	    }
+	    
+	    private void deleteRecipe(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
 	    	System.out.println("Deleting recipe function");
-	    	String name = request.getParameter("deleteButton");
+	    	String name = action;
 	    	name = name.substring(14);
 	    	System.out.println(name);
 	    	int id = recipesDAO.sendRecipeID(name);
@@ -114,9 +132,9 @@ public class ControlServlet extends HttpServlet {
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    
-	    private void saveRecipe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    private void saveRecipe(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
 	    	System.out.println("saving recipe function");
-	    	String name = request.getParameter("saveButton");
+	    	String name = action;
 	    	name = name.substring(12);
 	    	System.out.println(name);
 	    	int id = recipesDAO.sendRecipeID(name);

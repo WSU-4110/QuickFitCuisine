@@ -297,7 +297,8 @@
 					<input type="submit" name="sortButton" value="Saved">
 		</form>
     	</fieldset>
-    	<form action="save" method="post">
+    	<form action="recipeActions" method="post">
+    	<!-- this table displays specific recipes from selected ingredients or displays all recipes -->
     	<table style="width:100%">
             <%
             int cols = 5;
@@ -315,14 +316,15 @@
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
-					<br><input type="submit" name="saveButton" value="Save Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="Save Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here -->
                     </td>
             	<%colCount++;%>
 			</c:forEach>
 			</tr>
 	 	</table>
-    	</form>
-    	<form action="delete" method="post">
+	 	<!-- this table displays recipes that the user has saved -->
     	<table style="width:100%">
             <%
             int cols2 = 5;
@@ -340,7 +342,9 @@
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
-					<br><input type="submit" name="deleteButton" value="Delete Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="Delete Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here (just copy paste the code you made for the other table to here) -->
                     </td>
             	<%colCount2++;%>
 			</c:forEach>

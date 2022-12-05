@@ -74,7 +74,7 @@ public class savedRecipesDAO
                 throw new SQLException(e);
             }
             connect = (Connection) DriverManager
-  			      .getConnection("jdbc:mysql://127.0.0.1:3306/recipedb?"
+  			      .getConnection("jdbc:mysql://127.0.0.1:3306/recipedb?allowPublicKeyRetrieval=true&"
   			          + "useSSL=false&user=" + username + "&password=" + password);
             System.out.println(connect);
         }
