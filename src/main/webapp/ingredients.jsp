@@ -15,6 +15,10 @@
 	<script src="index.js" type="text/javascript" defer></script>
 </head>
 
+<% 
+  request.getSession().setAttribute("user", request.getParameter("currentUser"));
+%>
+
 <script>
 	var coll = document.getElementsByClassName("collapsible");
 	var i;
@@ -29,6 +33,20 @@
 		  content.style.maxHeight = content.scrollHeight + "px";
 		} 
 	  });
+	}
+</script>
+<script>
+function openLogin() {
+  document.getElementById("login").style.display = "block";
+	}
+function closeLogin() {
+  document.getElementById("login").style.display = "none";
+	}
+function openRegister() {
+	  document.getElementById("register").style.display = "block";
+	}
+function closeRegister() {
+	  document.getElementById("register").style.display = "none";
 	}
 </script>
 
@@ -53,8 +71,69 @@
 <body>
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
-	<a href="login.jsp" target="_self">Login</a><br>
-	<a href="register.jsp" target="_self">Register</a><br>
+	<button class="open-button" onclick="openLogin()">Login</button>
+	<div class = "login"><h2>Logged in as user: <user><c:out value = "${currentUser}"/></user></h2></div>
+	<div class = "userform-popup" align="center" id="login">
+ 		<h1> Login </h1>
+	
+		<p> ${loginFailedStr} </p>
+		<form action="login" method="get">
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td>
+						<input type="text" name="email" size="45" autofocus>
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td> 
+						<input type="password" name="password" size="45">
+					</td>
+				</tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="Login"/>
+					</td>
+				
+			</table>
+			<button type="button" class="close-button" onclick="closeLogin()">Close</button>
+			<button type="button" class="close-button" onclick="openRegister();closeLogin()">Register</button>
+		</form>
+	</div>
+	<div class = "userform-popup" align="center" id="register">
+		<p> ${errorOne } </p>
+		<p> ${errorTwo } </p>
+		<form action="register">
+		<h1> Register </h1>
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td align="center" colspan="3">
+						<input type="text" name="email" size="45"  value="example@gmail.com" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td align="center" colspan="3"> 
+						<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password Confirmation: </th>
+					<td align="center" colspan="3">
+						<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
+					</td>
+				
+				</tr>
+				<tr>
+					<td align="center" colspan="5">
+						<input type="submit" value="Register"/>
+					</td>
+				</tr>
+			</table>
+			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+		</form>
+	</div>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
@@ -279,7 +358,9 @@
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to see available recipes.<br><br></p>
+    	<p>
+    	Add ingredients to see available recipes.
+		<br><br></p>
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
@@ -311,7 +392,21 @@
 			</c:forEach>
 			</tr>
 	 	</table>
-    	
+    	<h2>Cookies</h2>
+<dl>
+    <c:forEach items="${cookie}" var="cookieEntry">
+        <dt><c:out value="${cookieEntry.key}" /></dt>
+        <dd><c:out value="${cookieEntry.value.value}" /></dd>
+    </c:forEach>
+</dl>
+
+<h2>Session attributes</h2>
+<dl>
+    <c:forEach items="${sessionScope}" var="sessionEntry">
+        <dt><c:out value="${sessionEntry.key}" /></dt>
+        <dd><c:out value="${sessionEntry.value}" /></dd>
+    </c:forEach>
+</dl>
   	</div>
 	<script src="filterScript.js"></script>
 <script>

@@ -126,6 +126,7 @@ public class ControlServlet extends HttpServlet {
 	    private void listAllRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 	    	System.out.println("displaying all recipes");
 	    	selections = new ArrayList<String>();
+	    	selections.add("");
 	    	request.setAttribute("listRecipes", recipesDAO.allRecipes());
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
@@ -191,12 +192,13 @@ public class ControlServlet extends HttpServlet {
 	    	 {
 			 	 
 			 	currentUser = email;
+			 	request.getSession().setAttribute("currentUser",email);
 				System.out.println("Login Successful! Redirecting");
 				request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    	 }
 	    	 else {
 	    		 request.setAttribute("loginStr","Login Failed: Please check your credentials.");
-	    		 request.getRequestDispatcher("login.jsp").forward(request, response);
+	    		 request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    	 }
 	    }
 	           
@@ -210,18 +212,18 @@ public class ControlServlet extends HttpServlet {
 	   	 			System.out.println("Registration Successful! Added to database");
 		            user users = new user(email, password);
 		   	 		userDAO.insert(users);
-		   	 		response.sendRedirect("login.jsp");
+		   	 		response.sendRedirect("ingredients.jsp");
 	   	 		}
 		   	 	else {
 		   	 		System.out.println("An account is already registered under this email.");
 		    		 request.setAttribute("errorOne","Registration failed: An account is already registered under this email.");
-		    		 request.getRequestDispatcher("register.jsp").forward(request, response);
+		    		 request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 		   	 	}
 	   	 	}
 	   	 	else {
 	   	 		System.out.println("Password and Password Confirmation do not match");
 	   	 		request.setAttribute("errorTwo","Registration failed: Password and Password Confirmation do not match.");
-	   	 		request.getRequestDispatcher("register.jsp").forward(request, response);
+	   	 		request.getRequestDispatcher("indgredients.jsp").forward(request, response);
 	   	 	}
 	    }    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
