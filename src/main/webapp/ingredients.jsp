@@ -18,6 +18,10 @@
 <script src="index.js" type="text/javascript" defer></script>
 </head>
 
+<% 
+  request.getSession().setAttribute("user", request.getParameter("currentUser"));
+%>
+
 <script>
 	var coll = document.getElementsByClassName("collapsible");
 	var i;
@@ -34,6 +38,21 @@
 		});
 	}
 </script>
+<script>
+function openLogin() {
+  document.getElementById("login").style.display = "block";
+	}
+function closeLogin() {
+  document.getElementById("login").style.display = "none";
+	}
+function openRegister() {
+	  document.getElementById("register").style.display = "block";
+	}
+function closeRegister() {
+	  document.getElementById("register").style.display = "none";
+	}
+</script>
+
 <!--  
 <script type="text/javascript">
 	function toggleAll(){  
@@ -54,28 +73,102 @@
 -->
 <body>
 	<main>
-		<h1>Welcome to Quick Fit Cuisine</h1>
-		<a href="login.jsp" target="_self">Login</a><br> <a
-			href="register.jsp" target="_self">Register</a><br>
-		<form action="logout" method="post">
-			<input type="submit" name="logout" value="Logout">
+	<h1>Welcome to Quick Fit Cuisine</h1>
+	<button class="open-button" onclick="openLogin()">Login</button>
+	<div class = "login"><h2>Logged in as user: <user><c:out value = "${currentUser}"/></user></h2></div>
+	<div class = "userform-popup" align="center" id="login">
+ 		<h1> Login </h1>
+	
+		<p> ${loginFailedStr} </p>
+		<form action="login" method="get">
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td>
+						<input type="text" name="email" size="45" autofocus>
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td> 
+						<input type="password" name="password" size="45">
+					</td>
+				</tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="Login"/>
+					</td>
+				
+			</table>
+			<button type="button" class="close-button" onclick="closeLogin()">Close</button>
+			<button type="button" class="close-button" onclick="openRegister();closeLogin()">Register</button>
 		</form>
-		<div class="selection">
-			<h2>Recipe Finder</h2>
-			<div id="myBtnContainer">
-				<button class="btn active" onclick="filterSelection('all')">
-					Show all</button>
-				<button class="btn" onclick="filterSelection('vegetarian')">
-					Vegetarian</button>
-				<button class="btn" onclick="filterSelection('pescatarian')">
-					Pescatarian</button>
-				<button class="btn" onclick="filterSelection('vegan')">
-					Vegan</button>
-				<!-- <img src="moon.png" width="20" height ="20"/>  -->
-			</div>
-			<p>We assume you have salt, pepper, water, and oil.</p>
-			<form action="find" method="post">
-				<div class="container">
+	</div>
+	<div class = "userform-popup" align="center" id="register">
+		<p> ${errorOne } </p>
+		<p> ${errorTwo } </p>
+		<form action="register">
+		<h1> Register </h1>
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td align="center" colspan="3">
+						<input type="text" name="email" size="45"  value="example@gmail.com" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td align="center" colspan="3"> 
+						<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password Confirmation: </th>
+					<td align="center" colspan="3">
+						<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
+					</td>
+				
+				</tr>
+				<tr>
+					<td align="center" colspan="5">
+						<input type="submit" value="Register"/>
+					</td>
+				</tr>
+			</table>
+			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+		</form>
+	</div>
+	<div class="selection">
+		<h2>Recipe Finder</h2>
+		<div id="myBtnContainer">
+		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
+		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
+		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
+		  <!-- <img src="moon.png" width="20" height ="20"/>  -->
+		</div>
+		<p>We assume you have salt, pepper, water, and oil.</p>
+		<form action="find" method="post">
+			<div class="container">
+				<fieldset>
+					<legend>Ingredient Selector</legend>
+					<!--Ingredient Button Menu, name is array, id is for label, value is string-->
+	
+					<fieldset>
+					<legend>Dairy</legend>
+						<div class="filterDiv vegetarian pescatarian">
+	
+						<input type="submit" name="selection" id="egg" value="egg">
+	
+						<input type="submit" name="selection" id="greekyogurt" value="greekyogurt">
+		
+						<input type="submit" name="selection" id="cheese" value="cheese">
+	
+						<input type="submit" name="selection" id="milk" value="milk">
+
+						<input type="submit" name="selection" id="butter" value="butter">
+					</div>
+			
+					</fieldset>
 					<fieldset>
 						<legend>Ingredient Selector</legend>
 						<!--Ingredient Button Menu, name is array, id is for label, value is string-->
