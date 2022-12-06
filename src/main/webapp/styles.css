@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
  #myBtnContainer {
   background-color: black; /* Black background color*/
   position: fixed; /* Make it stick/fixed */
@@ -41,10 +40,74 @@
   top: 90px; /* Hide the navbar 50 px outside of the top view */
   width: 100%; /* Full width */
   
+h1 {
+	text-align: center;
+	padding-bottom: 6px;
+	color: blue;
 }
+
+/* nav styles */
+nav {
+	font-family: Verdana, Arial, serif;
+	background-color: #6EFC35;
+}
+
+ul {
+	list-style-type: none;
+}
+
+body {
+	font-family: Arial, Verdana, 'Times New Roman', Times, serif;
+	font-weight: bold;
+}
+
+.switch li {
+	position: absolute;
+	left: -14rem;
+	top: 0;
+	margin: 0.75rem;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 47px;
+	height: 20px;
+}
+
+.switch input {
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 13px;
+	width: 13px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.slider {
+	background-color: #2196F3;
+}
+
 /* Style the navbar links*/
-
-
 
 #yourrecipe p {
   float: float;
@@ -59,11 +122,6 @@ main{
 	background-color: black;
 }
 
-h1{
-      text-align:center;
-      padding-bottom: 6px;
-      color: white;
-  }
 h2{
 	color: white;
 }
@@ -71,7 +129,37 @@ h3{
 	color: white;
 	text-align: left;
 	margin-left: 10px;
+
+input:focus+.slider {
+	box-shadow: 0 0 1px #2196F3;
 }
+
+input:checked+.slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+.slider::after {
+	position: relative;
+	right: -55px;
+}
+
+li a {
+	display: block;
+	padding: 10px;
+	background-color: #dddddd;
+}
+
 body {
   font-family: Arial,Verdana,'Times New Roman', Times, serif;
   font-weight: bold;
@@ -175,13 +263,191 @@ input{
   .btn.active {
      background-color:#842029 ;
      color: white;
+     }
+
+.header {
+	background-color: rgb(221, 255, 243);
+	height: 100px;
+}
+
+.mycss {
+	color: green;
+	border: 1px solid #000;
+	background: #ccc;
+	padding: 10px;
+}
+
+.border {
+	border-width: 3px;
+	border-style: solid;
+	border-color: #287EC7;
+}
+
+li a {
+	display: block;
+	padding: 10px;
+	background-color: #dddddd;
+}
+
+body {
+	font-family: Arial;
+	color: black;
+}
+
+.selection {
+	position: fixed;
+	top: 75px;
+	bottom: 10px;
+	width: 500px;
+	background: rgb(17, 236, 112);
+	margin: 10px;
+	overflow: scroll;
+}
+
+.result {
+	background: rgba(180, 93, 93, 0.999);
+	margin-left: 510px;
+}
+
+.collapsible {
+	background-color: #777;
+	color: white;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+}
+
+.active, .collapsible:hover {
+	background-color: #555;
+}
+
+.collapsible:after {
+	content: '\002B';
+	color: white;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+}
+
+.active:after {
+	content: "\2212";
+}
+
+.content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: scroll;
+	transition: max-height 0.2s ease-out;
+	background-color: #f1f1f1;
+}
+/*
+  .split {
+    height: 100%;
+    width: 65%;
+    position: fixed;
+    z-index: 1;
+    top: 100px;
+    overflow-x: hidden;
+    padding-top: 20px;
   }
-  .container {
-     overflow: hidden;
+  
+  .left {
+    left: 0;
+    background-color: tomato;
   }
+  
+  .right {
+    right: 0;
+    background-color: white;
+  }
+  
+  .centeredL{
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .centeredR{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: x-large;
+  }
+  */
+.header {
+	background-color: rgb(221, 255, 243);
+	height: 100px;
+}
+
+.mycss {
+	color: green;
+	border: 1px solid #000;
+	background: #ccc;
+	padding: 10px;
+}
+
+.border {
+	border-width: 3px;
+	border-style: solid;
+	border-color: #287EC7;
+}
+
+/* filtering elements for health preferences */
+.filterDiv {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.btn {
+	border: none;
+	outline: none;
+	padding: 12px 16px;
+	background-color: #f1f1f1;
+	cursor: pointer;
+}
+/* Add a light grey background on mouse-over */
+.btn:hover {
+	background-color: #ddd;
+}
+/* Add a dark background to the active button */
+.btn.active {
+	background-color: #666;
+	color: white;
+}
+
+/* Login & Register CSS*/
+  .login h2{
+  color: black;
+  margin: 6px 8px;
+  position: absolute;
+  right: 15px;
+  }
+  
+  .login user{
+  color: blue;
+  }
+  
+  .userform-popup h1{
+  	text-align:center;
+   padding-bottom: 2px;
+   color: black;
+  }
+  
 body {
   background: black;
   }
+  
 /*
 
 Navbar
@@ -272,5 +538,40 @@ Navbar
     font-size: 1rem;
   }
   
+ .userform-popup{
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  border: 3px solid black;
+  background: #CCCCCC;
+ }
+ 
+ .open-button {
+  background-color: #1A8417;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: absolute;
+  top: 23px;
+  right: 28px;
+  width: 200px;
+}
 
+.close-button {
+  background-color: black;
+  color: white;
+  padding: 4px 6px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: center;
+  width: 100px;
+  margin: 3px;
+}
+  
+.container {
+	overflow: hidden;
 }
