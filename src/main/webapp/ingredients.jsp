@@ -364,7 +364,7 @@ function closeRegister() {
 				${viewName} ${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
 				${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
 			</p>
-		</div>
+		
 			<fieldset>
 				<legend>Filters</legend>
 				<form action="sort" method="post">
@@ -377,6 +377,7 @@ function closeRegister() {
 					<input type="submit" name="sortButton" value="Saved">
 				</form>
 			</fieldset>
+			</div>
 			<form action="recipeActions" method="post">
 				<!-- this table displays specific recipes from selected ingredients or displays all recipes -->
 				<table style="width: 100%">
