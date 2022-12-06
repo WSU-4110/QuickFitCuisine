@@ -31,7 +31,6 @@
 	  });
 	}
 </script>
-
 <!--  
 <script type="text/javascript">
 	function toggleAll(){  
@@ -55,6 +54,9 @@
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<a href="login.jsp" target="_self">Login</a><br>
 	<a href="register.jsp" target="_self">Register</a><br>
+	<form action="logout" method="post">
+	<input type="submit" name="logout" value="Logout">
+	</form>
 	<div class="selection">
 		<h2>Recipe Finder</h2>
 		<div id="myBtnContainer">
@@ -279,18 +281,11 @@
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
-    	<p>Add ingredients to see available recipes.</p>
-    	
-    	<c:forEach var="ingredient" items="${ingredientSelections}" varStatus="i">
-    		${ingredient}
-    		${not i.last ? ', ' : ''}
-    		<c:if test="${(i.count % 5) == 0}">
-    			<br>
-    		</c:if>
-    	</c:forEach>
-    	
-    	<br><br>
-    	
+    	<p>Add ingredients to see available recipes.<br><br>
+    	${saveRecipesError}
+    	${saveRecipesError2}
+    	${saveRecipesError3}
+    	</p>
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
@@ -298,8 +293,12 @@
 					<br><input type="submit" name="sortButton" value="Time">	
 					<!--sorts recipes by # of ingredients-->
 					<input type="submit" name="sortButton" value="Ingredients">
+					<!--sorts recipes by saved-->
+					<input type="submit" name="sortButton" value="Saved">
 		</form>
     	</fieldset>
+    	<form action="recipeActions" method="post">
+    	<!-- this table displays specific recipes from selected ingredients or displays all recipes -->
     	<table style="width:100%">
             <%
             int cols = 5;
@@ -317,12 +316,41 @@
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="recipeActionButton" value="Save Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here -->
                     </td>
             	<%colCount++;%>
 			</c:forEach>
 			</tr>
 	 	</table>
-    	
+	 	<!-- this table displays recipes that the user has saved -->
+    	<table style="width:100%">
+            <%
+            int cols2 = 5;
+            int colCount2 = 0;
+            %>
+            <tr>
+            <c:forEach var="recipes" items="${listSavedRecipes}">
+            	<%
+            	if(colCount2 == cols2) {
+            		colCount2 = 0;
+            		out.println("</tr><tr>");
+            	}
+            	%>
+                	<td class='mycss'>
+                	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
+                    <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
+					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="recipeActionButton" value="Delete Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here (just copy paste the code you made for the other table to here) -->
+                    </td>
+            	<%colCount2++;%>
+			</c:forEach>
+			</tr>
+	 	</table>
+    	</form>
   	</div>
 	<script src="filterScript.js"></script>
 <script>

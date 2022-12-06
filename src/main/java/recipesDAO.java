@@ -81,6 +81,19 @@ public class recipesDAO
         }
     }
     
+    public int sendRecipeID(String name) throws SQLException {
+    	String sql = "SELECT recipeid from Recipes where name='" + name + "'";
+    	connect_func();
+    	statement = (Statement) connect.createStatement();
+    	ResultSet resultSet = statement.executeQuery(sql);
+    	resultSet.next();
+    	int id = resultSet.getInt("recipeid");
+    	resultSet.close();
+    	statement.close();
+    	disconnect();
+    	return id;
+    }
+    
     public List<recipes> listValidRecipes(ArrayList<String> selections) throws SQLException {
         List<recipes> recipeList = new ArrayList<recipes>();        
         String sql = "SELECT * FROM Recipes";      
@@ -90,7 +103,8 @@ public class recipesDAO
         while (resultSet.next()) {
             String name = resultSet.getString("name");
             String link = resultSet.getString("link");
-            int time = resultSet.getInt("time");   
+            int time = resultSet.getInt("time"); 
+            int id = resultSet.getInt("recipeid");
             int count = 0;
 			int matching = 0;
 			boolean i1 = false, i2 = false, i3 = false, i4 = false, i5 = false, i6 = false, i7 = false, i8 = false, i9 = false, i10 = false;
@@ -189,7 +203,7 @@ public class recipesDAO
 			//determine if the user selected all of the ingredients belonging to a recipe
 			if(count == matching) {
 				//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
-				recipes rec = new recipes(link, name, time, count);
+				recipes rec = new recipes(id, link, name, time, count);
 	            recipeList.add(rec);
 			}	
         }        
@@ -200,6 +214,72 @@ public class recipesDAO
         return recipeList;
     }
     
+    public List<recipes> listSavedRecipes(String currentUser) throws SQLException {
+        List<recipes> recipeList = new ArrayList<recipes>(); 
+        String[] sql = {
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid1 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid2 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid3 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid4 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid5 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid6 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid7 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid8 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid9 from SavedRecipes where email='"+currentUser+"');",
+        		"SELECT * FROM Recipes WHERE recipeid in (select recipeid10 from SavedRecipes where email='"+currentUser+"');"};
+        connect_func();      
+        statement = (Statement) connect.createStatement();
+        for(int i = 0; i < 10; i++) {
+        	ResultSet resultSet = statement.executeQuery(sql[i]);
+            if(resultSet.next() == false) {
+            	continue;
+            }
+                String name = resultSet.getString("name");
+                String link = resultSet.getString("link");
+                int time = resultSet.getInt("time");  
+                int id = resultSet.getInt("recipeid");
+                int count = 0;
+    			if(resultSet.getString("ingredient1") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient2") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient3") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient4") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient5") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient6") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient7") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient8") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient9") != null) {
+    				count++;
+    			}
+    			if(resultSet.getString("ingredient10") != null) {
+    				count++;
+    			}
+    			//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
+    			recipes rec = new recipes(id, link, name, time, count);
+    	        recipeList.add(rec);	      
+        }
+        statement.close();
+        disconnect();     
+        savedRecipes = recipeList;
+        return recipeList;
+    }
+    
+    
     public List<recipes> allRecipes() throws SQLException {
         List<recipes> recipeList = new ArrayList<recipes>();        
         String sql = "SELECT * FROM Recipes";      
@@ -209,7 +289,8 @@ public class recipesDAO
         while (resultSet.next()) {
             String name = resultSet.getString("name");
             String link = resultSet.getString("link");
-            int time = resultSet.getInt("time");   
+            int time = resultSet.getInt("time");  
+            int id = resultSet.getInt("recipeid");
             int count = 0;
 			if(resultSet.getString("ingredient1") != null) {
 				count++;
@@ -242,7 +323,7 @@ public class recipesDAO
 				count++;
 			}
 			//create a new recipe object for the recipe and add the recipe object to the recipe_arr array
-			recipes rec = new recipes(link, name, time, count);
+			recipes rec = new recipes(id, link, name, time, count);
 	        recipeList.add(rec);	
         }        
         resultSet.close();
