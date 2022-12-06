@@ -74,21 +74,27 @@ public class ControlServlet extends HttpServlet {
 				logout(request, response);
 				break;
 			case "/find":
+				request.setAttribute("currentUser", currentUser);
 				findRecipes(request, response);
 				break;
 			case "/list":
+				request.setAttribute("currentUser", currentUser);
 				listUser(request, response);
 				break;
 			case "/reset":
+				request.setAttribute("currentUser", currentUser);
 				resetIngredients(request, response);
 				break;
 			case "/all":
+				request.setAttribute("currentUser", currentUser);
 				listAllRecipes(request, response);
 				break;
 			case "/sort":
+				request.setAttribute("currentUser", currentUser);
 				sortRecipes(request, response);
 				break;
 			case "/recipeActions":
+				request.setAttribute("currentUser", currentUser);
 				determineRecipeAction(request, response);
 				break;
 			}
@@ -158,7 +164,7 @@ public class ControlServlet extends HttpServlet {
 		if (ingreds.getIngredient10() != "") {
 			request.setAttribute("ingred10", ingreds.getIngredient10());
 		}
-
+		request.setAttribute("listRecipes", recipesDAO.refreshRecipes());
 		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	}
 
@@ -318,9 +324,9 @@ public class ControlServlet extends HttpServlet {
 			session.setAttribute("username", email);
 			rootPage(request, response, "");
 		} else if (userDAO.isValid(email, password)) {
-
 			currentUser = email;
 			System.out.println("Login Successful! Redirecting");
+			request.setAttribute("currentUser", currentUser);
 			request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 		} else {
 			request.setAttribute("loginStr", "Login Failed: Please check your credentials.");

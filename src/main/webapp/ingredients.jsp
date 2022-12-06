@@ -75,7 +75,7 @@ function closeRegister() {
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<button class="open-button" onclick="openLogin()">Login</button>
-	<div class = "login"><h2>Logged in as user: <user><c:out value = "${currentUser}"/></user></h2></div>
+	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
 	<div class = "userform-popup" align="center" id="login">
  		<h1> Login </h1>
 	

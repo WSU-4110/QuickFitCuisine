@@ -346,6 +346,10 @@ public class recipesDAO {
 		savedRecipes = recipeList;
 		return recipeList;
 	}
+	
+	public List<recipes> refreshRecipes() throws NullPointerException {
+		return savedRecipes;
+	}
 
 	public List<recipes> timeSort(boolean check) throws NullPointerException {
 		List<recipes> recipeList = new ArrayList<recipes>();
