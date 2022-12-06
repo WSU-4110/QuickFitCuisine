@@ -4,17 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+	
 <meta charset="UTF-8">
 <title>Quick Fit Cuisine</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="styles.css" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" sizes="180x180"
-	href="images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32"
-	href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16"
-	href="images/favicon-16x16.png">
-<link rel="manifest" href="images/site.webmanifest">
 <script src="index.js" type="text/javascript" defer></script>
 </head>
 
@@ -72,6 +74,29 @@ function closeRegister() {
 </script>
 -->
 <body>
+<!--  -->
+<!--  nav -->
+<!--  <nav class="navbar"> -->
+<!--  <div class="nav-center"> -->
+	<!-- header -->
+<!--  <div class="nav-header">   -->
+<!-- <a href= "ingredients.jsp" class="nav-logo">  -->
+<!-- <img src="${pageContext.request.contextPath}/images/apple-touch-icon.png" alt="QuickFitCuisine" />  -->
+
+ <!-- </a>  -->
+<!-- <button type="button" class="btn nav-btn">  -->
+ <!-- <i class="fas fa-align-justify"></i> 
+</button>
+</div>   -->
+<!-- links -->
+<!-- <div class="nav-links">
+ <a href="login.jsp" class="nav-links" target="_self">Login</a>
+	<a href="register.jsp" class="nav-links" target="_self">Register</a> -->
+	<!-- <img src="${pageContext.request.contextPath}/images/moon.png" width="100" height ="100"/> -->
+<!--   </div>
+</div>
+</nav> -->
+
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<button class="open-button" onclick="openLogin()">Login</button>
@@ -138,15 +163,27 @@ function closeRegister() {
 		</form>
 	</div>
 	<div class="selection">
-		<h2>Recipe Finder</h2>
-		<div id="myBtnContainer">
+		
+		<div id="myBtnContainer">	
+		<br>
+		<br>
+		<h1>QuickFitCuisine</h1>
+		
+		<div class="nav-links">
+ 	<a href="login.jsp" class="nav-links" target="_self">Login</a>
+	<a href="register.jsp" class="nav-links" target="_self">Register</a>
+	<form action="logout" method="post">
+		<input type="submit" name="logout" value="Logout">
+		</form>
+	</div>
+	
+		<h3>Recipe Finder</h3>                  
+		<p>We assume you have salt, pepper, water, and oil.</p>
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		  <!-- <img src="moon.png" width="20" height ="20"/>  -->
 		</div>
-		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -455,15 +492,29 @@ function closeRegister() {
 				</table>
 			</form>
 		</div>
+    <script>
+  	window.onscroll = function() {scrollFunction()};
+
+  	function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("myBtnContainer").style.top = "0";
+  	  } else {
+  	    document.getElementById("myBtnContainer").style.top = "-50px";
+  	  }
+  	}
+  	</script>
+  	<script>
+  	window.onscroll = function() {scrollFunction()};
+
+  	function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("yourrecipe").style.top = "0";
+  	  } else {
+  	    document.getElementById("yourrecipe").style.top = "-50px";
+  	  }
+  	}
+  	</script>
 		<script src="filterScript.js"></script>
-		<script>
-			var icon = document.getElementById("myBtnContainer");
-
-			icon.onclick = function() {
-				document.body.classList.toggle("dark-theme");
-			}
-		</script>
-
 	</main>
 </body>
 
