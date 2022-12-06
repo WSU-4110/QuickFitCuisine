@@ -73,9 +73,6 @@ function closeRegister() {
 -->
 <body>
 	<main>
-	<h1>Welcome to Quick Fit Cuisine</h1>
-	
-	<div class="selection">
 	<button class="open-button" onclick="openLogin()">Login</button>
 	<form action="logout" method="post">
 	<input type="submit" name="logout" value="Logout">
@@ -141,7 +138,9 @@ function closeRegister() {
 			</table>
 			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
 		</form>
-	</div>	
+	</div>
+	<div class="selection">
+		
 		<div id="myBtnContainer">	
 		<br>
 		<br>

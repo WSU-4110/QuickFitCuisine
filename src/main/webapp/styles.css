@@ -2,7 +2,7 @@
 
 
  #myBtnContainer {
-  background-color: black; /* Black background color*/
+  background-color: transparent; /* Black background color*/
   position: fixed; /* Make it stick/fixed */
   top: -30px; /* Hide the navbar 50 px outside of the top view */
   width: 100%; /* Full width */
@@ -90,7 +90,7 @@ input{
     top: 300px;
     bottom: 10px;
     width: 590px;
-    background: black;
+    background: transparent;
     margin: 10px;
     overflow: scroll;
     
