@@ -286,6 +286,15 @@
     	${saveRecipesError2}
     	${saveRecipesError3}
     	</p>
+    	
+    	<c:forEach var="ingredient" items="${ingredientSelections}" varStatus="i">
+    		${ingredient}
+    		${not i.last ? ", " : ""}
+    		<c:if test="${(i.count % 5) == 0}">
+    			<br>
+    		</c:if>
+    	</c:forEach>
+    	
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
