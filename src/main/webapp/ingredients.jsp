@@ -74,8 +74,8 @@ function closeRegister() {
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<button class="open-button" onclick="openLogin()">Login</button>
 	<form action="logout" method="post">
-	<input type="submit" name="logout" value="Logout">
-	</form> 
+	<button class="logout" id="logout" type="submit" name="logout" value="Logout">Logout</button>
+	</form>
 	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
 	<div class = "userform-popup" align="center" id="login">
  		<h1> Login </h1>
@@ -96,7 +96,7 @@ function closeRegister() {
 					</td>
 				</tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="Login"/>
+						<button type="submit" class="close-button" value="login">Login</button>
 					</td>
 				
 			</table>
@@ -131,11 +131,11 @@ function closeRegister() {
 				</tr>
 				<tr>
 					<td align="center" colspan="5">
-						<input type="submit" value="Register"/>
+						<button class="close-button" type="submit" value="Register">Register</button>
 					</td>
 				</tr>
 			</table>
-			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+			<button class="close-button" type="button" class="btn cancel" onclick="closeRegister()">Close</button>
 		</form>
 	</div>
 	<div class="selection">

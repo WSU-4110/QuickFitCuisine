@@ -330,7 +330,7 @@ public class ControlServlet extends HttpServlet {
 			request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 		} else {
 			request.setAttribute("loginStr", "Login Failed: Please check your credentials.");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 		}
 	}
 
@@ -347,17 +347,17 @@ public class ControlServlet extends HttpServlet {
 				savedRecipes saved = new savedRecipes(email);
 				userDAO.insert(users);
 				savedRecipesDAO.insert(saved);
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("ingredients.jsp");
 			} else {
 				System.out.println("An account is already registered under this email.");
 				request.setAttribute("errorOne",
 						"Registration failed: An account is already registered under this email.");
-				request.getRequestDispatcher("register.jsp").forward(request, response);
+				request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 			}
 		} else {
 			System.out.println("Password and Password Confirmation do not match");
 			request.setAttribute("errorTwo", "Registration failed: Password and Password Confirmation do not match.");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 		}
 	}
 
