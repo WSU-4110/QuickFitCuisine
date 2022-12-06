@@ -357,7 +357,8 @@ function closeRegister() {
 			</form>
 		</div>
 		<div class="result">
-			<h2>Your Recipes</h2>
+		<div id="yourrecipe">
+		<h3>Your Recipes</h3>
 			<p>
 				Add ingredients to see available recipes.<br>
 				<br> ${saveRecipesError} ${saveRecipesError2}
@@ -375,7 +376,7 @@ function closeRegister() {
 
 			<br>${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
 			${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
-
+		</div>
 			<fieldset>
 				<legend>Filters</legend>
 				<form action="sort" method="post">
