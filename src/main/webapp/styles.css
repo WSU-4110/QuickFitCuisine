@@ -2,7 +2,7 @@
 
 
  #myBtnContainer {
-  background-color: transparent; /* Black background color*/
+  background-color: transparent; /* transparent background color*/
   position: fixed; /* Make it stick/fixed */
   top: -30px; /* Hide the navbar 50 px outside of the top view */
   width: 100%; /* Full width */
@@ -29,14 +29,15 @@
 #myBtnContainer p {
   float: float;
   display: block;
-  color: white;
+  color: black;
   text-align: left;
   padding: 15px;
   text-decoration: none;
+  
 }
 
  #yourrecipe {
-  background-color: transparent; /* Black background color*/
+  background-color: transparent; /* transparent background color*/
   position: fixed; /* Make it stick/fixed */
   top: 90px; /* Hide the navbar 50 px outside of the top view */
   width: 100%; /* Full width */
@@ -49,26 +50,26 @@
 #yourrecipe p {
   float: float;
   display: block;
-  color: white;
+  color: black;
   text-align: left;
   
   text-decoration: none;
 }
 
 main{
-	background-color: black;
+	background-color: white;
 }
 
 h1{
       text-align:center;
       padding-bottom: 6px;
-      color: white;
+      color: black;
   }
 h2{
-	color: white;
+	color: black;
 }
 h3{
-	color: white;
+	color: black;
 	text-align: left;
 	margin-left: 10px;
 }
@@ -78,7 +79,7 @@ body {
   color: black;
   }
 legend{
-	color: white;
+	color:black;
 }
 input{
 	color:blue;
@@ -90,7 +91,7 @@ input{
     top: 300px;
     bottom: 10px;
     width: 590px;
-    background: transparent;
+    background: #06f980;
     margin: 10px;
     overflow: scroll;
     
@@ -103,16 +104,16 @@ input{
   top:290px;
   bottom: 20px;
   width:900px;
-    background: black;
+    background: white;
     
     margin-left: 600px;
     overflow: scroll;
-    color: white;
+    color: black;
   }
   
   .collapsible {
     background-color: #777;
-    color: white;
+    color: black;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -180,7 +181,7 @@ input{
      overflow: hidden;
   }
 body {
-  background: black;
+  background: white;
   }
 /*
 
@@ -278,7 +279,7 @@ Navbar
 
 /* Login & Register CSS*/
   .login h2{
-  color: black;
+  color: white;
   margin: 6px 8px;
   position: absolute;
   right: 15px;
@@ -289,7 +290,7 @@ Navbar
   .userform-popup h1{
   	text-align:center;
    padding-bottom: 2px;
-   color: black;
+   color: white;
   }
 
  .userform-popup{
