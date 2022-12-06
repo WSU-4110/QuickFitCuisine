@@ -295,6 +295,17 @@
     		</c:if>
     	</c:forEach>
     	
+    	<br>${ingred1}
+		${ingred2}
+		${ingred3}
+		${ingred4}
+		${ingred5}
+		${ingred6}
+		${ingred7}
+		${ingred8}
+		${ingred9}
+		${ingred10}
+    	
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">

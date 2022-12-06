@@ -27,6 +27,7 @@ public class ControlServlet extends HttpServlet {
 	    private userDAO userDAO = new userDAO();
 	    private recipesDAO recipesDAO = new recipesDAO();
 	    private savedRecipesDAO savedRecipesDAO = new savedRecipesDAO();
+	    private ingredientsDAO ingredientsDAO = new ingredientsDAO();
 	    private String currentUser;
 	    private ArrayList<String> selections = new ArrayList<String>();
 	    private boolean sortByTime = false;
@@ -118,6 +119,46 @@ public class ControlServlet extends HttpServlet {
 	    	 * ingredients to an ingredients object from ingredients.java, and set the variables of the object to the ingredient attributes you make in the cell of the recipes
 	    	 * in ingredient.jsp, similar to what I did in the end of the delete and save recipes functions
 	    	 */
+	    	
+	    	System.out.println("Viewing ingredients");
+	    	String name = action;
+	    	name = name.substring(20);
+	    	System.out.println(name);
+	    	int id = recipesDAO.sendRecipeID(name);
+	    	ingredients ingreds = ingredientsDAO.specificIngredients(id);
+	    	
+	    	if (ingreds.getIngredient1() != "") {
+	    		request.setAttribute("ingred1", ingreds.getIngredient1());
+	    	}
+	    	if (ingreds.getIngredient2() != "") {
+	    		request.setAttribute("ingred2", ingreds.getIngredient2());
+	    	}
+	    	if (ingreds.getIngredient3() != "") {
+	    		request.setAttribute("ingred3", ingreds.getIngredient3());
+	    	}
+	    	if (ingreds.getIngredient4() != "") {
+	    		request.setAttribute("ingred4", ingreds.getIngredient4());
+	    	}
+	    	if (ingreds.getIngredient5() != "") {
+	    		request.setAttribute("ingred5", ingreds.getIngredient5());
+	    	}
+	    	if (ingreds.getIngredient6() != "") {
+	    		request.setAttribute("ingred6", ingreds.getIngredient6());
+	    	}
+	    	if (ingreds.getIngredient7() != "") {
+	    		request.setAttribute("ingred7", ingreds.getIngredient7());
+	    	}
+	    	if (ingreds.getIngredient8() != "") {
+	    		request.setAttribute("ingred8", ingreds.getIngredient8());
+	    	}
+	    	if (ingreds.getIngredient9() != "") {
+	    		request.setAttribute("ingred9", ingreds.getIngredient9());
+	    	}
+	    	if (ingreds.getIngredient10() != "") {
+	    		request.setAttribute("ingred10", ingreds.getIngredient10());
+	    	}
+	    	
+	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
 	    
 	    private void deleteRecipe(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
