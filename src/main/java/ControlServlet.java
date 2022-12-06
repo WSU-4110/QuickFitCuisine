@@ -132,6 +132,7 @@ public class ControlServlet extends HttpServlet {
 		name = name.substring(20);
 		System.out.println(name);
 		int id = recipesDAO.sendRecipeID(name);
+		request.setAttribute("viewName", "Ingredients in " + name + ": ");
 		ingredients ingreds = ingredientsDAO.specificIngredients(id);
 
 		if (ingreds.getIngredient1() != "") {

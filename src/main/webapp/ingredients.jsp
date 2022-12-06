@@ -145,9 +145,6 @@ function closeRegister() {
 		<br>
 		<br>
 		<h1>QuickFitCuisine</h1>
-		
-		<div class="nav-links">
-	</div>
 	
 		<h3>Recipe Finder</h3>                  
 		<p>We assume you have salt, pepper, water, and oil.</p>
@@ -156,6 +153,15 @@ function closeRegister() {
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
 		</div>
+		
+		<c:forEach var="ingredient" items="${ingredientSelections}"
+				varStatus="i">
+    		${ingredient}
+    		${not i.last ? ", " : ""}
+    		<c:if test="${(i.count % 5) == 0}">
+					<br>
+				</c:if>
+			</c:forEach>
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -333,14 +339,6 @@ function closeRegister() {
 
 
 						</fieldset>
-						<!-- 
-					<input type="checkbox" onClick="toggleAll()" /> Toggle All<br/>
-					<input type="checkbox" onClick="deSelectAll()" /> Deselect All<br/>
-					 -->
-
-
-
-
 					</fieldset>
 
 				</div>
@@ -361,21 +359,11 @@ function closeRegister() {
 		<h3>Your Recipes</h3>
 			<p>
 				Add ingredients to see available recipes.<br>
-				<br> ${saveRecipesError} ${saveRecipesError2}
-				${saveRecipesError3}
+				${saveRecipesError} ${saveRecipesError2} ${saveRecipesError3}
+				<br>
+				${viewName} ${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
+				${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
 			</p>
-
-			<c:forEach var="ingredient" items="${ingredientSelections}"
-				varStatus="i">
-    		${ingredient}
-    		${not i.last ? ", " : ""}
-    		<c:if test="${(i.count % 5) == 0}">
-					<br>
-				</c:if>
-			</c:forEach>
-
-			<br>${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
-			${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
 		</div>
 			<fieldset>
 				<legend>Filters</legend>
