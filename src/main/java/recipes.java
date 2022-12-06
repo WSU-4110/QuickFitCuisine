@@ -6,11 +6,12 @@ public class recipes
 	 	protected int time;
 	 	protected int count;
 	    //constructors
-	    public recipes(String link, String name, int time, int count) {
+	    public recipes(int recipeid, String link, String name, int time, int count) {
 	    	this.link = link;
 	    	this.name = name;
 	    	this.time = time;
 	    	this.count = count;
+	    	this.recipeid = recipeid;
 	    }
 	    
 	   //getter and setter methods

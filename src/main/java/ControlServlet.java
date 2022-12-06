@@ -26,6 +26,7 @@ public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
 	    private userDAO userDAO = new userDAO();
 	    private recipesDAO recipesDAO = new recipesDAO();
+	    private savedRecipesDAO savedRecipesDAO = new savedRecipesDAO();
 	    private String currentUser;
 	    private ArrayList<String> selections = new ArrayList<String>();
 	    private boolean sortByTime = false;
@@ -41,6 +42,7 @@ public class ControlServlet extends HttpServlet {
 	    {
 	    	userDAO = new userDAO();
 	    	recipesDAO = new recipesDAO();
+	    	savedRecipesDAO = new savedRecipesDAO();
 	    	currentUser= "";
 	    	selections = new ArrayList<String>();
 	    }
@@ -87,6 +89,9 @@ public class ControlServlet extends HttpServlet {
         	 case "/sort": 
                  sortRecipes(request, response);           	
                  break;
+        	 case "/recipeActions":
+        		 determineRecipeAction(request, response);
+        		 break;
 	    	}
 	    }
 	    catch(Exception ex) {
@@ -94,31 +99,113 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    }
 	    
-	    private void sortRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
-	    	System.out.println("sorting recipes");
-	    	String filter = request.getParameter("sortButton");	
-	    	if(selections.isEmpty()) {
-	    		System.out.println("Cannot sort recipes when no ingredients have been selected.");
+	    private void determineRecipeAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	String action = request.getParameter("recipeActionButton");
+	    	char check = action.charAt(0);
+	    	if(check == 'D') {
+	    		deleteRecipe(request, response, action);
+	    	}
+	    	else if(check == 'S') {
+	    		saveRecipe(request, response, action);
+	    	}
+	    	else if(check == 'V') {
+	    		viewIngredients(request, response, action);
+	    	}
+	    }
+	    
+	    private void viewIngredients(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
+	    	/* follow what I did for the deleterecipe and saverecipe functions in order to get the name of the recipe, then make a function in recipesDAO that adds the non-null 
+	    	 * ingredients to an ingredients object from ingredients.java, and set the variables of the object to the ingredient attributes you make in the cell of the recipes
+	    	 * in ingredient.jsp, similar to what I did in the end of the delete and save recipes functions
+	    	 */
+	    }
+	    
+	    private void deleteRecipe(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
+	    	System.out.println("Deleting recipe function");
+	    	String name = action;
+	    	name = name.substring(14);
+	    	System.out.println(name);
+	    	int id = recipesDAO.sendRecipeID(name);
+	    	System.out.println(id);
+	    	savedRecipesDAO.delete(currentUser, id);
+	    	request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
+	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
+	    }
+	    
+	    private void saveRecipe(HttpServletRequest request, HttpServletResponse response, String action) throws ServletException, IOException, SQLException {
+	    	System.out.println("saving recipe function");
+	    	String name = action;
+	    	name = name.substring(12);
+	    	System.out.println(name);
+	    	int id = recipesDAO.sendRecipeID(name);
+	    	System.out.println(id);
+	    	if(currentUser.equals("")) {
+	    		System.out.println("Must be logged in to save recipes.");
+	    		request.setAttribute("saveRecipesError", "You must be logged in to save recipes.");
+	    		if(selections.isEmpty()) {
+	    			request.setAttribute("listRecipes", recipesDAO.allRecipes());
+	    		}
+	    		else {
+	    			request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+	    		}
+	    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    	}
 	    	else {
-	    		if(filter.equals("Time")) {
-		    		request.setAttribute("listRecipes", recipesDAO.timeSort(sortByTime));
-		    		if(sortByTime) {
-		    			sortByTime = false;
-		    		}
-		    		else {
-		    			sortByTime = true;
-		    		}
-		    	}
-		    	else if(filter.equals("Ingredients")) {
-		    		request.setAttribute("listRecipes", recipesDAO.ingredientsSort(sortByIngredients));
-		    		if(sortByIngredients) {
-		    			sortByIngredients = false;
-		    		}
-		    		else {
-		    			sortByIngredients = true;
-		    		}
-		    	}
+	    		System.out.println("passed currentUser check");
+	    		if(savedRecipesDAO.checkNumberOfSavedRecipe(currentUser, id) == 10) {
+	    			System.out.println("You have already saved 10 recipes, cannot save anymore. Delete current saved recipes to make room for others.");
+		    		request.setAttribute("saveRecipesError3", "You have already saved 10 recipes, cannot save anymore. Delete current saved recipes to make room for others.");
+		    		request.setAttribute("listRecipes", recipesDAO.listSavedRecipes(currentUser));
+		    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
+	    		}
+	    		else {
+	    			System.out.println("passed checknumberofsavedrecipe check");
+	    			if(savedRecipesDAO.checkSavedRecipe(currentUser, id)) {
+	    				//valid path, saving recipe
+			    		System.out.println("saving recipe");
+			    		savedRecipesDAO.insertSavedRecipe(currentUser, id);
+			    		request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
+			    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
+			    	}
+			    	else {
+			    		System.out.println("Recipe Already Saved");
+			    		request.setAttribute("saveRecipesError2", "You have already saved that recipe.");
+			    		if(selections.isEmpty()) {
+			    			request.setAttribute("listRecipes", recipesDAO.allRecipes());
+			    		}
+			    		else {
+			    			request.setAttribute("listRecipes", recipesDAO.listValidRecipes(selections));
+			    		}
+			    		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
+			    	}
+	    		}
+	    	}
+	    	
+	    }
+	    
+	    private void sortRecipes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+	    	System.out.println("sorting recipes");
+	    	String filter = request.getParameter("sortButton");
+	    	if(filter.equals("Saved")) {
+	    		request.setAttribute("listSavedRecipes", recipesDAO.listSavedRecipes(currentUser));
+	    	}
+	    	else if(filter.equals("Time")) {
+	    		request.setAttribute("listRecipes", recipesDAO.timeSort(sortByTime));
+	    		if(sortByTime) {
+	    			sortByTime = false;
+	    		}
+	    		else {
+	    			sortByTime = true;
+	    		}
+	    	}
+		    else if(filter.equals("Ingredients")) {
+		    	request.setAttribute("listRecipes", recipesDAO.ingredientsSort(sortByIngredients));
+		    	if(sortByIngredients) {
+		    		sortByIngredients = false;
+		   		}
+		   		else {
+		   			sortByIngredients = true;
+		   		}
 	    	}
 	    	request.getRequestDispatcher("ingredients.jsp").forward(request, response);
 	    }
@@ -211,8 +298,10 @@ public class ControlServlet extends HttpServlet {
 	   	 		if (!userDAO.checkEmail(email)) {
 	   	 			System.out.println("Registration Successful! Added to database");
 		            user users = new user(email, password);
+		            savedRecipes saved = new savedRecipes(email);
 		   	 		userDAO.insert(users);
 		   	 		response.sendRedirect("ingredients.jsp");
+		   	 		savedRecipesDAO.insert(saved);
 	   	 		}
 		   	 	else {
 		   	 		System.out.println("An account is already registered under this email.");
@@ -228,7 +317,7 @@ public class ControlServlet extends HttpServlet {
 	    }    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	currentUser = "";
-        		response.sendRedirect("login.jsp");
+        		response.sendRedirect("ingredients.jsp");
         	}
 }
 	        

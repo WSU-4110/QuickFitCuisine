@@ -358,9 +358,11 @@ function closeRegister() {
 	<div class="result">
 		<h1>QuickFitCuisine</h1>
     	<h2>Your Recipes</h2>
-    	<p>
-    	Add ingredients to see available recipes.
-		<br><br></p>
+    	<p>Add ingredients to see available recipes.<br><br>
+    	${saveRecipesError}
+    	${saveRecipesError2}
+    	${saveRecipesError3}
+    	</p>
     	<fieldset>
     	<legend>Filters</legend>
     	<form action="sort" method="post">
@@ -368,8 +370,12 @@ function closeRegister() {
 					<br><input type="submit" name="sortButton" value="Time">	
 					<!--sorts recipes by # of ingredients-->
 					<input type="submit" name="sortButton" value="Ingredients">
+					<!--sorts recipes by saved-->
+					<input type="submit" name="sortButton" value="Saved">
 		</form>
     	</fieldset>
+    	<form action="recipeActions" method="post">
+    	<!-- this table displays specific recipes from selected ingredients or displays all recipes -->
     	<table style="width:100%">
             <%
             int cols = 5;
@@ -387,26 +393,41 @@ function closeRegister() {
                 	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
                     <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
 					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="recipeActionButton" value="Save Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here -->
                     </td>
             	<%colCount++;%>
 			</c:forEach>
 			</tr>
 	 	</table>
-    	<h2>Cookies</h2>
-<dl>
-    <c:forEach items="${cookie}" var="cookieEntry">
-        <dt><c:out value="${cookieEntry.key}" /></dt>
-        <dd><c:out value="${cookieEntry.value.value}" /></dd>
-    </c:forEach>
-</dl>
-
-<h2>Session attributes</h2>
-<dl>
-    <c:forEach items="${sessionScope}" var="sessionEntry">
-        <dt><c:out value="${sessionEntry.key}" /></dt>
-        <dd><c:out value="${sessionEntry.value}" /></dd>
-    </c:forEach>
-</dl>
+	 	<!-- this table displays recipes that the user has saved -->
+    	<table style="width:100%">
+            <%
+            int cols2 = 5;
+            int colCount2 = 0;
+            %>
+            <tr>
+            <c:forEach var="recipes" items="${listSavedRecipes}">
+            	<%
+            	if(colCount2 == cols2) {
+            		colCount2 = 0;
+            		out.println("</tr><tr>");
+            	}
+            	%>
+                	<td class='mycss'>
+                	<a href="${recipes.link}" target="_blank">"${recipes.name}"</a>
+                    <br>Estimated Recipe Time: <c:out value="${recipes.time}" />
+					<br>Ingredients: <c:out value="${recipes.count}" />
+					<br><input type="submit" name="recipeActionButton" value="Delete Recipe ${recipes.name}">	
+					<br><input type="submit" name="recipeActionButton" value="View Ingredients in ${recipes.name}">	
+					<!-- display ingredients here (just copy paste the code you made for the other table to here) -->
+                    </td>
+            	<%colCount2++;%>
+			</c:forEach>
+			</tr>
+	 	</table>
+    	</form>
   	</div>
 	<script src="filterScript.js"></script>
 <script>
