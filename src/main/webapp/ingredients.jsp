@@ -52,25 +52,6 @@ function closeRegister() {
 	  document.getElementById("register").style.display = "none";
 	}
 </script>
-
-<!--  
-<script type="text/javascript">
-	function toggleAll(){  
-		var checkboxes=document.getElementsByName('selection[]');  
-		for(var i=0; i<checkboxes.length; i++){  
-           if(checkboxes[i].type=='checkbox')  
-            checkboxes[i].checked=true; 
-		} 
-	}
-	function deSelectAll(){  
-                var checkboxes=document.getElementsByName('selection[]');  
-                for(var i=0; i<checkboxes.length; i++){  
-                    if(checkboxes[i].type=='checkbox')  
-                        checkboxes[i].checked=false;  
-                }  
-    }             
-</script>
--->
 <body>
 	<main>
 	<button class="open-button" onclick="openLogin()">Login</button>
