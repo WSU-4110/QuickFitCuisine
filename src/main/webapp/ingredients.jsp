@@ -50,25 +50,6 @@ function closeRegister() {
 	  document.getElementById("register").style.display = "none";
 	}
 </script>
-
-<!--  
-<script type="text/javascript">
-	function toggleAll(){  
-		var checkboxes=document.getElementsByName('selection[]');  
-		for(var i=0; i<checkboxes.length; i++){  
-           if(checkboxes[i].type=='checkbox')  
-            checkboxes[i].checked=true; 
-		} 
-	}
-	function deSelectAll(){  
-                var checkboxes=document.getElementsByName('selection[]');  
-                for(var i=0; i<checkboxes.length; i++){  
-                    if(checkboxes[i].type=='checkbox')  
-                        checkboxes[i].checked=false;  
-                }  
-    }             
-</script>
--->
 <body>
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
@@ -148,6 +129,17 @@ function closeRegister() {
 		  <!-- <img src="moon.png" width="20" height ="20"/>  -->
 		</div>
 		<p>We assume you have salt, pepper, water, and oil.</p>
+		
+		
+		<c:forEach var="ingredient" items="${ingredientSelections}"
+				varStatus="i">
+    		${ingredient}
+    		${not i.last ? ", " : ""}
+    		<c:if test="${(i.count % 5) == 0}">
+					<br>
+				</c:if>
+			</c:forEach>
+		
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -353,22 +345,11 @@ function closeRegister() {
 			<h2>Your Recipes</h2>
 			<p>
 				Add ingredients to see available recipes.<br>
-				<br> ${saveRecipesError} ${saveRecipesError2}
-				${saveRecipesError3}
+				${saveRecipesError} ${saveRecipesError2} ${saveRecipesError3}
+				<br>
+				${viewName} ${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
+				${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
 			</p>
-
-			<c:forEach var="ingredient" items="${ingredientSelections}"
-				varStatus="i">
-    		${ingredient}
-    		${not i.last ? ", " : ""}
-    		<c:if test="${(i.count % 5) == 0}">
-					<br>
-				</c:if>
-			</c:forEach>
-
-			<br>${ingred1} ${ingred2} ${ingred3} ${ingred4} ${ingred5}
-			${ingred6} ${ingred7} ${ingred8} ${ingred9} ${ingred10}
-
 			<fieldset>
 				<legend>Filters</legend>
 				<form action="sort" method="post">
