@@ -74,6 +74,8 @@ function closeRegister() {
 <body>
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
+	
+	<div class="selection">
 	<button class="open-button" onclick="openLogin()">Login</button>
 	<form action="logout" method="post">
 	<input type="submit" name="logout" value="Logout">
@@ -139,17 +141,22 @@ function closeRegister() {
 			</table>
 			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
 		</form>
+	</div>	
+		<div id="myBtnContainer">	
+		<br>
+		<br>
+		<h1>QuickFitCuisine</h1>
+		
+		<div class="nav-links">
 	</div>
-	<div class="selection">
-		<h2>Recipe Finder</h2>
-		<div id="myBtnContainer">
+	
+		<h3>Recipe Finder</h3>                  
+		<p>We assume you have salt, pepper, water, and oil.</p>
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
 		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		  <!-- <img src="moon.png" width="20" height ="20"/>  -->
 		</div>
-		<p>We assume you have salt, pepper, water, and oil.</p>
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -351,7 +358,6 @@ function closeRegister() {
 			</form>
 		</div>
 		<div class="result">
-			<h1>QuickFitCuisine</h1>
 			<h2>Your Recipes</h2>
 			<p>
 				Add ingredients to see available recipes.<br>
