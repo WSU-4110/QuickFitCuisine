@@ -7,15 +7,17 @@
 <meta charset="UTF-8">
 <title>Quick Fit Cuisine</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="styles.css" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" sizes="180x180"
-	href="images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32"
-	href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16"
-	href="images/favicon-16x16.png">
-<link rel="manifest" href="images/site.webmanifest">
-<script src="index.js" type="text/javascript" defer></script>
+<link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+	<link rel="manifest" href="images/site.webmanifest">
 </head>
 
 
@@ -436,14 +438,28 @@ function closeRegister() {
 				</table>
 			</form>
 		</div>
-		<script src="filterScript.js"></script>
 		<script>
-			var icon = document.getElementById("myBtnContainer");
+  	window.onscroll = function() {scrollFunction()};
+		function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("myBtnContainer").style.top = "0";
+  	  } else {
+  	    document.getElementById("myBtnContainer").style.top = "-50px";
+  	  }
+  	}
+  	</script>
+  	<script>
+  	window.onscroll = function() {scrollFunction()};
 
-			icon.onclick = function() {
-				document.body.classList.toggle("dark-theme");
-			}
-		</script>
+  	function scrollFunction() {
+  	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  	    document.getElementById("yourrecipe").style.top = "0";
+  	  } else {
+  	    document.getElementById("yourrecipe").style.top = "-50px";
+  	  }
+  	}
+  	</script>
+	<script src="filterScript.js"></script>
 
 	</main>
 </body>
