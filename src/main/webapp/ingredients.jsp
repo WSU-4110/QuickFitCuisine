@@ -18,9 +18,7 @@
 <script src="index.js" type="text/javascript" defer></script>
 </head>
 
-<% 
-  request.getSession().setAttribute("user", request.getParameter("currentUser"));
-%>
+
 
 <script>
 	var coll = document.getElementsByClassName("collapsible");
@@ -75,6 +73,9 @@ function closeRegister() {
 	<main>
 	<h1>Welcome to Quick Fit Cuisine</h1>
 	<button class="open-button" onclick="openLogin()">Login</button>
+	<form action="logout" method="post">
+	<input type="submit" name="logout" value="Logout">
+	</form> 
 	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
 	<div class = "userform-popup" align="center" id="login">
  		<h1> Login </h1>
@@ -167,27 +168,7 @@ function closeRegister() {
 
 						<input type="submit" name="selection" id="butter" value="butter">
 					</div>
-			
 					</fieldset>
-					<fieldset>
-						<legend>Ingredient Selector</legend>
-						<!--Ingredient Button Menu, name is array, id is for label, value is string-->
-
-						<fieldset>
-							<legend>Dairy</legend>
-							<div class="filterDiv vegetarian pescatarian">
-
-								<input type="submit" name="selection" id="egg" value="egg">
-
-								<input type="submit" name="selection" id="greekyogurt"
-									value="greekyogurt"> <input type="submit"
-									name="selection" id="cheese" value="cheese"> <input
-									type="submit" name="selection" id="milk" value="milk">
-
-								<input type="submit" name="selection" id="butter" value="butter">
-							</div>
-
-						</fieldset>
 
 						<fieldset>
 							<legend>Vegetables</legend>
