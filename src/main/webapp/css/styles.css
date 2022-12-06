@@ -187,7 +187,7 @@ body {
 Navbar
 
 */
-/*
+
 .navbar {
   display: flex;
   align-items: center;
@@ -263,7 +263,7 @@ Navbar
     height: auto !important;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: 50%;
   }
   .nav-link {
     padding: 0;
@@ -273,4 +273,4 @@ Navbar
   }
   
 
-}*/
+}
