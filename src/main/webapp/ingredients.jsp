@@ -398,7 +398,7 @@ function closeRegister() {
 					</td>
 				</tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="Login"/>
+						<button class="close-button" type="submit" value="Login">Login</button>
 					</td>
 				
 			</table>
@@ -433,11 +433,11 @@ function closeRegister() {
 				</tr>
 				<tr>
 					<td align="center" colspan="5">
-						<input type="submit" value="Register"/>
+						<button class="close-button" type="submit" value="Register">Register</button>
 					</td>
 				</tr>
 			</table>
-			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+			<button type="button" class="close-button" onclick="closeRegister()">Close</button>
 		</form>
 	</div>
 	</main>
