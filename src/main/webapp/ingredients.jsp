@@ -61,10 +61,6 @@ function closeRegister() {
 		<div id="myBtnContainer">
 		<br>	
 		<h1>QuickFitCuisine</h1>
-		
-		<form action="logout" method="post">
-	<input type="submit" name="logout" value="Logout">
-	</form>
 	 
 		<h3>Recipe Finder</h3>                  
 		<p>We assume you have salt, pepper, water, and oil.</p>
@@ -378,6 +374,9 @@ function closeRegister() {
   	}
   	</script>
 	<script src="filterScript.js"></script>
+	<form action="logout" method="post">
+	<button class="logout-button" type="submit" name="logout" value="Logout">Logout</button>
+	</form>
 <button class="open-button" onclick="openLogin()">Login</button><br><br><br>
 	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
 	<div class = "userform-popup" align="center" id="login">
