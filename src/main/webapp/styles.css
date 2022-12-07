@@ -55,9 +55,12 @@
   
   text-decoration: none;
 }
+html{
+	background: lightgreen;
+}
 
 main{
-	background-color: white;
+	background-color: lightgreen;
 }
 
 h1{
@@ -91,7 +94,7 @@ input{
     top: 275px;
     bottom: 10px;
     width: 590px;
-    background: #06f980;
+    background: lightgreen;
     margin: 10px;
     overflow: scroll;
     
@@ -104,7 +107,7 @@ input{
   top:290px;
   bottom: 20px;
   width:900px;
-    background: white;
+    background: lightgreen;
     
     margin-left: 600px;
     overflow: scroll;
