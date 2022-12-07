@@ -53,88 +53,28 @@ function closeRegister() {
 	}
 </script>
 <body>
-	<main>
-	<button class="open-button" onclick="openLogin()">Login</button>
-	<form action="logout" method="post">
-	<input type="submit" name="logout" value="Logout">
-	</form> 
-	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
-	<div class = "userform-popup" align="center" id="login">
- 		<h1> Login </h1>
-	
-		<p> ${loginFailedStr} </p>
-		<form action="login" method="get">
-			<table border="1" cellpadding="5">
-				<tr>
-					<th>Email: </th>
-					<td>
-						<input type="text" name="email" size="45" autofocus>
-					</td>
-				</tr>
-				<tr>
-					<th>Password: </th>
-					<td> 
-						<input type="password" name="password" size="45">
-					</td>
-				</tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="Login"/>
-					</td>
-				
-			</table>
-			<button type="button" class="close-button" onclick="closeLogin()">Close</button>
-			<button type="button" class="close-button" onclick="openRegister();closeLogin()">Register</button>
-		</form>
-	</div>
-	<div class = "userform-popup" align="center" id="register">
-		<p> ${errorOne } </p>
-		<p> ${errorTwo } </p>
-		<form action="register">
-		<h1> Register </h1>
-			<table border="1" cellpadding="5">
-				<tr>
-					<th>Email: </th>
-					<td align="center" colspan="3">
-						<input type="text" name="email" size="45"  value="example@gmail.com" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>Password: </th>
-					<td align="center" colspan="3"> 
-						<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>Password Confirmation: </th>
-					<td align="center" colspan="3">
-						<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
-					</td>
-				
-				</tr>
-				<tr>
-					<td align="center" colspan="5">
-						<input type="submit" value="Register"/>
-					</td>
-				</tr>
-			</table>
-			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
-		</form>
-	</div>
+
+
+<main>
 	<div class="selection">
 		
-		<div id="myBtnContainer">	
-		<br>
-		<br>
+		<div id="myBtnContainer">
+		<br>	
 		<h1>QuickFitCuisine</h1>
-	
+		
+		<form action="logout" method="post">
+	<input type="submit" name="logout" value="Logout">
+	</form>
+	 
 		<h3>Recipe Finder</h3>                  
 		<p>We assume you have salt, pepper, water, and oil.</p>
 		  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
 		  <button class="btn" onclick="filterSelection('vegetarian')"> Vegetarian</button>
 		  <button class="btn" onclick="filterSelection('pescatarian')"> Pescatarian</button>
-		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button>
-		</div>
+		  <button class="btn" onclick="filterSelection('vegan')"> Vegan</button><br>
 		
+		<p>
+		Selections: 
 		<c:forEach var="ingredient" items="${ingredientSelections}"
 				varStatus="i">
     		${ingredient}
@@ -143,6 +83,8 @@ function closeRegister() {
 					<br>
 				</c:if>
 			</c:forEach>
+		</p>
+		</div>
 		<form action="find" method="post">
 			<div class="container">
 				<fieldset>
@@ -436,7 +378,69 @@ function closeRegister() {
   	}
   	</script>
 	<script src="filterScript.js"></script>
-
+<button class="open-button" onclick="openLogin()">Login</button><br><br><br>
+	<div class = "login"><h2><c:out value = "${currentUser}"/></h2></div>
+	<div class = "userform-popup" align="center" id="login">
+ 		<h1> Login </h1>
+	
+		<p> ${loginFailedStr} </p>
+		<form action="login" method="get">
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td>
+						<input type="text" name="email" size="45" autofocus>
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td> 
+						<input type="password" name="password" size="45">
+					</td>
+				</tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="Login"/>
+					</td>
+				
+			</table>
+			<button type="button" class="close-button" onclick="closeLogin()">Close</button>
+			<button type="button" class="close-button" onclick="openRegister();closeLogin()">Register</button>
+		</form>
+	</div>
+	<div class = "userform-popup" align="center" id="register">
+		<p> ${errorOne } </p>
+		<p> ${errorTwo } </p>
+		<form action="register">
+		<h1> Register </h1>
+			<table border="1" cellpadding="5">
+				<tr>
+					<th>Email: </th>
+					<td align="center" colspan="3">
+						<input type="text" name="email" size="45"  value="example@gmail.com" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password: </th>
+					<td align="center" colspan="3"> 
+						<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
+					</td>
+				</tr>
+				<tr>
+					<th>Password Confirmation: </th>
+					<td align="center" colspan="3">
+						<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
+					</td>
+				
+				</tr>
+				<tr>
+					<td align="center" colspan="5">
+						<input type="submit" value="Register"/>
+					</td>
+				</tr>
+			</table>
+			<button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+		</form>
+	</div>
 	</main>
 </body>
 

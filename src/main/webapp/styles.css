@@ -88,7 +88,7 @@ input{
 
   .selection {
     position: fixed;
-    top: 300px;
+    top: 275px;
     bottom: 10px;
     width: 590px;
     background: #06f980;
@@ -279,7 +279,7 @@ Navbar
 
 /* Login & Register CSS*/
   .login h2{
-  color: white;
+  color: rgb(0, 0, 0);
   margin: 6px 8px;
   position: absolute;
   right: 15px;
