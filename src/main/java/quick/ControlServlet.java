@@ -1,25 +1,14 @@
 package quick;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import java.sql.Connection;
-import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.sql.PreparedStatement;
 
 public class ControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -119,15 +108,6 @@ public class ControlServlet extends HttpServlet {
 
 	private void viewIngredients(HttpServletRequest request, HttpServletResponse response, String action)
 			throws ServletException, IOException, SQLException {
-		/*
-		 * follow what I did for the deleterecipe and saverecipe functions in order to
-		 * get the name of the recipe, then make a function in recipesDAO that adds the
-		 * non-null ingredients to an ingredients object from ingredients.java, and set
-		 * the variables of the object to the ingredient attributes you make in the cell
-		 * of the recipes in ingredient.jsp, similar to what I did in the end of the
-		 * delete and save recipes functions
-		 */
-
 		System.out.println("Viewing ingredients");
 		String name = action;
 		name = name.substring(20);

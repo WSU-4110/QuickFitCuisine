@@ -21,7 +21,7 @@
 
 		<h1>List all users</h1>
 		<div align="center">
-			<table border="1" cellpadding="6">
+			<table border="1">
 				<caption>List of Users</caption>
 				<tr>
 					<th>Email</th>

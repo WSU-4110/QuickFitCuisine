@@ -384,7 +384,7 @@ function closeRegister() {
 	
 		<p> ${loginFailedStr} </p>
 		<form action="login" method="get">
-			<table border="1" cellpadding="5">
+			<table border="1">
 				<tr>
 					<th>Email: </th>
 					<td>
@@ -397,10 +397,11 @@ function closeRegister() {
 						<input type="password" name="password" size="45">
 					</td>
 				</tr>
+				<tr>
 					<td colspan="2" align="center">
 						<button class="close-button" type="submit" value="Login">Login</button>
 					</td>
-				
+				</tr>
 			</table>
 			<button type="button" class="close-button" onclick="closeLogin()">Close</button>
 			<button type="button" class="close-button" onclick="openRegister();closeLogin()">Register</button>
@@ -411,7 +412,7 @@ function closeRegister() {
 		<p> ${errorTwo } </p>
 		<form action="register">
 		<h1> Register </h1>
-			<table border="1" cellpadding="5">
+			<table border="1">
 				<tr>
 					<th>Email: </th>
 					<td align="center" colspan="3">
