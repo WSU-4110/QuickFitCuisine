@@ -1,3 +1,4 @@
+package qfc;
 public class user {
 	protected String password;
 	protected String email;

@@ -1,3 +1,4 @@
+package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -5,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import qfc.savedRecipes;
 
 class savedRecipesTest {
 	savedRecipes sr = new savedRecipes("d@gmail.com", 2);
@@ -49,6 +52,6 @@ class savedRecipesTest {
 	@Test
 	void testSetRecipeid() {
 		sr.setRecipeid(3);
-		assertEquals(3, sr.recipeid);
+		assertEquals(3, sr.getRecipeid());
 	}
 }

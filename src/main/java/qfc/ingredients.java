@@ -1,3 +1,4 @@
+package qfc;
 public class ingredients {
 	protected int recipeid;
 	protected String ingredient1;

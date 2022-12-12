@@ -1,3 +1,4 @@
+package qfc;
 public class recipes {
 	protected int recipeid;
 	protected String link;

@@ -1,8 +1,11 @@
+package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import qfc.ingredients;
 
 class ingredientsTest {
 
@@ -28,7 +31,7 @@ class ingredientsTest {
 	@Test
 	void testSetRecipeid() {
 		ing.setRecipeid(2);
-		assertEquals(2, ing.recipeid);
+		assertEquals(2, ing.getRecipeid());
 	}
 
 	@Test
@@ -41,7 +44,7 @@ class ingredientsTest {
 	@Test
 	void testSetIngredient1() {
 		ing.setIngredient1("lemon");
-		assertEquals("lemon", ing.ingredient1);
+		assertEquals("lemon", ing.getIngredient1());
 	}
 
 	@Test

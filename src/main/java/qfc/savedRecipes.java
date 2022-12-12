@@ -1,3 +1,4 @@
+package qfc;
 public class savedRecipes {
 	protected String email;
 	protected int recipeid;
