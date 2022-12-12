@@ -19,7 +19,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Install JUnit
-      uses: actions/npm@v1
+      uses: actions/checkout@v3
       with:
         args: install junit
         working-directory: ${{ github.workspace }}
