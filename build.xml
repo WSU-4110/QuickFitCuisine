@@ -5,44 +5,43 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="QuickFitCuisine">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="/Applications/Eclipse.app/Contents/Eclipse/"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="17"/>
     <property name="source" value="17"/>
     <path id="Server Runtime [Apache Tomcat v9.0].libraryclasspath">
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-ko.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/el-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/jasper.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/jasper-el.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-util.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-de.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/jsp-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina-tribes.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-cs.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-jni.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/ecj-4.20.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-pt-BR.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina-ssi.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/websocket-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina-ha.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/annotations-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/jaspic-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-zh-CN.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/catalina-ant.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/servlet-api.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-ru.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../apache-tomcat-9.0.69/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/annotations-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-ant.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-ha.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-ssi.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-tribes.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/catalina.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/ecj-4.20.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/el-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/jasper-el.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/jasper.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/jaspic-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/jsp-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/servlet-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-cs.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-pt-BR.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-jni.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-util.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.65/lib/websocket-api.jar"/>
     </path>
     <path id="Web App Libraries.libraryclasspath">
         <pathelement location="src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
@@ -51,22 +50,22 @@
     </path>
     <path id="EAR Libraries.libraryclasspath"/>
     <path id="JUnit 5.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-jupiter-api_5.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-jupiter-engine_5.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-jupiter-migrationsupport_5.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-jupiter-params_5.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-commons_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-engine_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-launcher_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-runner_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-suite-api_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-suite-engine_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-platform-suite-commons_1.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/junit-vintage-engine_5.9.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.2.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian.api_1.1.2.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.13.2.v20211018-1956.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-jupiter-api_5.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-jupiter-engine_5.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-jupiter-migrationsupport_5.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-jupiter-params_5.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-commons_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-engine_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-launcher_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-runner_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-suite-api_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-suite-engine_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-platform-suite-commons_1.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/junit-vintage-engine_5.9.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.2.0.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian.api_1.1.2.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.13.2.v20211018-1956.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
     </path>
     <path id="QuickFitCuisine.classpath">
         <pathelement location="build/classes"/>
@@ -75,7 +74,56 @@
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="JUnit 5.libraryclasspath"/>
     </path>
-    <path id="run.RecipesTest.classpath">
+    <path id="run.userTest.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testGetEmail.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testGetPassword.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testSetEmail.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testSetPassword.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testUser.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testUserString.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.userTest.testUserStringString.classpath">
         <path refid="QuickFitCuisine.classpath"/>
         <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
@@ -96,6 +144,13 @@
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="JUnit 5.libraryclasspath"/>
     </path>
+    <path id="run.recipesTest.classpath">
+        <path refid="QuickFitCuisine.classpath"/>
+        <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
     <path id="run.savedRecipesTest.classpath">
         <path refid="QuickFitCuisine.classpath"/>
         <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
@@ -103,7 +158,7 @@
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="JUnit 5.libraryclasspath"/>
     </path>
-    <path id="run.userTest.classpath">
+    <path id="run.userTest (1).classpath">
         <path refid="QuickFitCuisine.classpath"/>
         <path refid="Server Runtime [Apache Tomcat v9.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
@@ -133,13 +188,76 @@
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target name="RecipesTest">
+    <target name="userTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="test.recipesTest" todir="${junit.output.dir}"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="run.RecipesTest.classpath"/>
+            <classpath refid="run.userTest.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testGetEmail">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testGetEmail.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testGetPassword">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testGetPassword.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testSetEmail">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testSetEmail.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testSetPassword">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testSetPassword.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testUser">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testUser.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testUserString">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testUserString.classpath"/>
+        </junit>
+    </target>
+    <target name="userTest.testUserStringString">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="userTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.userTest.testUserStringString.classpath"/>
         </junit>
     </target>
     <target name="ingredientsDAOTest">
@@ -160,6 +278,15 @@
             <classpath refid="run.ingredientsTest.classpath"/>
         </junit>
     </target>
+    <target name="recipesTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.recipesTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.recipesTest.classpath"/>
+        </junit>
+    </target>
     <target name="savedRecipesTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -169,13 +296,13 @@
             <classpath refid="run.savedRecipesTest.classpath"/>
         </junit>
     </target>
-    <target name="userTest">
+    <target name="userTest (1)">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="test.userTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="run.userTest.classpath"/>
+            <classpath refid="run.userTest (1).classpath"/>
         </junit>
     </target>
     <target name="junitreport">
