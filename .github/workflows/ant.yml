@@ -18,10 +18,5 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Install JUnit
-      uses: actions/checkout@v3
-      with:
-        args: install junit
-        working-directory: ${{ github.workspace }}
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
