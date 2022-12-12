@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: quick.ingredientsDAOTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.026 s <<< FAILURE! - in quick.ingredientsDAOTest
+testSpecificIngredients  Time elapsed: 0.02 s  <<< ERROR!
+java.sql.SQLException: java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver
+	at quick.ingredientsDAOTest.testSpecificIngredients(ingredientsDAOTest.java:14)
+Caused by: java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver
+	at quick.ingredientsDAOTest.testSpecificIngredients(ingredientsDAOTest.java:14)
+

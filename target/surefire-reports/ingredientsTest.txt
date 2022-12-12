@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: ingredientsTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in ingredientsTest
+ingredientsTest.testGetRecipeid()  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:1308)
+	at org.junit.jupiter.api.Assertions.failNotEqual(Assertions.java:1304)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:288)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:272)
+	at ingredientsTest.testGetRecipeid(ingredientsTest.java:26)
+
+ingredientsTest.testGetIngredient1()  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <chicken> but was: <null>
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:1308)
+	at org.junit.jupiter.api.Assertions.failNotEqual(Assertions.java:1304)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:490)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:467)
+	at ingredientsTest.testGetIngredient1(ingredientsTest.java:39)
+
+ingredientsTest.testGetIngredient2()  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <greenbeans> but was: <null>
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:1308)
+	at org.junit.jupiter.api.Assertions.failNotEqual(Assertions.java:1304)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:490)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:467)
+	at ingredientsTest.testGetIngredient2(ingredientsTest.java:52)
+
