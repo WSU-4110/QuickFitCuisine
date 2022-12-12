@@ -13,6 +13,13 @@ public class recipes {
 		this.count = count;
 		this.recipeid = recipeid;
 	}
+	
+	public recipes(String link, String name, int time, int count) {
+    	this.link = link;
+    	this.name = name;
+    	this.time = time;
+    	this.count = count;
+    }
 
 	// getter and setter methods
 	public int getRecipeid() {
