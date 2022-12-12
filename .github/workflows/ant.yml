@@ -1,11 +1,11 @@
+# This workflow will build a Java project with Ant
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-ant
 name: Java CI
-
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ "hw6_test" ]
   pull_request:
-    branches: [ $default-branch ]
-
+    branches: [ "hw6_test" ]
 jobs:
   build:
 
@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
