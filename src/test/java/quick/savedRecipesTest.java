@@ -44,9 +44,7 @@ public class savedRecipesTest {
 	@Test
 	public void testGetRecipeid() {
 		int actual = sr.getRecipeid();
-		System.out.println(actual);
 		int expected = 2;
-		System.out.println(expected);
 		assertEquals(expected, actual);
 	}
 
