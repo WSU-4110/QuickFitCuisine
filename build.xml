@@ -7,8 +7,8 @@
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="17"/>
-    <property name="source" value="17"/>
+    <property name="target" value="11"/>
+    <property name="source" value="11"/>
     <path id="Server Runtime [Apache Tomcat v9.0].libraryclasspath">
         <pathelement location="../../apache-tomcat-9.0.65/lib/annotations-api.jar"/>
         <pathelement location="../../apache-tomcat-9.0.65/lib/catalina-ant.jar"/>
