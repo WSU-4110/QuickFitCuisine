@@ -18,5 +18,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Install JUnit
+      uses: actions/setup-java@v1
+      with:
+        java-version: '17'
+        junit-version: '5.9.0'
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml
