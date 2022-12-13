@@ -9,4 +9,4 @@ This web application lets users input what ingredients they currently own. The w
 - Filter ingredients for dietary preferences such as vegetarianism, veganism, etc.
 - Log in to save up to 10 recipes.
 
-[## Installation](https://github.com/WSU-4110/QuickFitCuisine/blob/main/INSTALLATION.md)
+[**Installation**](https://github.com/WSU-4110/QuickFitCuisine/blob/main/INSTALLATION.md)
