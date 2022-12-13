@@ -63,6 +63,7 @@ public class recipesDAO {
 	}
 
 	public int sendRecipeID(String name) throws SQLException {
+		//gets the related recipeid for a recipe's name
 		String sql = "SELECT recipeid from Recipes where name='" + name + "'";
 		connect_func();
 		statement = (Statement) connect.createStatement();
@@ -76,6 +77,7 @@ public class recipesDAO {
 	}
 
 	public List<recipes> listValidRecipes(ArrayList<String> selections) throws SQLException {
+		//adds all valid recipes to a list of recipes objects. The selections parameter is all the ingredients that the user has selected.
 		List<recipes> recipeList = new ArrayList<recipes>();
 		String sql = "SELECT * FROM Recipes";
 		connect_func();
@@ -198,6 +200,7 @@ public class recipesDAO {
 	}
 
 	public List<recipes> listSavedRecipes(String currentUser) throws SQLException {
+		//adds every recipe that a user has saved to their account to a list of recipes objects
 		List<recipes> recipeList = new ArrayList<recipes>();
 		String[] sql = {
 				"SELECT * FROM Recipes WHERE recipeid in (select recipeid1 from SavedRecipes where email='"
@@ -274,6 +277,7 @@ public class recipesDAO {
 	}
 
 	public List<recipes> allRecipes() throws SQLException {
+		//adds every recipe in the recipes table to a list of recipes objects.
 		List<recipes> recipeList = new ArrayList<recipes>();
 		String sql = "SELECT * FROM Recipes";
 		connect_func();
@@ -328,10 +332,13 @@ public class recipesDAO {
 	}
 	
 	public List<recipes> refreshRecipes() throws NullPointerException {
+		/*returns the recipes that are currently displayed. This is used to re-display all of the displayed recipes 
+		after the user clicks the view ingredients button and the page refreshes*/
 		return savedRecipes;
 	}
 
 	public List<recipes> timeSort(boolean check) throws NullPointerException {
+		//sorts displayed recipes based on time.
 		List<recipes> recipeList = new ArrayList<recipes>();
 		recipeList = savedRecipes;
 		if (check) {
@@ -357,6 +364,7 @@ public class recipesDAO {
 	}
 
 	public List<recipes> ingredientsSort(boolean check) throws NullPointerException {
+		//sorts displayed recipes based on the number of ingredients
 		List<recipes> recipeList = new ArrayList<recipes>();
 		recipeList = savedRecipes;
 		if (check) {
@@ -382,6 +390,7 @@ public class recipesDAO {
 	}
 
 	protected void disconnect() throws SQLException {
+		//disconnect from database
 		if (connect != null && !connect.isClosed()) {
 			connect.close();
 		}

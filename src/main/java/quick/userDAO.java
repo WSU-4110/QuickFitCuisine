@@ -35,7 +35,7 @@ public class userDAO {
 	}
 
 	protected void connect_func_init() throws SQLException {
-		// uses default connection to the database
+		// uses default connection to the database. This connection function is only used in the init function below.
 		if (connect == null || connect.isClosed()) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,6 +77,7 @@ public class userDAO {
 	}
 
 	public List<user> listAllUsers() throws SQLException {
+		//lists all registered users in the database
 		List<user> listUser = new ArrayList<user>();
 		String sql = "SELECT * FROM User";
 		connect_func();
@@ -96,107 +97,43 @@ public class userDAO {
 	}
 
 	protected void disconnect() throws SQLException {
+		//disconnect from database
 		if (connect != null && !connect.isClosed()) {
 			connect.close();
 		}
 	}
 
 	public void insert(user users) throws SQLException {
+		//insert a user into the user table in the recipedb database
 		connect_func("root", "pass1234");
 		String sql = "insert into User(email, password) values (?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, users.getEmail());
 		preparedStatement.setString(2, users.getPassword());
-
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		disconnect();
 	}
 
-	public boolean delete(String email) throws SQLException {
-		String sql = "DELETE FROM User WHERE email = ?";
-		connect_func();
-
-		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, email);
-
-		boolean rowDeleted = preparedStatement.executeUpdate() > 0;
-		preparedStatement.close();
-		return rowDeleted;
-	}
-
-	public boolean update(user users) throws SQLException {
-		String sql = "update User set password = ?, where email = ?";
-		connect_func();
-
-		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, users.getEmail());
-		preparedStatement.setString(2, users.getPassword());
-
-		boolean rowUpdated = preparedStatement.executeUpdate() > 0;
-		preparedStatement.close();
-		return rowUpdated;
-	}
-
-	public user getUser(String email) throws SQLException {
-		user user = null;
-		String sql = "SELECT * FROM User WHERE email = ?";
-
-		connect_func();
-
-		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, email);
-
-		ResultSet resultSet = preparedStatement.executeQuery();
-
-		if (resultSet.next()) {
-			String password = resultSet.getString("password");
-			user = new user(email, password);
-		}
-
-		resultSet.close();
-		statement.close();
-
-		return user;
-	}
-
 	public boolean checkEmail(String email) throws SQLException {
+		//checks database to see if email in parameters already exists. Used when registering a new account.
 		boolean checks = false;
 		String sql = "SELECT * FROM User WHERE email = ?";
 		connect_func();
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, email);
 		ResultSet resultSet = preparedStatement.executeQuery();
-
 		System.out.println(checks);
-
 		if (resultSet.next()) {
 			checks = true;
 		}
-
-		System.out.println(checks);
-		return checks;
-	}
-
-	public boolean checkPassword(String password) throws SQLException {
-		boolean checks = false;
-		String sql = "SELECT * FROM User WHERE password = ?";
-		connect_func();
-		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, password);
-		ResultSet resultSet = preparedStatement.executeQuery();
-
-		System.out.println(checks);
-
-		if (resultSet.next()) {
-			checks = true;
-		}
-
 		System.out.println(checks);
 		return checks;
 	}
 
 	public boolean isValid(String email, String password) throws SQLException {
+		/*checks to see if email and password exist in the User table in the recipedb database. 
+		Used when logging in a user to verify the account exists.*/
 		String sql = "SELECT * FROM User";
 		connect_func();
 		statement = (Statement) connect.createStatement();
@@ -210,12 +147,11 @@ public class userDAO {
 	}
 
 	public void init() throws SQLException, FileNotFoundException, IOException {
+		//initializes the database recipedb and each table: User, Recipes, SavedRecipes
 		connect_func_init();
 		statement = (Statement) connect.createStatement();
-
 		String[] INITIAL = { "drop database if exists recipedb; ", "create database recipedb; ", "use recipedb; ",
-				"drop table if exists User; ", "drop table if exists Recipes; ", "drop table if exists Ingredients; ",
-				"drop table if exists SavedRecipes; ",
+				"drop table if exists User; ", "drop table if exists Recipes; ", "drop table if exists SavedRecipes; ",
 				("CREATE TABLE if not exists User( " + "email VARCHAR(100) NOT NULL, "
 						+ "password VARCHAR(20) NOT NULL, " + "PRIMARY KEY (email) " + "); "),
 				("CREATE TABLE if not exists Recipes( " + "recipeid INT NOT NULL AUTO_INCREMENT, "
@@ -224,11 +160,6 @@ public class userDAO {
 						+ "ingredient4 VARCHAR(30), " + "ingredient5 VARCHAR(30), " + "ingredient6 VARCHAR(30), "
 						+ "ingredient7 VARCHAR(30), " + "ingredient8 VARCHAR(30), " + "ingredient9 VARCHAR(30), "
 						+ "ingredient10 VARCHAR(30), " + "PRIMARY KEY(recipeid) " + "); "),
-				("CREATE TABLE if not exists ingredients( " + "recipeid INT NOT NULL, " + "ingredient1 VARCHAR(30), "
-						+ "ingredient2 VARCHAR(30), " + "ingredient3 VARCHAR(30), " + "ingredient4 VARCHAR(30), "
-						+ "ingredient5 VARCHAR(30), " + "ingredient6 VARCHAR(30), " + "ingredient7 VARCHAR(30), "
-						+ "ingredient8 VARCHAR(30), " + "ingredient9 VARCHAR(30), " + "ingredient10 VARCHAR(30), "
-						+ "FOREIGN KEY(recipeid) REFERENCES Recipes(recipeid)," + "PRIMARY KEY(recipeid) " + "); "),
 				("CREATE TABLE if not exists SavedRecipes( " + "email VARCHAR(100) NOT NULL, " + "recipeid1 INT,"
 						+ "recipeid2 INT," + "recipeid3 INT," + "recipeid4 INT," + "recipeid5 INT," + "recipeid6 INT,"
 						+ "recipeid7 INT," + "recipeid8 INT," + "recipeid9 INT," + "recipeid10 INT,"
@@ -267,10 +198,7 @@ public class userDAO {
 						+ "('https://www.cookinglight.com/recipes/one-pot-pasta-spinach-tomatoes', 35,'One Pot Pasta', 'onion','tomato','garlic', 'spaghetti','spices','spinach','cheese',null,null,null),"
 						+ "('https://caitsplate.com/honey-mustard-onion-pretzel-encrusted-chicken-tenders/', 25, 'Honey Chicken Tenders','chicken','honey','mustard','onion','egg',null,null,null,null,null),"
 						+ "('https://caitsplate.com/easy-turkey-taco-skillet/#tasty-recipes-35532%27,15,%27Turkey', 15, 'Taco Skillet','turkey','blackbeans','corn','cheese',null,null,null,null,null,null),"
-						+ "('https://plantbasedonabudget.com/yellow-dal/', 30, 'Easy Yellow Dal', 'garlic', 'onion', 'rice', 'lentils', null, null, null, null, null,null);"),
-				("insert into Ingredients(recipeid, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10)"
-						+ " values "
-						+ "(1, 'chicken', 'greenbeans', 'tomato', 'pesto', null, null, null, null, null, null);"), };
+						+ "('https://plantbasedonabudget.com/yellow-dal/', 30, 'Easy Yellow Dal', 'garlic', 'onion', 'rice', 'lentils', null, null, null, null, null,null);")};
 
 		// for loop to put these in database
 		for (int i = 0; i < INITIAL.length; i++)

@@ -59,12 +59,15 @@ public class ingredientsDAO {
 	}
 
 	protected void disconnect() throws SQLException {
+		//disconnect from the database
 		if (connect != null && !connect.isClosed()) {
 			connect.close();
 		}
 	}
 
 	public ingredients specificIngredients(int recipeid) throws SQLException {
+		/*takes a recipeid as the parameter and searches the recipes table in the database recipedb for that recipeid. 
+		Adds all non-null ingredients in that recipe to an ingredients object and returns the object*/
 		ingredients ing = new ingredients();
 		String sql = "SELECT ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10 FROM Recipes WHERE recipeid="
 				+ recipeid + "";

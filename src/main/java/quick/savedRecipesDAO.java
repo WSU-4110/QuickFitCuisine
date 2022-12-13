@@ -60,23 +60,26 @@ public class savedRecipesDAO {
 	}
 
 	protected void disconnect() throws SQLException {
+		//disconnect from database
 		if (connect != null && !connect.isClosed()) {
 			connect.close();
 		}
 	}
 
 	public void insert(savedRecipes saved) throws SQLException {
+		//inserts the user's email into the SavedRecipes database. This function is only used when a new user registers.
 		connect_func("root", "pass1234");
 		String sql = "insert into SavedRecipes(email) values (?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, saved.getEmail());
-
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		disconnect();
 	}
 
 	public void update(String col, String user, int id) throws SQLException {
+		/*updates a user's saved recipes. 
+		Used in the insertSavedRecipe() function below in order to update a null recipeid column to a non-null recipeid*/
 		connect_func("root", "pass1234");
 		String sql = "update SavedRecipes set " + col + "='" + id + "' where email ='" + user + "'";
 		statement = (Statement) connect.createStatement();
@@ -86,6 +89,7 @@ public class savedRecipesDAO {
 	}
 
 	public void delete(String user, int id) throws SQLException {
+		//deletes a recipe from a user's saved recipes
 		connect_func("root", "pass1234");
 		String sql = "select * from SavedRecipes where email='" + user + "'";
 		String sql2;
@@ -129,6 +133,7 @@ public class savedRecipesDAO {
 	}
 
 	public boolean checkSavedRecipe(String currentUser, int id) throws SQLException {
+		//checks a user's saved recipes to see if they have already saved the recipe that they are trying to save
 		boolean check = true;
 		connect_func();
 		String sql = "select * from SavedRecipes where email='" + currentUser + "'";
@@ -163,6 +168,8 @@ public class savedRecipesDAO {
 	}
 
 	public int checkNumberOfSavedRecipe(String currentUser, int id) throws SQLException {
+		/*gets the number of recipes that a user has saved. 
+		 * Used to determine if the user has reached the maximum amount of saved recipes allowed, which is 10.*/
 		int count = 0;
 		System.out.println("hello");
 		connect_func();
@@ -208,6 +215,7 @@ public class savedRecipesDAO {
 	}
 
 	public void insertSavedRecipe(String currentUser, int id) throws SQLException {
+		//inserts a recipe into a user's Saved Recipes at the first recipeid column that has a null value
 		connect_func();
 		String sql = "select * from SavedRecipes where email='" + currentUser + "'";
 		statement = (Statement) connect.createStatement();

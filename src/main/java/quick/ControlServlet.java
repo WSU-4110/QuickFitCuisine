@@ -30,6 +30,7 @@ public class ControlServlet extends HttpServlet {
 		userDAO = new userDAO();
 		recipesDAO = new recipesDAO();
 		savedRecipesDAO = new savedRecipesDAO();
+		ingredientsDAO = new ingredientsDAO();
 		currentUser = "";
 		selections = new ArrayList<String>();
 	}
@@ -43,7 +44,7 @@ public class ControlServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getServletPath();
 		System.out.println(action);
-
+		//switch statement catches form actions and calls the specified function
 		try {
 			switch (action) {
 			case "/login":
@@ -97,6 +98,7 @@ public class ControlServlet extends HttpServlet {
 			throws ServletException, IOException, SQLException {
 		String action = request.getParameter("recipeActionButton");
 		char check = action.charAt(0);
+		//check whether user wants to delete recipe, save recipe, or view ingredients
 		if (check == 'D') {
 			deleteRecipe(request, response, action);
 		} else if (check == 'S') {
@@ -108,6 +110,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void viewIngredients(HttpServletRequest request, HttpServletResponse response, String action)
 			throws ServletException, IOException, SQLException {
+		//display the ingredients in a recipe when the user clicks the view ingredients button 
 		System.out.println("Viewing ingredients");
 		String name = action;
 		name = name.substring(20);
@@ -152,6 +155,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void deleteRecipe(HttpServletRequest request, HttpServletResponse response, String action)
 			throws ServletException, IOException, SQLException {
+		//delete a recipe from a user's saved recipes when the delete recipe button is clicked
 		System.out.println("Deleting recipe function");
 		String name = action;
 		name = name.substring(14);
@@ -165,6 +169,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void saveRecipe(HttpServletRequest request, HttpServletResponse response, String action)
 			throws ServletException, IOException, SQLException {
+		//saves a recipe to a user's saved recipes when the save recipe button is clicked
 		System.out.println("saving recipe function");
 		String name = action;
 		name = name.substring(12);
@@ -214,6 +219,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void sortRecipes(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//sorts recipes by amount of time to cook, amount of ingredients in a recipe, or by the recipes a user has saved
 		System.out.println("sorting recipes");
 		String filter = request.getParameter("sortButton");
 		if (filter.equals("Saved")) {
@@ -238,6 +244,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void listAllRecipes(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//displays all recipes when the show all recipes button is clicked
 		System.out.println("displaying all recipes");
 		selections = new ArrayList<String>();
 		request.setAttribute("listRecipes", recipesDAO.allRecipes());
@@ -246,6 +253,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void resetIngredients(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//clears selected ingredients when clear ingredients button is clicked
 		System.out.println("reset ingredients");
 		selections = new ArrayList<String>();
 		request.getRequestDispatcher("ingredients.jsp").forward(request, response);
@@ -253,6 +261,12 @@ public class ControlServlet extends HttpServlet {
 
 	private void findRecipes(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		/*will display valid recipes each time an ingredient button is clicked
+		 * Example: 3 ingredients are selected: egg, spices, catfish.
+		 * Only recipes that consist of those 3 ingredients or less will be displayed.
+		 * The valid recipes for this combination of ingredients in our database is "Hard Boiled Egg" which has 1 ingredient: egg, 
+		 * "Fried Egg" which has 1 ingredient: egg, "Cornmeal-Crusted Catfish" which has 3 ingredients: egg, spices, catfish
+		 * */
 		System.out.println("finding recipes");
 		String s = request.getParameter("selection");
 		boolean added = false;
@@ -278,8 +292,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		System.out.println("listUser started: 00000000000000000000000000000000000");
-
+		//Lists all registered users. This function is only used for the rootview page for testing purposes.
 		List<user> listUser = userDAO.listAllUsers();
 		request.setAttribute("listUser", listUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("UserList.jsp");
@@ -290,6 +303,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void rootPage(HttpServletRequest request, HttpServletResponse response, String view)
 			throws ServletException, IOException, SQLException {
+		//Calls the listUser function and sets the attributes on the rootview page. This function is only used for the rootview page for testing purposes.
 		System.out.println("root view");
 		request.setAttribute("listUser", userDAO.listAllUsers());
 		request.getRequestDispatcher("rootView.jsp").forward(request, response);
@@ -297,6 +311,7 @@ public class ControlServlet extends HttpServlet {
 
 	protected void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//logs in a user. If the root account logs in, they will be sent to the rootview page.
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
@@ -318,6 +333,7 @@ public class ControlServlet extends HttpServlet {
 
 	private void register(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//registers users
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirm = request.getParameter("confirmation");
@@ -344,6 +360,7 @@ public class ControlServlet extends HttpServlet {
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//logs out users
 		currentUser = "";
 		response.sendRedirect("ingredients.jsp");
 	}
