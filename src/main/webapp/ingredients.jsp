@@ -60,7 +60,7 @@ function closeRegister() {
 		
 		<div id="myBtnContainer">
 		<br>	
-		<h1>QuickFitCuisine</h1>
+		<h1>Quick Fit Cuisine</h1>
 	 
 		<h3>Recipe Finder</h3>                  
 		<p>We assume you have salt, pepper, water, and oil.</p>
